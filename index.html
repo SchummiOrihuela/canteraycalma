@@ -27,44 +27,56 @@
       --blanco: #FFFFFF;
       --gris: #6B7280;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: var(--noche); background: var(--blanco); }
+
     nav {
       position: fixed; top: 0; width: 100%; z-index: 1000;
       background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
       display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 2rem; box-shadow: 0 1px 12px rgba(0,0,0,0.08);
     }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--cantera); font-weight: 700; text-decoration: none; }
+    .nav-logo {
+      font-family: 'Playfair Display', serif; font-size: 1.4rem;
+      color: var(--cantera); font-weight: 700; text-decoration: none;
+    }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--noche); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--cantera); }
-    .nav-cta { background: var(--cantera); color: white; padding: 0.5rem 1.2rem; border-radius: 25px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s; }
+    .nav-cta {
+      background: var(--cantera); color: white; padding: 0.5rem 1.2rem;
+      border-radius: 25px; text-decoration: none; font-size: 0.85rem;
+      font-weight: 600; transition: background 0.2s;
+    }
     .nav-cta:hover { background: var(--calma); }
+
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, rgba(28,28,28,0.45) 0%, rgba(74,124,111,0.30) 100%),
                   url('./ZonaArqueologica.jpg') center/cover no-repeat;
-      display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
     }
     .hero-content { max-width: 750px; }
     .hero-badge {
-      display: inline-block; background: rgba(255,255,255,0.15); color: white;
-      border: 1px solid rgba(255,255,255,0.4); border-radius: 25px;
-      padding: 0.4rem 1rem; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
-      margin-bottom: 1.2rem; backdrop-filter: blur(5px);
-    }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); color: white; line-height: 1.15; margin-bottom: 1rem; }
-    .hero-copy {
       display: inline-block;
-      margin-bottom: 2rem;
-      padding: 0.85rem 1.2rem;
-      border-radius: 16px;
-      background: rgba(0, 0, 0, 0.18);
-      backdrop-filter: blur(6px);
-      color: rgba(255,255,255,0.96);
-      line-height: 1.5;
+      background: rgba(255,255,255,0.15); color: white;
+      border: 1px solid rgba(255,255,255,0.4); border-radius: 25px;
+      padding: 0.4rem 1rem; font-size: 0.8rem; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 1.2rem; backdrop-filter: blur(5px);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      color: white; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .hero-copy {
+      display: inline-block; margin-bottom: 2rem;
+      padding: 0.85rem 1.2rem; border-radius: 16px;
+      background: rgba(0, 0, 0, 0.18); backdrop-filter: blur(6px);
+      color: rgba(255,255,255,0.96); line-height: 1.5;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
     .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -87,84 +99,407 @@
       border-color: #7a4f2e;
       transform: translateY(-2px);
     }
-    .stats { background: var(--cantera); color: white; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; padding: 2rem; }
-    .stat-item { padding: 1rem; border-right: 1px solid rgba(255,255,255,0.2); }
+
+    .stats {
+      background: var(--cantera);
+      color: white;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      padding: 2rem;
+    }
+    .stat-item {
+      padding: 1rem;
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
     .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; }
-    .stat-label { font-size: 0.8rem; opacity: 0.85; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+    }
+
     section { padding: 5rem 2rem; }
     .container { max-width: 1100px; margin: 0 auto; }
-    .section-tag { color: var(--calma); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 0.5rem; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; }
-    .section-sub { color: var(--gris); font-size: 1.05rem; line-height: 1.7; max-width: 620px; }
+    .section-tag {
+      color: var(--calma);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--gris);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 620px;
+    }
+
     #departamentos { background: var(--arena); }
-    .deptos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-    .depto-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
-    .depto-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(0,0,0,0.14); }
-    .depto-img-placeholder { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--calma); }
+    .deptos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .depto-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .depto-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.14);
+    }
+    .depto-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      background: #f2f2f2;
+    }
     .depto-body { padding: 1.5rem; }
-    .depto-badge { background: var(--arena); color: var(--cantera); font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 20px; text-transform: uppercase; }
-    .depto-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 0.6rem 0 0.4rem; }
-    .depto-desc { color: var(--gris); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
-    .depto-features { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-    .feature-tag { background: #f0f9f6; color: var(--calma); font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 10px; font-weight: 500; }
-    .rating-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-    .rating-num { color: #FF385C; font-weight: 700; font-size: 0.9rem; }
-    .rating-info { color: #6B7280; font-size: 0.8rem; }
-    .depto-link { display: inline-block; background: var(--cantera); color: white; padding: 0.6rem 1.3rem; border-radius: 25px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s; }
+    .depto-badge {
+      background: var(--arena);
+      color: var(--cantera);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+    .depto-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin: 0.6rem 0 0.4rem;
+    }
+    .depto-desc {
+      color: var(--gris);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .depto-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .feature-tag {
+      background: #f0f9f6;
+      color: var(--calma);
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .rating-num {
+      color: #FF385C;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .rating-info {
+      color: #6B7280;
+      font-size: 0.8rem;
+    }
+    .depto-link {
+      display: inline-block;
+      background: var(--cantera);
+      color: white;
+      padding: 0.6rem 1.3rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
     .depto-link:hover { background: var(--calma); }
-    .malinalco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 2rem; }
-    .malinalco-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .mcard { background: var(--arena); border-radius: 12px; padding: 1.2rem; text-align: center; transition: transform 0.2s; }
+
+    .malinalco-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    .malinalco-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .mcard {
+      background: var(--arena);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: transform 0.2s;
+    }
     .mcard:hover { transform: translateY(-3px); }
     .mcard-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-    .mcard-title { font-weight: 600; font-size: 0.9rem; color: var(--noche); }
-    .mcard-desc { font-size: 0.78rem; color: var(--gris); margin-top: 0.2rem; }
+    .mcard-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--noche);
+    }
+    .mcard-desc {
+      font-size: 0.78rem;
+      color: var(--gris);
+      margin-top: 0.2rem;
+    }
+
     #comer { background: var(--arena); }
     .comer-intro { margin-bottom: 3rem; }
-    .comer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .rest-card { background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s; border-left: 4px solid var(--calma); }
+    .comer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .rest-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+      border-left: 4px solid var(--calma);
+    }
     .rest-card:hover { transform: translateY(-3px); }
-    .rest-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; }
+    .rest-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
     .rest-emoji { font-size: 1.5rem; }
-    .rest-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
-    .rest-type { font-size: 0.75rem; color: var(--calma); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-    .rest-desc { color: var(--gris); font-size: 0.88rem; line-height: 1.55; margin-bottom: 1rem; }
-    .rest-link { color: var(--cantera); font-size: 0.82rem; font-weight: 600; text-decoration: none; }
+    .rest-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .rest-type {
+      font-size: 0.75rem;
+      color: var(--calma);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .rest-desc {
+      color: var(--gris);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+    .rest-link {
+      color: var(--cantera);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
     .rest-link:hover { text-decoration: underline; }
-    .superhost { background: linear-gradient(135deg, var(--cantera) 0%, #6B4226 100%); color: white; text-align: center; }
+
+    .superhost {
+      background: linear-gradient(135deg, var(--cantera) 0%, #6B4226 100%);
+      color: white;
+      text-align: center;
+    }
     .superhost .section-title { color: white; }
-    .superhost .section-sub { color: rgba(255,255,255,0.85); margin: 1rem auto 2.5rem; }
-    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .review-card { background: rgba(255,255,255,0.1); border-radius: 14px; padding: 1.5rem; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); text-align: left; }
-    .review-stars { color: #FFD700; font-size: 1rem; margin-bottom: 0.8rem; }
-    .review-text { font-size: 0.9rem; line-height: 1.6; opacity: 0.92; font-style: italic; margin-bottom: 1rem; }
-    .review-author { font-size: 0.8rem; opacity: 0.7; font-weight: 600; }
-    .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
-    .contacto-info h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1rem; }
-    .contacto-info p { color: var(--gris); line-height: 1.7; margin-bottom: 1.5rem; }
-    .contacto-links { display: flex; flex-direction: column; gap: 0.8rem; }
-    .clink { display: flex; align-items: center; gap: 0.8rem; color: var(--noche); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 0.8rem; background: var(--arena); border-radius: 10px; transition: background 0.2s; }
+    .superhost .section-sub {
+      color: rgba(255,255,255,0.85);
+      margin: 1rem auto 2.5rem;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 1.5rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.15);
+      text-align: left;
+    }
+    .review-stars {
+      color: #FFD700;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .review-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.92;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .review-author {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+    .contacto-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .contacto-info p {
+      color: var(--gris);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .contacto-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .clink {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--noche);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.8rem;
+      background: var(--arena);
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
     .clink:hover { background: #ede5d8; }
     .clink-icon { font-size: 1.2rem; }
-    .contacto-form { background: var(--arena); border-radius: 16px; padding: 2rem; }
-    .contacto-form h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1.5rem; }
+
+    .contacto-form {
+      background: var(--arena);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .contacto-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
     .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem 1rem; border: 1.5px solid #ddd; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.9rem; background: white; transition: border 0.2s; }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--calma); }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .btn-form { width: 100%; background: var(--cantera); color: white; padding: 0.9rem; border: none; border-radius: 25px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid #ddd;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      background: white;
+      transition: border 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--calma);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .btn-form {
+      width: 100%;
+      background: var(--cantera);
+      color: white;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
     .btn-form:hover { background: var(--calma); }
-    footer { background: var(--noche); color: rgba(255,255,255,0.7); text-align: center; padding: 2.5rem; }
-    footer .footer-logo { font-family: 'Playfair Display', serif; color: white; font-size: 1.6rem; margin-bottom: 0.5rem; }
+
+    footer {
+      background: var(--noche);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2.5rem;
+    }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
     footer p { font-size: 0.85rem; }
-    .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1rem 0; list-style: none; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1rem 0;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
     .footer-links a:hover { color: white; }
-    .social-icons { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; }
-    .social-icons a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .social-icons a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
     .social-icons a:hover { background: var(--cantera); }
+
     @media (max-width: 768px) {
       nav { padding: 1rem; }
       .nav-links { display: none; }
@@ -172,9 +507,33 @@
       .stat-item:nth-child(2) { border-right: none; }
       .malinalco-grid, .contacto-grid { grid-template-columns: 1fr; }
       .malinalco-cards { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding-top: 5rem; }
+      .hero-copy { padding: 0.8rem 1rem; }
+      .depto-img { height: 220px; }
     }
-    .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; background: #25D366; color: white; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.5); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.8); } }
+
+    .wa-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.8); }
+    }
   </style>
 </head>
 <body>
@@ -207,10 +566,23 @@
 </section>
 
 <div class="stats">
-  <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Años como SuperAnfitrión</div></div>
-  <div class="stat-item"><div class="stat-num">350+</div><div class="stat-label">familias hospedadas</div></div>
-  <div class="stat-item"><div class="stat-num">93km</div><div class="stat-label">Desde CDMX</div></div>
-  <div class="stat-item"><div class="stat-num">26-30°C</div><div class="stat-label">Todo el año</div></div>
+  <div class="stat-item">
+    <div class="stat-num">8+</div>
+    <div class="stat-label">Años como SuperAnfitrión</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Huéspedes de 5 continentes</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">70km</div>
+    <div class="stat-label">Desde CDMX</div>
+    <div class="stat-label">60km desde Toluca · 76km desde Cuernavaca</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">26-30°C</div>
+    <div class="stat-label">Todo el año</div>
+  </div>
 </div>
 
 <section id="departamentos">
@@ -221,7 +593,7 @@
     <div class="deptos-grid">
 
       <div class="depto-card">
-        <div class="depto-img-placeholder" style="background:#f0f4f0;">🏡</div>
+        <img class="depto-img" src="./habitacion-magia.jpg" alt="Habitación Magia en Malinalco">
         <div class="depto-body">
           <span class="depto-badge">Habitación</span>
           <h3 class="depto-name">Habitación Magia</h3>
@@ -241,7 +613,7 @@
       </div>
 
       <div class="depto-card">
-        <div class="depto-img-placeholder" style="background:#f4f0ec;">🌿</div>
+        <img class="depto-img" src="./depto-cantera.jpg" alt="Departamento Cantera en Malinalco">
         <div class="depto-body">
           <span class="depto-badge">Departamento</span>
           <h3 class="depto-name">Departamento Cantera</h3>
@@ -263,7 +635,7 @@
       </div>
 
       <div class="depto-card">
-        <div class="depto-img-placeholder" style="background:#ecf0f4;">🌙</div>
+        <img class="depto-img" src="./depto-calma.jpg" alt="Departamento Calma en Malinalco">
         <div class="depto-body">
           <span class="depto-badge">Departamento</span>
           <h3 class="depto-name">Departamento Calma</h3>
@@ -285,7 +657,7 @@
       </div>
 
       <div class="depto-card">
-        <div class="depto-img-placeholder" style="background:#fdf0ec;">🏠</div>
+        <img class="depto-img" src="./casa-marne13.jpg" alt="Casa Marne 13 en Malinalco">
         <div class="depto-body">
           <span class="depto-badge">Casa completa</span>
           <h3 class="depto-name">Casa Marne 13</h3>
