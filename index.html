@@ -674,7 +674,6 @@
   <div class="stat-item">
     <div class="stat-num">93km</div>
     <div class="stat-label">Desde CDMX</div>
-    <div class="stat-label">60km desde Toluca · 53km desde Cuerna</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">26-30°C</div>
@@ -890,6 +889,7 @@
     e.preventDefault();
     alert("¡Gracias! Te contactaremos en menos de 2 horas 🙌");
   }
+
   const sections = document.querySelectorAll("section[id]");
   window.addEventListener("scroll", () => {
     sections.forEach(sec => {
@@ -899,6 +899,33 @@
         if (active) active.style.color = "var(--cantera)";
       }
     });
+  });
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navOverlay = document.querySelector('.nav-overlay');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('nav-open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navOverlay.classList.toggle('visible', isOpen);
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navOverlay.classList.remove('visible');
+    });
+  });
+
+  navOverlay.addEventListener('click', () => {
+    navLinks.classList.remove('nav-open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navOverlay.classList.remove('visible');
   });
 </script>
 </body>
