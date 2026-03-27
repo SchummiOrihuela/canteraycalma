@@ -52,6 +52,53 @@
     }
     .nav-cta:hover { background: var(--calma); }
 
+    /* Botón hamburguesa */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      width: 32px;
+      height: 26px;
+      position: relative;
+    }
+    .nav-toggle-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--noche);
+      border-radius: 999px;
+      transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease, bottom 0.2s ease;
+    }
+    .nav-toggle-line:nth-child(1) { top: 4px; }
+    .nav-toggle-line:nth-child(2) { top: 12px; }
+    .nav-toggle-line:nth-child(3) { bottom: 4px; }
+    .nav-toggle.open .nav-toggle-line:nth-child(1) {
+      top: 12px;
+      transform: rotate(45deg);
+    }
+    .nav-toggle.open .nav-toggle-line:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.open .nav-toggle-line:nth-child(3) {
+      bottom: 12px;
+      transform: rotate(-45deg);
+    }
+
+    /* Overlay con blur para el menú móvil */
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 900;
+    }
+
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, rgba(28,28,28,0.45) 0%, rgba(74,124,111,0.30) 100%),
@@ -501,15 +548,80 @@
     .social-icons a:hover { background: var(--cantera); }
 
     @media (max-width: 768px) {
-      nav { padding: 1rem; }
-      .nav-links { display: none; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .stat-item:nth-child(2) { border-right: none; }
-      .malinalco-grid, .contacto-grid { grid-template-columns: 1fr; }
-      .malinalco-cards { grid-template-columns: repeat(2, 1fr); }
-      .hero { padding-top: 5rem; }
-      .hero-copy { padding: 0.8rem 1rem; }
-      .depto-img { height: 220px; }
+      nav {
+        padding: 0.8rem 1rem;
+        z-index: 1000;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(10px);
+        display: none;
+        flex-direction: column;
+        padding: 0.8rem 1rem 1rem;
+        gap: 0.6rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      }
+
+      .nav-links a {
+        padding: 0.4rem 0;
+        font-size: 0.95rem;
+      }
+
+      .nav-links.nav-open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-cta {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.9rem;
+      }
+
+      .nav-overlay.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .malinalco-grid,
+      .contacto-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .malinalco-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-top: 5rem;
+      }
+
+      .hero-copy {
+        padding: 0.8rem 1rem;
+      }
+
+      .depto-img {
+        height: 220px;
+      }
     }
 
     .wa-float {
@@ -540,6 +652,13 @@
 
 <nav>
   <a href="#inicio" class="nav-logo">Grupo Cantera &amp; Calma</a>
+
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span class="nav-toggle-line"></span>
+    <span class="nav-toggle-line"></span>
+    <span class="nav-toggle-line"></span>
+  </button>
+
   <ul class="nav-links">
     <li><a href="#departamentos">Departamentos</a></li>
     <li><a href="#malinalco">Malinalco</a></li>
@@ -547,8 +666,13 @@
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank">📅 Reservar</a>
+
+  <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank">
+    📅 Reservar
+  </a>
 </nav>
+
+<div class="nav-overlay"></div>
 
 <section id="inicio" class="hero">
   <div class="hero-content">
@@ -571,13 +695,13 @@
     <div class="stat-label">Años como SuperAnfitrión</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">350+</div>
-    <div class="stat-label">familias hospedadas</div>
+    <div class="stat-num">5</div>
+    <div class="stat-label">Huéspedes de 5 continentes</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">93km</div>
+    <div class="stat-num">70km</div>
     <div class="stat-label">Desde CDMX</div>
-    <div class="stat-label">60km desde Toluca · 53km desde Cuerna</div>
+    <div class="stat-label">60km desde Toluca · 76km desde Cuernavaca</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">26-30°C</div>
@@ -585,214 +709,17 @@
   </div>
 </div>
 
-<section id="departamentos">
-  <div class="container">
-    <p class="section-tag">Dónde quedarte</p>
-    <h2 class="section-title">Nuestras opciones</h2>
-    <p class="section-sub">Cuatro espacios únicos, cada uno pensado para que disfrutes Malinalco con calma, comodidad y autenticidad.</p>
-    <div class="deptos-grid">
+<!-- A partir de aquí deja el resto de tu contenido tal como ya lo tenías (departamentos, malinalco, comer, nosotros, contacto, footer, script). 
+   No lo reescribo todo para que el mensaje no sea gigantesco, pero solo debes pegar lo que ya tenías debajo de este bloque de stats. -->
 
-      <div class="depto-card">
-        <img class="depto-img" src="./habitacion-magia.jpeg" alt="Habitación Magia en Malinalco">
-        <div class="depto-body">
-          <span class="depto-badge">Habitación</span>
-          <h3 class="depto-name">Habitación Magia</h3>
-          <p class="depto-desc">Acogedora habitación para dos personas, en el barrio más seguro de Malinalco. A 5 min del centro, con estacionamiento privado y WiFi de alta velocidad.</p>
-          <div class="depto-features">
-            <span class="feature-tag">🚗 Estacionamiento</span>
-            <span class="feature-tag">📶 WiFi</span>
-            <span class="feature-tag">👫 Hasta 2 personas</span>
-            <span class="feature-tag">⭐ SuperAnfitrión</span>
-          </div>
-          <div class="rating-row">
-            <span class="rating-num">★ 4.9</span>
-            <span class="rating-info">· +40 reseñas · 🏅 Favorito entre huéspedes</span>
-          </div>
-          <a href="https://www.airbnb.mx/rooms/1218449796709269911" class="depto-link" target="_blank">Ver en Airbnb →</a>
-        </div>
-      </div>
-
-      <div class="depto-card">
-        <img class="depto-img" src="./depa-cantera.jpeg" alt="Departamento Cantera en Malinalco">
-        <div class="depto-body">
-          <span class="depto-badge">Departamento</span>
-          <h3 class="depto-name">Departamento Cantera</h3>
-          <p class="depto-desc">Espacio completo con toda la esencia de Malinalco. Diseño auténtico, instalaciones de primera y ubicación privilegiada cerca de la zona arqueológica.</p>
-          <div class="depto-features">
-            <span class="feature-tag">🏠 Depa completo</span>
-            <span class="feature-tag">👨‍👩‍👧‍👦 Hasta 4 personas</span>
-            <span class="feature-tag">📶 WiFi</span>
-            <span class="feature-tag">🚗 Estacionamiento</span>
-            <span class="feature-tag">✨ Primera clase</span>
-            <span class="feature-tag">⭐ SuperAnfitrión</span>
-          </div>
-          <div class="rating-row">
-            <span class="rating-num">★ 4.97</span>
-            <span class="rating-info">· +160 reseñas · 🏅 Favorito entre huéspedes</span>
-          </div>
-          <a href="https://www.airbnb.mx/rooms/29388264" class="depto-link" target="_blank">Ver en Airbnb →</a>
-        </div>
-      </div>
-
-      <div class="depto-card">
-        <img class="depto-img" src="./depa-calma.jpeg" alt="Departamento Calma en Malinalco">
-        <div class="depto-body">
-          <span class="depto-badge">Departamento</span>
-          <h3 class="depto-name">Departamento Calma</h3>
-          <p class="depto-desc">Refugio ideal para desconectarte del ritmo de la ciudad. Tranquilidad, naturaleza y todos los servicios que necesitas para una estancia perfecta.</p>
-          <div class="depto-features">
-            <span class="feature-tag">🌙 Descanso total</span>
-            <span class="feature-tag">👨‍👩‍👧‍👦 Hasta 4 personas</span>
-            <span class="feature-tag">📶 WiFi</span>
-            <span class="feature-tag">🚗 Estacionamiento</span>
-            <span class="feature-tag">📍 Céntrico</span>
-            <span class="feature-tag">⭐ SuperAnfitrión</span>
-          </div>
-          <div class="rating-row">
-            <span class="rating-num">★ 4.9</span>
-            <span class="rating-info">· +150 reseñas · 🏅 Favorito entre huéspedes</span>
-          </div>
-          <a href="https://www.airbnb.mx/rooms/26814562" class="depto-link" target="_blank">Ver en Airbnb →</a>
-        </div>
-      </div>
-
-      <div class="depto-card">
-        <img class="depto-img" src="./casa-marne13.jpeg" alt="Casa Marne 13 en Malinalco">
-        <div class="depto-body">
-          <span class="depto-badge">Casa completa</span>
-          <h3 class="depto-name">Casa Marne 13</h3>
-          <p class="depto-desc">Alojamiento entero con arquitectura auténtica de Malinalco. Casa con 2 habitaciones, totalmente equipada y rodeada de naturaleza con todo el encanto del Pueblo Mágico.</p>
-          <div class="depto-features">
-            <span class="feature-tag">🏡 Casa completa</span>
-            <span class="feature-tag">👥 Hasta 4 huéspedes</span>
-            <span class="feature-tag">🛏️ 2 habitaciones</span>
-            <span class="feature-tag">📶 WiFi</span>
-            <span class="feature-tag">🚗 Estacionamiento</span>
-            <span class="feature-tag">⭐ SuperAnfitrión</span>
-          </div>
-          <div class="rating-row">
-            <span class="rating-num">★ 4.91</span>
-            <span class="rating-info">· 85 reseñas · 🏅 Favorito entre huéspedes</span>
-          </div>
-          <a href="https://www.airbnb.mx/rooms/845572765345078851" class="depto-link" target="_blank">Ver en Airbnb →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="malinalco">
-  <div class="container">
-    <div class="malinalco-grid">
-      <div class="malinalco-text">
-        <p class="section-tag">El destino</p>
-        <h2 class="section-title">¿Por qué Malinalco?</h2>
-        <p class="section-sub">Pueblo Mágico del Estado de México con clima perfecto todo el año (26-30°C), gastronomía extraordinaria, zona arqueológica única y una energía que te abraza desde que llegas. A solo 93 km de la CDMX.</p>
-        <p class="section-sub" style="margin-top:1rem;">Desde truchas al estilo Malinalco y mezcal artesanal, hasta la zona arqueológica tallada en roca viva — este lugar tiene todo para que regreses una y otra vez.</p>
-        <a href="#comer" class="btn-primary" style="display:inline-block; margin-top:1.5rem;">Ver guía gastronómica</a>
-      </div>
-      <div class="malinalco-cards">
-        <div class="mcard"><div class="mcard-icon">🌡️</div><div class="mcard-title">Clima ideal</div><div class="mcard-desc">26-30°C todo el año</div></div>
-        <div class="mcard"><div class="mcard-icon">🏛️</div><div class="mcard-title">Zona arqueológica</div><div class="mcard-desc">Tallada en roca viva</div></div>
-        <div class="mcard"><div class="mcard-icon">🍽️</div><div class="mcard-title">Gastronomía única</div><div class="mcard-desc">Truchas, mezcal y más</div></div>
-        <div class="mcard"><div class="mcard-icon">🚗</div><div class="mcard-title">93km de CDMX</div><div class="mcard-desc">~1.5 hrs en auto</div></div>
-        <div class="mcard"><div class="mcard-icon">⛪</div><div class="mcard-title">Convento Agustino</div><div class="mcard-desc">Siglo XVI</div></div>
-        <div class="mcard"><div class="mcard-icon">🦋</div><div class="mcard-title">Naturaleza viva</div><div class="mcard-desc">Biodiversidad única</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="comer">
-  <div class="container">
-    <div class="comer-intro">
-      <p class="section-tag">Guía gastronómica</p>
-      <h2 class="section-title">¿Dónde comer en Malinalco?</h2>
-      <p class="section-sub">Nuestra selección personal de los mejores lugares. Representa la experiencia viva de los visitantes de todo el mundo.</p>
-    </div>
-    <div class="comer-grid">
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">👨‍🍳</div><div><div class="rest-name">Maíz Criollo</div><div class="rest-type">Comida de autor</div></div></div><p class="rest-desc">Experiencia gastronómica en 3 tiempos. Cocina de autor que celebra los sabores locales de manera creativa y elegante.</p><a href="https://maps.app.goo.gl/CxtUnretmjyBDofN6" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">🥩</div><div><div class="rest-name">Pancho Villa</div><div class="rest-type">Cortes y mariscos</div></div></div><p class="rest-desc">Cortes y mariscos deliciosos a precio justo. El favorito de quienes buscan sabor sin complicaciones.</p><a href="https://maps.app.goo.gl/ev2MbqGVk2kSmcib8" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">🌿</div><div><div class="rest-name">Los Placeres</div><div class="rest-type">Gourmet fusión</div></div></div><p class="rest-desc">Cocina gourmet fusionada con la gastronomía malinalquense. Una experiencia que no encontrarás en ningún otro lugar.</p><a href="https://maps.app.goo.gl/VGwcAim1ZnY91Nri8" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">🍹</div><div><div class="rest-name">Casa Diablitos</div><div class="rest-type">Botanas &amp; mixología</div></div></div><p class="rest-desc">Botana, hamburguesas, alitas y mixología de primer nivel. Para las noches que piden algo especial.</p><a href="https://maps.app.goo.gl/hdsc4CfA3CbTBB5J7" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">☕</div><div><div class="rest-name">Casa Valentina</div><div class="rest-type">Café &amp; baguettes</div></div></div><p class="rest-desc">Un café, una baguette o una tardecita deliciosa. Parada obligada para el desayuno o la merienda.</p><a href="https://maps.app.goo.gl/URPFu3CVZeKPC7zS7" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">🐟</div><div><div class="rest-name">Las Palomas</div><div class="rest-type">Truchas &amp; mezcal</div></div></div><p class="rest-desc">Una trucha, un mezcal o platillos típicos: siempre una gran opción. La esencia gastronómica de Malinalco.</p><a href="https://maps.app.goo.gl/DBXcLMNdC2SpoSbX9" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">🍕</div><div><div class="rest-name">El Pochote</div><div class="rest-type">Hamburguesas &amp; pizzas artesanales</div></div></div><p class="rest-desc">Hamburguesas o pizzas artesanales de primera. Opción perfecta para una comida casual e informal.</p><a href="https://maps.app.goo.gl/cKCtj7dVVXoqMoPW7" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">🌮</div><div><div class="rest-name">Terraza Xolo</div><div class="rest-type">Tacos &amp; micheladas</div></div></div><p class="rest-desc">Taquitos al pastor, micheladas o tragos ricos y coquetos. El lugar para arrancar la noche con buen ambiente.</p><a href="https://maps.app.goo.gl/fB4csmP2udXyKqz39" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">🌅</div><div><div class="rest-name">Casa Colibrí</div><div class="rest-type">Desayunos &amp; vista extraordinaria</div></div></div><p class="rest-desc">Buenos desayunos, platillos exóticos y una vista extraordinaria. Ideal para empezar el día con energía y panorama.</p><a href="https://maps.app.goo.gl/iwBgWd3mWCEA9naXA" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-      <div class="rest-card"><div class="rest-header"><div class="rest-emoji">⭐</div><div><div class="rest-name">Caudillos</div><div class="rest-type">El consentido del barrio</div></div></div><p class="rest-desc">Sabor inigualable, buenas bebidas y carta completa. El lugar que siempre está lleno — y uno siempre entiende por qué.</p><a href="https://maps.app.goo.gl/zSZyhu4vqmod3PdN8" class="rest-link" target="_blank">📍 Ver en Maps</a></div>
-    </div>
-  </div>
-</section>
-
-<section id="nosotros" class="superhost">
-  <div class="container">
-    <p class="section-tag" style="color:rgba(255,255,255,0.6);">Quiénes somos</p>
-    <h2 class="section-title">SuperAnfitriones<br>con alma</h2>
-    <p class="section-sub">8 años recibiendo viajeros de los 5 continentes en Malinalco. No rentamos espacios — creamos experiencias. Cada huésped se va de Malinalco con la promesa de volver pronto.</p>
-    <div class="reviews-grid">
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"El lugar superó todas nuestras expectativas. Las instalaciones impecables, la atención increíble y las recomendaciones locales hicieron que nuestra estancia fuera perfecta."</p><div class="review-author">— Huésped desde CDMX · Airbnb</div></div>
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Exactamente como en las fotos. El espacio tiene todo lo necesario, el anfitrión siempre disponible. Sin duda volvemos. Malinalco es un destino que no te puedes perder."</p><div class="review-author">— Huésped internacional · Airbnb</div></div>
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Excelente ubicación, muy cerca del centro y de la zona arqueológica. El departamento limpio, cómodo y con todos los servicios. Regresaremos pronto."</p><div class="review-author">— Familia mexicana · Airbnb</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="contacto">
-  <div class="container">
-    <p class="section-tag">Escríbenos</p>
-    <h2 class="section-title">¿Listo para venir?</h2>
-    <div class="contacto-grid">
-      <div class="contacto-info">
-        <h3>Contáctanos directamente</h3>
-        <p>Podemos ayudarte a elegir la opción ideal, coordinar tu llegada y darte todos los tips locales que necesitas para vivir Malinalco al máximo.</p>
-        <div class="contacto-links">
-          <a href="https://wa.me/5215562513258" class="clink" target="_blank"><span class="clink-icon">💬</span> WhatsApp directo</a>
-          <a href="https://www.instagram.com/canteramalinalco" class="clink" target="_blank"><span class="clink-icon">📸</span> Instagram: @canteramalinalco</a>
-          <a href="https://www.facebook.com/CanteraMalinalco" class="clink" target="_blank"><span class="clink-icon">👍</span> Facebook: Cantera Malinalco</a>
-          <a href="https://www.airbnb.mx/rooms/29388264" class="clink" target="_blank"><span class="clink-icon">🏠</span> Ver en Airbnb</a>
-        </div>
-      </div>
-      <div class="contacto-form">
-        <h3>Consulta disponibilidad</h3>
-        <form onsubmit="handleForm(event)">
-          <div class="form-group"><label>Tu nombre</label><input type="text" placeholder="¿Cómo te llamas?" required></div>
-          <div class="form-group"><label>WhatsApp o email</label><input type="text" placeholder="Para responderte rápido" required></div>
-          <div class="form-group"><label>Fechas que te interesan</label><input type="text" placeholder="ej. 5 al 7 de abril"></div>
-          <div class="form-group"><label>¿Cuántas personas?</label><select><option>1-2 personas</option><option>3-4 personas</option><option>5+ personas</option></select></div>
-          <div class="form-group"><label>Mensaje (opcional)</label><textarea placeholder="¿Algo especial que necesitas saber?"></textarea></div>
-          <button type="submit" class="btn-form">Enviar consulta 🚀</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-logo">Grupo Cantera &amp; Calma</div>
-  <p>Malinalco, Estado de México · Pueblo Mágico</p>
-  <ul class="footer-links">
-    <li><a href="#departamentos">Departamentos</a></li>
-    <li><a href="#malinalco">Malinalco</a></li>
-    <li><a href="#comer">Gastronomía</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <div class="social-icons">
-    <a href="https://www.instagram.com/canteramalinalco" target="_blank">📸</a>
-    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank">👍</a>
-    <a href="https://wa.me/5215562513258" target="_blank">💬</a>
-  </div>
-  <p style="font-size:0.75rem; margin-top:1rem; opacity:0.5;">© 2026 Grupo Cantera &amp; Calma · Todos los derechos reservados · canteraycalma.com</p>
-</footer>
-
-<a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20y%20me%20interesa%20reservar" class="wa-float" target="_blank" title="Escribirnos por WhatsApp">💬</a>
+<!-- … pega aquí tu contenido existente desde <section id="departamentos"> hasta el final, sin tocar el <script> salvo lo que sigue … -->
 
 <script>
   function handleForm(e) {
     e.preventDefault();
     alert("¡Gracias! Te contactaremos en menos de 2 horas 🙌");
   }
+
   const sections = document.querySelectorAll("section[id]");
   window.addEventListener("scroll", () => {
     sections.forEach(sec => {
@@ -802,6 +729,33 @@
         if (active) active.style.color = "var(--cantera)";
       }
     });
+  });
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const navOverlay = document.querySelector('.nav-overlay');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('nav-open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navOverlay.classList.toggle('visible', isOpen);
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navOverlay.classList.remove('visible');
+    });
+  });
+
+  navOverlay.addEventListener('click', () => {
+    navLinks.classList.remove('nav-open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navOverlay.classList.remove('visible');
   });
 </script>
 </body>
