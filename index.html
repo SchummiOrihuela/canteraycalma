@@ -852,11 +852,11 @@
       </div>
       <div class="contacto-form">
         <h3>Consulta disponibilidad</h3>
-        <form onsubmit="handleForm(event)">
+        <form action="https://formspree.io/f/mojpvleo" method="POST">
           <div class="form-group"><label>Tu nombre</label><input type="text" placeholder="¿Cómo te llamas?" required></div>
           <div class="form-group"><label>WhatsApp o email</label><input type="text" placeholder="Para responderte rápido" required></div>
           <div class="form-group"><label>Fechas que te interesan</label><input type="text" placeholder="ej. 5 al 7 de abril"></div>
-          <div class="form-group"><label>¿Cuántas personas?</label><select><option>1-2 personas</option><option>3-4 personas</option><option>5+ personas</option></select></div>
+          <div class="form-group"><label>¿Cuántas personas?</label><select><option>1 personas</option><option>2 personas</option><option>3+ personas</option></select></div>
           <div class="form-group"><label>Mensaje (opcional)</label><textarea placeholder="¿Algo especial que necesitas saber?"></textarea></div>
           <button type="submit" class="btn-form">Enviar consulta 🚀</button>
         </form>
@@ -885,11 +885,6 @@
 <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20y%20me%20interesa%20reservar" class="wa-float" target="_blank" title="Escribirnos por WhatsApp">💬</a>
 
 <script>
-  function handleForm(e) {
-    e.preventDefault();
-    alert("¡Gracias! Te contactaremos en menos de 2 horas 🙌");
-  }
-
   const sections = document.querySelectorAll("section[id]");
   window.addEventListener("scroll", () => {
     sections.forEach(sec => {
