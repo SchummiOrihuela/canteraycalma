@@ -925,6 +925,178 @@
       z-index: 900;
     }
 
+    /* ============================================
+       BOTÓN WHATSAPP FLOTANTE — MENÚ EXPANDIBLE
+       ============================================ */
+    .wa-widget {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    /* Menú de propiedades */
+    .wa-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px) scale(0.96);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .wa-widget.open .wa-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Etiqueta de título del menú */
+    .wa-menu-title {
+      background: #1C1C1C;
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Cada opción del menú */
+    .wa-option {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: white;
+      color: #1C1C1C;
+      text-decoration: none;
+      padding: 0.6rem 1rem 0.6rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+    .wa-option:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      background: #f9f9f9;
+    }
+    .wa-option-icon {
+      width: 32px;
+      height: 32px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .wa-option-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .wa-option-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #1C1C1C;
+    }
+    .wa-option-sub {
+      font-size: 0.72rem;
+      color: #6B7280;
+      font-weight: 400;
+    }
+
+    /* Botón principal verde */
+    .wa-btn-main {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.55);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      position: relative;
+      flex-shrink: 0;
+      animation: wa-pulse 2.5s ease-in-out infinite;
+    }
+    .wa-btn-main:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.7);
+      animation: none;
+    }
+    .wa-widget.open .wa-btn-main {
+      background: #1da851;
+      animation: none;
+      transform: rotate(45deg);
+    }
+
+    /* Ícono SVG de WA */
+    .wa-icon, .wa-close-icon {
+      position: absolute;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .wa-icon { opacity: 1; transform: scale(1); }
+    .wa-close-icon { opacity: 0; transform: scale(0.5); font-size: 1.6rem; font-weight: 300; line-height: 1; }
+    .wa-widget.open .wa-icon { opacity: 0; transform: scale(0.5); }
+    .wa-widget.open .wa-close-icon { opacity: 1; transform: scale(1) rotate(-45deg); }
+
+    /* Tooltip inicial "¡Reserva directo!" */
+    .wa-tooltip {
+      position: absolute;
+      right: 74px;
+      bottom: 10px;
+      background: #1C1C1C;
+      color: white;
+      padding: 0.45rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: tooltip-show 0.4s ease 2.5s both, tooltip-hide 0.4s ease 7s forwards;
+    }
+    .wa-tooltip::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right: none;
+      border-left-color: #1C1C1C;
+    }
+
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 4px 18px rgba(37,211,102,0.55); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.85), 0 0 0 10px rgba(37,211,102,0.1); }
+    }
+    @keyframes tooltip-show {
+      from { opacity: 0; transform: translateX(8px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes tooltip-hide {
+      from { opacity: 1; }
+      to { opacity: 0; pointer-events: none; }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 0.8rem 1rem; z-index: 1000; }
       .nav-logo { font-size: 1.2rem; }
@@ -956,29 +1128,10 @@
       .depto-img { height: 220px; }
       .depto-actions { flex-direction: column; }
       .depto-link, .depto-link-wa { text-align: center; justify-content: center; }
-    }
-
-    .wa-float {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 999;
-      background: #25D366;
-      color: white;
-      border-radius: 50%;
-      width: 58px;
-      height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
-      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.8); }
+      .wa-widget { bottom: 1.2rem; right: 1.2rem; }
+      .wa-btn-main { width: 56px; height: 56px; }
+      .wa-option { font-size: 0.82rem; padding: 0.55rem 0.9rem 0.55rem 0.6rem; }
+      .wa-option-icon { width: 28px; height: 28px; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -1063,7 +1216,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/29388264" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A0" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1088,7 +1241,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/26814562" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8C%99" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1113,7 +1266,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/845572765345078851" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A1" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1136,7 +1289,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/1218449796709269911" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%E2%9C%A8" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1252,8 +1405,8 @@
             <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" required>
           </div>
           <div class="form-group">
-            <label for="contacto">WhatsApp o email</label>
-            <input type="text" id="contacto" name="contacto" placeholder="Para responderte rápido" required>
+            <label for="contacto_form">WhatsApp o email</label>
+            <input type="text" id="contacto_form" name="contacto" placeholder="Para responderte rápido" required>
           </div>
           <div class="form-group">
             <label for="fechas">Fechas que te interesan</label>
@@ -1297,7 +1450,73 @@
   <p style="font-size:0.75rem; margin-top:1rem; opacity:0.5;">© 2026 Grupo Cantera &amp; Calma · Todos los derechos reservados · canteraycalma.com</p>
 </footer>
 
-<a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20y%20me%20interesa%20reservar" class="wa-float" target="_blank" rel="noopener noreferrer" title="Escribirnos por WhatsApp" aria-label="Contactar por WhatsApp">💬</a>
+<!-- ============================================
+     BOTÓN WHATSAPP FLOTANTE — MENÚ EXPANDIBLE
+     ============================================ -->
+<div class="wa-widget" id="waWidget" role="complementary" aria-label="Contacto WhatsApp">
+
+  <!-- Menú de propiedades (se despliega al tocar el botón) -->
+  <div class="wa-menu" id="waMenu" aria-hidden="true">
+    <div class="wa-menu-title">¿Qué propiedad te interesa?</div>
+
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A0"
+       class="wa-option" target="_blank" rel="noopener noreferrer" aria-label="Reservar Departamento Cantera por WhatsApp">
+      <span class="wa-option-icon">🏠</span>
+      <span class="wa-option-text">
+        <span class="wa-option-name">Depto. Cantera</span>
+        <span class="wa-option-sub">Hasta 4 personas · ★ 4.97</span>
+      </span>
+    </a>
+
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8C%99"
+       class="wa-option" target="_blank" rel="noopener noreferrer" aria-label="Reservar Departamento Calma por WhatsApp">
+      <span class="wa-option-icon">🌙</span>
+      <span class="wa-option-text">
+        <span class="wa-option-name">Depto. Calma</span>
+        <span class="wa-option-sub">Hasta 4 personas · ★ 4.9</span>
+      </span>
+    </a>
+
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A1"
+       class="wa-option" target="_blank" rel="noopener noreferrer" aria-label="Reservar Casa Marne 13 por WhatsApp">
+      <span class="wa-option-icon">🏡</span>
+      <span class="wa-option-text">
+        <span class="wa-option-name">Casa Marne 13</span>
+        <span class="wa-option-sub">2 habitaciones · ★ 4.91</span>
+      </span>
+    </a>
+
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%E2%9C%A8"
+       class="wa-option" target="_blank" rel="noopener noreferrer" aria-label="Reservar Habitación Magia por WhatsApp">
+      <span class="wa-option-icon">✨</span>
+      <span class="wa-option-text">
+        <span class="wa-option-name">Hab. Magia</span>
+        <span class="wa-option-sub">Hasta 2 personas · ★ 4.9</span>
+      </span>
+    </a>
+
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20saber%20qu%C3%A9%20propiedades%20tienen%20disponibles%20en%20Malinalco.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%8C%BF"
+       class="wa-option" target="_blank" rel="noopener noreferrer" aria-label="Consulta general por WhatsApp">
+      <span class="wa-option-icon">💬</span>
+      <span class="wa-option-text">
+        <span class="wa-option-name">No sé cuál elegir</span>
+        <span class="wa-option-sub">Cuéntanos y te ayudamos</span>
+      </span>
+    </a>
+  </div>
+
+  <!-- Botón principal -->
+  <button class="wa-btn-main" id="waBtn" aria-expanded="false" aria-controls="waMenu" aria-label="Abrir menú de WhatsApp para reservar">
+    <!-- Ícono WhatsApp SVG -->
+    <svg class="wa-icon" width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <!-- Ícono X para cerrar -->
+    <span class="wa-close-icon" aria-hidden="true">×</span>
+    <!-- Tooltip "¡Reserva directo!" -->
+    <span class="wa-tooltip" aria-hidden="true">💬 ¡Reserva directo!</span>
+  </button>
+</div>
 
 <script defer>
   const sections = document.querySelectorAll("section[id]");
@@ -1349,6 +1568,28 @@
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!wasOpen) item.classList.add('open');
     });
+  });
+
+  // WhatsApp widget — toggle menú
+  const waWidget = document.getElementById('waWidget');
+  const waBtn = document.getElementById('waBtn');
+  const waMenu = document.getElementById('waMenu');
+
+  waBtn.addEventListener('click', () => {
+    const isOpen = waWidget.classList.toggle('open');
+    waBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    waMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    waBtn.setAttribute('aria-label', isOpen ? 'Cerrar menú de WhatsApp' : 'Abrir menú de WhatsApp para reservar');
+  });
+
+  // Cerrar menú WA al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!waWidget.contains(e.target) && waWidget.classList.contains('open')) {
+      waWidget.classList.remove('open');
+      waBtn.setAttribute('aria-expanded', 'false');
+      waMenu.setAttribute('aria-hidden', 'true');
+      waBtn.setAttribute('aria-label', 'Abrir menú de WhatsApp para reservar');
+    }
   });
 </script>
 </body>
