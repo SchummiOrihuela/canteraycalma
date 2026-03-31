@@ -1,0 +1,9 @@
+# robots.txt — canteraycalma.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.canteraycalma.com/sitemap.xml
+
+# Crawl-delay recomendado
+Crawl-delay: 10
