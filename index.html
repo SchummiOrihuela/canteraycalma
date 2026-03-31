@@ -306,44 +306,45 @@
     }
     .nav-cta:hover { background: var(--calma); }
 
+    /* ── FIX 1: Nav toggle hamburguesa ── */
     .nav-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 32px;
-  height: 26px;
-  position: relative;
-}
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      width: 32px;
+      height: 26px;
+      position: relative;
+    }
 
-.nav-toggle-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--noche);
-  border-radius: 999px;
-  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease, bottom 0.2s ease;
-}
+    .nav-toggle-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--noche);
+      border-radius: 999px;
+      transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease, bottom 0.2s ease;
+    }
 
-.nav-toggle-line:nth-child(1) { top: 4px; }
-.nav-toggle-line:nth-child(2) { top: 12px; }
-.nav-toggle-line:nth-child(3) { bottom: 4px; }
+    .nav-toggle-line:nth-child(1) { top: 4px; }
+    .nav-toggle-line:nth-child(2) { top: 12px; }
+    .nav-toggle-line:nth-child(3) { bottom: 4px; }
 
-.nav-toggle.open .nav-toggle-line:nth-child(1) {
-  top: 12px;
-  transform: rotate(45deg);
-}
+    .nav-toggle.open .nav-toggle-line:nth-child(1) {
+      top: 12px;
+      transform: rotate(45deg);
+    }
 
-.nav-toggle.open .nav-toggle-line:nth-child(2) {
-  opacity: 0;
-}
+    .nav-toggle.open .nav-toggle-line:nth-child(2) {
+      opacity: 0;
+    }
 
-.nav-toggle.open .nav-toggle-line:nth-child(3) {
-  bottom: 12px;
-  transform: rotate(-45deg);
-}
+    .nav-toggle.open .nav-toggle-line:nth-child(3) {
+      bottom: 12px;
+      transform: rotate(-45deg);
+    }
 
     .hero {
       min-height: 100vh;
@@ -520,6 +521,14 @@
       color: #6B7280;
       font-size: 0.8rem;
     }
+
+    /* ── FIX 2: Botones de acción por tarjeta ── */
+    .depto-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
     .depto-link {
       display: inline-block;
       background: var(--cantera);
@@ -532,6 +541,20 @@
       transition: background 0.2s;
     }
     .depto-link:hover { background: var(--calma); }
+    .depto-link-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #25D366;
+      color: white;
+      padding: 0.6rem 1.1rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .depto-link-wa:hover { background: #1da851; }
 
     .malinalco-grid {
       display: grid;
@@ -794,74 +817,75 @@
     .social-icons a:hover { background: var(--cantera); }
 
     .nav-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.25);
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  z-index: 900;
-}
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 900;
+    }
 
-@media (max-width: 768px) {
-  nav {
-    padding: 0.8rem 1rem;
-    z-index: 1000;
-  }
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.8rem 1rem;
+        z-index: 1000;
+      }
 
-  .nav-logo {
-    font-size: 1.2rem;
-  }
+      .nav-logo {
+        font-size: 1.2rem;
+      }
 
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(10px);
-    display: none;
-    flex-direction: column;
-    padding: 0.8rem 1rem 1rem;
-    gap: 0.6rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-  }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(10px);
+        display: none;
+        flex-direction: column;
+        padding: 0.8rem 1rem 1rem;
+        gap: 0.6rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      }
 
-  .nav-links a {
-    padding: 0.4rem 0;
-    font-size: 0.95rem;
-  }
+      .nav-links a {
+        padding: 0.4rem 0;
+        font-size: 0.95rem;
+      }
 
-  .nav-links.nav-open {
-    display: flex;
-  }
+      .nav-links.nav-open {
+        display: flex;
+      }
 
-  .nav-toggle {
-    display: block;
-  }
+      .nav-toggle {
+        display: block;
+      }
 
-  .nav-cta {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.9rem;
-  }
+      .nav-cta {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.9rem;
+      }
 
-  .nav-overlay.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
+      .nav-overlay.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-  /* Lo que ya tenías: */
-  .stats { grid-template-columns: repeat(2, 1fr); }
-  .stat-item:nth-child(2) { border-right: none; }
-  .malinalco-grid,
-  .contacto-grid { grid-template-columns: 1fr; }
-  .malinalco-cards { grid-template-columns: repeat(2, 1fr); }
-  .hero { padding-top: 5rem; }
-  .hero-copy { padding: 0.8rem 1rem; }
-  .depto-img { height: 220px; }
-}
-    
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .malinalco-grid,
+      .contacto-grid { grid-template-columns: 1fr; }
+      .malinalco-cards { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding-top: 5rem; }
+      .hero-copy { padding: 0.8rem 1rem; }
+      .depto-img { height: 220px; }
+      .depto-actions { flex-direction: column; }
+      .depto-link, .depto-link-wa { text-align: center; justify-content: center; }
+    }
+
     .wa-float {
       position: fixed;
       bottom: 2rem;
@@ -897,10 +921,16 @@
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Reserve ya!</a></li>
   </ul>
-  <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank">📅 Reservar</a>
+  <!-- FIX 1: Botón hamburguesa con spans y aria-label para accesibilidad -->
+  <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+    <span class="nav-toggle-line"></span>
+    <span class="nav-toggle-line"></span>
+    <span class="nav-toggle-line"></span>
+  </button>
+  <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank" rel="noopener noreferrer">📅 Reservar</a>
 </nav>
 <div class="nav-overlay"></div>
-  
+
 <section id="inicio" class="hero">
   <div class="hero-content">
     <div class="hero-badge">⭐ SUPERANFITRIÓN · ⏳ 8 AÑOS · 🏠 TRANQUILIDAD Y CONFORT</div>
@@ -916,6 +946,7 @@
   </div>
 </section>
 
+<!-- FIX 3: Stats consistentes — 93km de CDMX en todos lados -->
 <div class="stats">
   <div class="stat-item">
     <div class="stat-num">8+</div>
@@ -926,8 +957,8 @@
     <div class="stat-label">familias hospedadas</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">1.5+ Hrs</div>
-    <div class="stat-label">Desde CDMX</div>
+    <div class="stat-num">~1.5 Hrs</div>
+    <div class="stat-label">Desde CDMX (93 km)</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">26-30°C</div>
@@ -960,7 +991,11 @@
             <span class="rating-num">★ 4.97</span>
             <span class="rating-info">· +160 reseñas · 🏅 Favorito entre huéspedes</span>
           </div>
-          <a href="https://www.airbnb.mx/rooms/29388264" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+          <!-- FIX 2: Botones duales — Airbnb + WhatsApp directo por departamento -->
+          <div class="depto-actions">
+            <a href="https://www.airbnb.mx/rooms/29388264" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+          </div>
         </div>
       </div>
 
@@ -982,7 +1017,10 @@
             <span class="rating-num">★ 4.9</span>
             <span class="rating-info">· +150 reseñas · 🏅 Favorito entre huéspedes</span>
           </div>
-          <a href="https://www.airbnb.mx/rooms/26814562" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+          <div class="depto-actions">
+            <a href="https://www.airbnb.mx/rooms/26814562" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+          </div>
         </div>
       </div>
 
@@ -1004,10 +1042,13 @@
             <span class="rating-num">★ 4.91</span>
             <span class="rating-info">· 85 reseñas · 🏅 Favorito entre huéspedes</span>
           </div>
-          <a href="https://www.airbnb.mx/rooms/845572765345078851" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+          <div class="depto-actions">
+            <a href="https://www.airbnb.mx/rooms/845572765345078851" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+          </div>
         </div>
       </div>
-      
+
       <div class="depto-card">
         <img class="depto-img" src="./habitacion-magia.jpeg" alt="Habitación Magia en Malinalco" width="600" height="250" loading="lazy">
         <div class="depto-body">
@@ -1024,9 +1065,12 @@
             <span class="rating-num">★ 4.9</span>
             <span class="rating-info">· +40 reseñas · 🏅 Favorito entre huéspedes</span>
           </div>
-          <a href="https://www.airbnb.mx/rooms/1218449796709269911" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+          <div class="depto-actions">
+            <a href="https://www.airbnb.mx/rooms/1218449796709269911" class="depto-link" target="_blank" rel="noopener noreferrer">Ver en Airbnb →</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad?" class="depto-link-wa" target="_blank" rel="noopener noreferrer">💬 Reservar directo</a>
+          </div>
         </div>
-      </div>    
+      </div>
 
     </div>
   </div>
@@ -1038,7 +1082,7 @@
       <div class="malinalco-text">
         <p class="section-tag">El destino</p>
         <h2 class="section-title">¿Por qué Malinalco?</h2>
-        <p class="section-sub">Pueblo Mágico del Estado de México con clima perfecto todo el año (26-30°C), gastronomía extraordinaria, zona arqueológica única y una energía que te abraza desde que llegas. A solo 70 km de Toluca o 53km de Cuerna.</p>
+        <p class="section-sub">Pueblo Mágico del Estado de México con clima perfecto todo el año (26-30°C), gastronomía extraordinaria, zona arqueológica única y una energía que te abraza desde que llegas. A solo 93 km de la CDMX (~1.5 hrs en auto).</p>
         <p class="section-sub" style="margin-top:1rem;">Desde truchas al estilo Malinalco y mezcal artesanal, hasta la zona arqueológica tallada en roca viva — este lugar tiene todo para que regreses una y otra vez.</p>
         <a href="#comer" class="btn-primary" style="display:inline-block; margin-top:1.5rem;">Ver guía gastronómica</a>
       </div>
@@ -1105,45 +1149,37 @@
         </div>
       </div>
       <div class="contacto-form">
-  <h3>Consulta disponibilidad</h3>
-
-  <form action="https://formsubmit.co/schummi1987@gmail.com" method="POST">
-    <div class="form-group">
-      <label>Tu nombre</label>
-      <input type="text" name="nombre" placeholder="¿Cómo te llamas?" required>
-    </div>
-
-    <div class="form-group">
-      <label>WhatsApp o email</label>
-      <input type="text" name="contacto" placeholder="Para responderte rápido" required>
-    </div>
-
-    <div class="form-group">
-      <label>Fechas que te interesan</label>
-      <input type="text" name="fechas" placeholder="ej. 5 al 7 de abril">
-    </div>
-
-    <div class="form-group">
-      <label>¿Cuántas personas?</label>
-      <select name="personas">
-        <option>1-2 personas</option>
-        <option>3-4 personas</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Mensaje (opcional)</label>
-      <textarea name="mensaje" placeholder="¿Alguna duda en particular?"></textarea>
-    </div>
-
-    <!-- Config extra de Formsubmit -->
-    <input type="hidden" name="_subject" value="Nueva consulta desde canteraycalma.com">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-
-    <button type="submit" class="btn-form">Enviar consulta 🚀</button>
-  </form>
-</div>
+        <h3>Consulta disponibilidad</h3>
+        <form action="https://formsubmit.co/schummi1987@gmail.com" method="POST">
+          <div class="form-group">
+            <label>Tu nombre</label>
+            <input type="text" name="nombre" placeholder="¿Cómo te llamas?" required>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp o email</label>
+            <input type="text" name="contacto" placeholder="Para responderte rápido" required>
+          </div>
+          <div class="form-group">
+            <label>Fechas que te interesan</label>
+            <input type="text" name="fechas" placeholder="ej. 5 al 7 de abril">
+          </div>
+          <div class="form-group">
+            <label>¿Cuántas personas?</label>
+            <select name="personas">
+              <option>1-2 personas</option>
+              <option>3-4 personas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje (opcional)</label>
+            <textarea name="mensaje" placeholder="¿Alguna duda en particular?"></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="Nueva consulta desde canteraycalma.com">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <button type="submit" class="btn-form">Enviar consulta 🚀</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -1158,14 +1194,14 @@
     <li><a href="#contacto">Reserve ya!</a></li>
   </ul>
   <div class="social-icons">
-    <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener noreferrer">📸</a>
-    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener noreferrer">👍</a>
-    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener noreferrer">💬</a>
+    <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener noreferrer" aria-label="Instagram Cantera Malinalco">📸</a>
+    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener noreferrer" aria-label="Facebook Cantera Malinalco">👍</a>
+    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Cantera y Calma">💬</a>
   </div>
   <p style="font-size:0.75rem; margin-top:1rem; opacity:0.5;">© 2026 Grupo Cantera &amp; Calma · Todos los derechos reservados · canteraycalma.com</p>
 </footer>
 
-<a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20y%20me%20interesa%20reservar" class="wa-float" target="_blank" rel="noopener noreferrer" title="Escribirnos por WhatsApp">💬</a>
+<a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20y%20me%20interesa%20reservar" class="wa-float" target="_blank" rel="noopener noreferrer" title="Escribirnos por WhatsApp" aria-label="Contactar por WhatsApp">💬</a>
 
 <script>
   const sections = document.querySelectorAll("section[id]");
@@ -1187,6 +1223,7 @@
     const isOpen = navLinks.classList.toggle('nav-open');
     navToggle.classList.toggle('open', isOpen);
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
     navOverlay.classList.toggle('visible', isOpen);
   });
 
@@ -1195,6 +1232,7 @@
       navLinks.classList.remove('nav-open');
       navToggle.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
       navOverlay.classList.remove('visible');
     });
   });
@@ -1203,6 +1241,7 @@
     navLinks.classList.remove('nav-open');
     navToggle.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
     navOverlay.classList.remove('visible');
   });
 </script>
