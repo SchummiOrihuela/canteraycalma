@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <title>Blog | Cantera & Calma · Malinalco, Pueblo Mágico</title>
+  <meta name="description" content="Historias, guías y secretos de Malinalco escritos por quien lleva 8 años recibiendo viajeros. Historia, leyendas, gastronomía, fiestas patronales y más.">
+  <link rel="canonical" href="https://www.canteraycalma.com/blog/"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYTVTPW566"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RYTVTPW566');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cantera: #8B5E3C;
+      --calma:   #4A7C6F;
+      --arena:   #F5EFE6;
+      --noche:   #1C1C1C;
+      --blanco:  #FFFFFF;
+      --gris:    #6B7280;
+      --fondo:   #F8F7F5;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',sans-serif; color:var(--noche); background:var(--fondo); }
+
+    /* TOP BAR */
+    .top-bar {
+      position:fixed; top:0; left:0; right:0; z-index:1001;
+      background:var(--noche);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 2rem; height:36px; gap:1rem;
+    }
+    .tb-logo {
+      font-family:'Playfair Display',serif; font-size:0.95rem;
+      color:white; font-weight:700; text-decoration:none; white-space:nowrap; flex-shrink:0;
+    }
+    .tb-links {
+      display:flex; list-style:none; flex:1; justify-content:center;
+    }
+    .tb-links a {
+      color:rgba(255,255,255,0.65); text-decoration:none;
+      font-size:0.78rem; font-weight:500; padding:0 0.9rem;
+      transition:color 0.2s; white-space:nowrap;
+    }
+    .tb-links a:hover, .tb-links a.active { color:white; }
+    .tb-cta {
+      background:var(--cantera); color:white; padding:0.28rem 0.9rem;
+      border-radius:20px; text-decoration:none; font-size:0.75rem;
+      font-weight:600; transition:background 0.2s; white-space:nowrap; flex-shrink:0;
+    }
+    .tb-cta:hover { background:var(--calma); }
+    @media(max-width:768px){ .tb-links { display:none; } }
+
+    /* NAV */
+    nav.main-nav {
+      position:fixed; top:36px; left:0; right:0; z-index:1000;
+      background:rgba(255,255,255,0.97); backdrop-filter:blur(10px);
+      display:flex; justify-content:space-between; align-items:center;
+      padding:0.6rem 2rem; box-shadow:0 1px 10px rgba(0,0,0,0.07);
+    }
+    .nav-logo {
+      font-family:'Playfair Display',serif; font-size:1.3rem;
+      color:var(--cantera); font-weight:700; text-decoration:none;
+    }
+    .nav-toggle {
+      display:none; background:transparent; border:none; cursor:pointer;
+      padding:0; width:28px; height:22px; position:relative; flex-shrink:0;
+    }
+    .nav-toggle-line {
+      position:absolute; left:0; right:0; height:2px;
+      background:var(--noche); border-radius:999px;
+      transition:transform 0.2s ease, opacity 0.2s ease, top 0.2s ease, bottom 0.2s ease;
+    }
+    .nav-toggle-line:nth-child(1){top:3px}
+    .nav-toggle-line:nth-child(2){top:10px}
+    .nav-toggle-line:nth-child(3){bottom:3px}
+    .nav-toggle.open .nav-toggle-line:nth-child(1){top:10px;transform:rotate(45deg)}
+    .nav-toggle.open .nav-toggle-line:nth-child(2){opacity:0}
+    .nav-toggle.open .nav-toggle-line:nth-child(3){bottom:10px;transform:rotate(-45deg)}
+    .nav-mobile-links {
+      display:none; position:fixed; top:0; right:0; bottom:0; width:260px;
+      background:white; flex-direction:column; gap:0;
+      padding:5rem 1.5rem 2rem; box-shadow:-4px 0 20px rgba(0,0,0,0.12); z-index:999;
+    }
+    .nav-mobile-links.open { display:flex; }
+    .nav-mobile-links a {
+      text-decoration:none; color:var(--noche); font-size:0.95rem;
+      font-weight:500; padding:0.75rem 0; border-bottom:1px solid #f0f0f0;
+      transition:color 0.2s;
+    }
+    .nav-mobile-links a:hover, .nav-mobile-links a.active { color:var(--cantera); }
+    .nav-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.25);
+      backdrop-filter:blur(3px); opacity:0; pointer-events:none;
+      transition:opacity 0.2s ease; z-index:998;
+    }
+    .nav-overlay.open { opacity:1; pointer-events:auto; }
+    @media(max-width:768px){ .nav-toggle { display:block; } }
+
+    /* ══ HERO DEL BLOG ══ */
+    .blog-hero {
+      margin-top:calc(36px + 56px);
+      background:linear-gradient(135deg,var(--cantera) 0%,#6B4226 100%);
+      color:white; text-align:center; padding:3rem 2rem 2.5rem;
+    }
+    .blog-hero-tag {
+      font-size:0.72rem; font-weight:600; text-transform:uppercase;
+      letter-spacing:2.5px; opacity:0.8; margin-bottom:0.7rem;
+    }
+    .blog-hero h1 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.8rem,4vw,2.6rem); line-height:1.2;
+      margin-bottom:0.7rem;
+    }
+    .blog-hero p {
+      font-size:0.95rem; opacity:0.88; max-width:540px; margin:0 auto;
+      line-height:1.6;
+    }
+
+    /* ══ CATEGORY PILLS ══ */
+    .cat-bar {
+      background:white; border-bottom:1px solid #e8e3dc;
+      position:sticky; top:calc(36px + 56px); z-index:50;
+      padding:0.75rem 1.5rem; overflow-x:auto;
+      display:flex; gap:0.5rem; align-items:center;
+      scrollbar-width:none;
+    }
+    .cat-bar::-webkit-scrollbar { display:none; }
+    .cat-pill {
+      display:inline-flex; align-items:center; gap:0.3rem;
+      padding:0.4rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:500;
+      border:1.5px solid #e0d8d0; background:transparent; color:var(--gris);
+      cursor:pointer; white-space:nowrap; transition:all 0.2s;
+      font-family:'Inter',sans-serif;
+    }
+    .cat-pill:hover { border-color:var(--cantera); color:var(--cantera); }
+    .cat-pill.active {
+      background:var(--cantera); color:white; border-color:var(--cantera);
+      font-weight:600;
+    }
+
+    /* ══ LAYOUT ══ */
+    .page-content { max-width:1060px; margin:0 auto; padding:0 1.5rem 5rem; }
+
+    /* ══ CATEGORY SECTION ══ */
+    .cat-section { margin:2.5rem 0; display:none; }
+    .cat-section.visible { display:block; }
+
+    .cat-section-head {
+      display:flex; align-items:center; gap:0.75rem;
+      margin-bottom:1.2rem; padding-bottom:0.75rem;
+      border-bottom:2px solid var(--arena);
+    }
+    .cat-section-icon { font-size:1.6rem; }
+    .cat-section-title {
+      font-family:'Playfair Display',serif; font-size:1.5rem;
+      color:var(--noche); line-height:1;
+    }
+    .cat-section-desc { font-size:0.82rem; color:var(--gris); margin-top:0.2rem; }
+    .cat-count {
+      margin-left:auto; background:var(--arena); color:var(--cantera);
+      font-size:0.72rem; font-weight:700; padding:0.2rem 0.6rem;
+      border-radius:10px; white-space:nowrap;
+    }
+
+    /* ══ ARTICLE CARDS GRID ══ */
+    .cards-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+      gap:1.2rem;
+    }
+    .art-card {
+      background:white; border-radius:14px; overflow:hidden;
+      box-shadow:0 2px 12px rgba(0,0,0,0.06);
+      transition:transform 0.25s,box-shadow 0.25s;
+      text-decoration:none; color:inherit; display:block;
+    }
+    .art-card:hover { transform:translateY(-4px); box-shadow:0 8px 28px rgba(0,0,0,0.1); }
+    .art-card-img {
+      width:100%; height:160px; object-fit:cover; display:block;
+      background:var(--arena);
+    }
+    /* Placeholder cuando no hay imagen */
+    .art-card-placeholder {
+      width:100%; height:160px; background:var(--arena);
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.5rem;
+    }
+    .art-card-body { padding:1rem 1.1rem 1.2rem; }
+    .art-card-cat {
+      font-size:0.68rem; font-weight:600; text-transform:uppercase;
+      letter-spacing:1px; color:var(--calma); margin-bottom:0.4rem;
+    }
+    .art-card-title {
+      font-family:'Playfair Display',serif; font-size:1.05rem;
+      color:var(--noche); line-height:1.3; margin-bottom:0.5rem;
+    }
+    .art-card-excerpt {
+      font-size:0.82rem; color:var(--gris); line-height:1.55; margin-bottom:0.8rem;
+    }
+    .art-card-meta {
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:0.72rem; color:var(--gris);
+    }
+    .art-card-read { color:var(--cantera); font-weight:600; }
+
+    /* ══ EVENTS SECTION — layout diferente ══ */
+    .events-list { display:flex; flex-direction:column; gap:0.8rem; }
+    .event-card {
+      background:white; border-radius:12px; padding:1rem 1.2rem;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05); display:flex; gap:1rem;
+      align-items:flex-start; border-left:4px solid var(--cantera);
+      text-decoration:none; color:inherit; transition:transform 0.2s,box-shadow 0.2s;
+    }
+    .event-card:hover { transform:translateX(4px); box-shadow:0 4px 18px rgba(0,0,0,0.08); }
+    .event-date {
+      min-width:52px; text-align:center; padding-right:1rem;
+      border-right:1px solid #e8e3dc; flex-shrink:0;
+    }
+    .event-day { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--cantera); line-height:1; }
+    .event-month { font-size:0.7rem; color:var(--gris); text-transform:uppercase; letter-spacing:1px; margin-top:0.15rem; }
+    .event-info h3 { font-size:0.95rem; font-weight:600; color:var(--noche); margin-bottom:0.3rem; }
+    .event-info p { font-size:0.82rem; color:var(--gris); line-height:1.5; }
+    .event-badge {
+      display:inline-block; font-size:0.68rem; font-weight:600;
+      padding:0.15rem 0.6rem; border-radius:10px; margin-top:0.4rem;
+    }
+    .eb-hot { background:#fff0ec; color:var(--cantera); }
+    .eb-free { background:#edf7f4; color:var(--calma); }
+
+    /* ══ FOOTER ══ */
+    footer {
+      background:var(--noche); color:rgba(255,255,255,0.7);
+      text-align:center; padding:2.5rem;
+    }
+    footer .footer-logo {
+      font-family:'Playfair Display',serif; color:white;
+      font-size:1.6rem; margin-bottom:0.4rem;
+    }
+    footer p { font-size:0.83rem; }
+    .footer-links {
+      list-style:none; display:flex; gap:1.5rem;
+      justify-content:center; flex-wrap:wrap; margin:0.9rem 0; font-size:0.83rem;
+    }
+    .footer-links a { color:rgba(255,255,255,0.65); text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:white; }
+    .social-icons { display:flex; gap:0.9rem; justify-content:center; margin:0.9rem 0; font-size:1.3rem; }
+    .social-icons a { text-decoration:none; transition:transform 0.2s; }
+    .social-icons a:hover { transform:scale(1.15); }
+
+    /* ══ WA WIDGET ══ */
+    .wa-widget { position:fixed; bottom:1.5rem; right:1.5rem; z-index:1000; font-family:'Inter',sans-serif; }
+    .wa-menu {
+      position:absolute; bottom:calc(100% + 10px); right:0; width:272px;
+      background:white; border-radius:16px; box-shadow:0 8px 40px rgba(0,0,0,0.16);
+      overflow:hidden; display:none; border:1px solid rgba(0,0,0,0.05);
+    }
+    .wa-widget.open .wa-menu { display:block; animation:slideUp 0.22s ease; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .wa-menu-title { padding:0.7rem 1rem; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--gris); border-bottom:1px solid #f0f0f0; }
+    .wa-option { display:flex; align-items:center; gap:0.75rem; padding:0.8rem 1rem; text-decoration:none; color:var(--noche); border-bottom:1px solid #f5f5f5; transition:background 0.15s; }
+    .wa-option:last-child { border-bottom:none; }
+    .wa-option:hover { background:#f9f9f9; }
+    .wa-option-icon { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+    .wa-option-text { display:flex; flex-direction:column; }
+    .wa-option-name { font-weight:600; font-size:0.85rem; }
+    .wa-option-detail { font-size:0.72rem; color:var(--gris); }
+    .wa-fab { background:linear-gradient(135deg,#25D366,#1da851); color:white; border:none; border-radius:50px; padding:0.7rem 1.3rem; font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.4rem; box-shadow:0 4px 18px rgba(37,211,102,0.35); transition:transform 0.2s,box-shadow 0.2s; white-space:nowrap; }
+    .wa-fab:hover { transform:scale(1.04); }
+
+    @media(max-width:600px){ .cards-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="https://www.canteraycalma.com" class="tb-logo">Grupo Cantera & Calma</a>
+  <ul class="tb-links">
+    <li><a href="https://www.canteraycalma.com/#departamentos">Departamentos</a></li>
+    <li><a href="https://www.canteraycalma.com/#malinalco">Malinalco</a></li>
+    <li><a href="https://www.canteraycalma.com/#comer">¿Dónde comer?</a></li>
+    <li><a href="https://www.canteraycalma.com/#visitar">Qué visitar</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+  </ul>
+  <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="tb-cta">Reserve ya!</a>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <a href="https://www.canteraycalma.com" class="nav-logo">Grupo Cantera & Calma</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menú">
+    <span class="nav-toggle-line"></span><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span>
+  </button>
+</nav>
+<div class="nav-mobile-links" id="navMobile">
+  <a href="https://www.canteraycalma.com/#departamentos">Departamentos</a>
+  <a href="https://www.canteraycalma.com/#malinalco">Malinalco</a>
+  <a href="https://www.canteraycalma.com/#comer">¿Dónde comer?</a>
+  <a href="https://www.canteraycalma.com/#visitar">Qué visitar</a>
+  <a href="https://www.canteraycalma.com/#nosotros">Nosotros</a>
+  <a href="/blog/" class="active">Blog</a>
+  <a href="https://wa.me/5215562513258">Reserve ya!</a>
+</div>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <div class="blog-hero-tag">📖 Blog · Cantera & Calma</div>
+  <h1>Malinalco no se visita.<br>Se vive, se siente, se cuenta.</h1>
+  <p>Historias, guías y secretos del Pueblo Mágico, escritos por quien lleva 8 años recibiendo viajeros de todo el mundo.</p>
+</div>
+
+<!-- CATEGORY PILLS (sticky) -->
+<div class="cat-bar" id="catBar">
+  <button class="cat-pill active" data-cat="all">Todos</button>
+  <button class="cat-pill" data-cat="hist">🏛️ Historia</button>
+  <button class="cat-pill" data-cat="ley">🐍 Cuentos y Leyendas</button>
+  <button class="cat-pill" data-cat="preh">🦅 Mali Prehispánico</button>
+  <button class="cat-pill" data-cat="fiest">🎆 Fiestas Patronales</button>
+  <button class="cat-pill" data-cat="gastro">🍽️ Gastronomía</button>
+  <button class="cat-pill" data-cat="finde">🗓️ Tu Finde en Mali</button>
+  <button class="cat-pill" data-cat="eventos">📣 Próximos Eventos</button>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="page-content">
+
+  <!-- ════════════ HISTORIA ════════════ -->
+  <section class="cat-section visible" data-cat="hist">
+    <div class="cat-section-head">
+      <span class="cat-section-icon">🏛️</span>
+      <div>
+        <div class="cat-section-title">Historia</div>
+        <div class="cat-section-desc">El pasado que le da alma a este Pueblo Mágico</div>
+      </div>
+      <span class="cat-count">3 artículos</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="art-card" href="/blog/convenio-agustino-malinalco/">
+        <div class="art-card-placeholder">⛪</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🏛️ Historia</div>
+          <div class="art-card-title">El convento que los frailes pintaron con manos indígenas</div>
+          <div class="art-card-excerpt">La historia detrás de los murales del Ex Convento Agustino del siglo XVI. Cuando dos mundos chocaron y crearon arte eterno.</div>
+          <div class="art-card-meta"><span>26 abr 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/malinalco-pueblo-magico-historia/">
+        <div class="art-card-placeholder">⭐</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🏛️ Historia</div>
+          <div class="art-card-title">¿Por qué Malinalco es Pueblo Mágico? La historia que nadie te cuenta</div>
+          <div class="art-card-excerpt">En 2010 recibió el nombramiento. Pero su magia empezó 500 años antes. Qué lo hace diferente a los otros 131.</div>
+          <div class="art-card-meta"><span>27 abr 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/barrios-de-malinalco/">
+        <div class="art-card-placeholder">🏘️</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🏛️ Historia</div>
+          <div class="art-card-title">Los 8 barrios de Malinalco: cada uno con su santo, su capilla y su carácter</div>
+          <div class="art-card-excerpt">San Juan, Santa Mónica, San Martín... Un recorrido por los barrios que forman el corazón del pueblo.</div>
+          <div class="art-card-meta"><span>28 abr 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════ CUENTOS Y LEYENDAS ════════════ -->
+  <section class="cat-section visible" data-cat="ley">
+    <div class="cat-section-head">
+      <span class="cat-section-icon">🐍</span>
+      <div>
+        <div class="cat-section-title">Cuentos y Leyendas</div>
+        <div class="cat-section-desc">Las historias que se susurran entre cerros y fogatas</div>
+      </div>
+      <span class="cat-count">3 artículos</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="art-card" href="/blog/malinalxochitl-leyenda/">
+        <div class="art-card-placeholder">🌺</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🐍 Leyenda</div>
+          <div class="art-card-title">Malinalxóchitl: la hechicera que fue abandonada y fundó un reino</div>
+          <div class="art-card-excerpt">La leyenda de la hermana de Huitzilopochtli. La diosa desterrada cuya magia oscura dio origen al nombre de Malinalco.</div>
+          <div class="art-card-meta"><span>29 abr 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/guardianes-del-cerro/">
+        <div class="art-card-placeholder">🌙</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🐍 Misterio</div>
+          <div class="art-card-title">Los guardianes del cerro: espíritus que vigilan el valle de noche</div>
+          <div class="art-card-excerpt">Locales juran haberlos visto. Visitantes dicen haber soñado con ellos. La tradición oral más misteriosa de Malinalco.</div>
+          <div class="art-card-meta"><span>30 abr 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/suenos-en-malinalco/">
+        <div class="art-card-placeholder">💭</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🐍 Misterio</div>
+          <div class="art-card-title">"Dormí en Malinalco y tuve el sueño más intenso de mi vida"</div>
+          <div class="art-card-excerpt">No eres el primero en decirlo. ¿Energía del valle? ¿Portales ancestrales? Lo que la ciencia y la tradición dicen.</div>
+          <div class="art-card-meta"><span>1 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════ MALI PREHISPÁNICO ════════════ -->
+  <section class="cat-section visible" data-cat="preh">
+    <div class="cat-section-head">
+      <span class="cat-section-icon">🦅</span>
+      <div>
+        <div class="cat-section-title">Mali Prehispánico</div>
+        <div class="cat-section-desc">Guerreros Águila, templos en roca viva y rituales sagrados</div>
+      </div>
+      <span class="cat-count">3 artículos</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="art-card" href="/blog/casa-de-las-aguilas/">
+        <img class="art-card-img" src="https://www.canteraycalma.com/images/malinalco/ZonaArqueologica.jpg" alt="Casa de las Águilas Malinalco" loading="lazy">
+        <div class="art-card-body">
+          <div class="art-card-cat">🦅 Prehispánico</div>
+          <div class="art-card-title">La Casa de las Águilas: el templo azteca tallado en la montaña</div>
+          <div class="art-card-excerpt">El único templo monolítico de América. Una serpiente te da la bienvenida con su lengua como alfombra. Literal.</div>
+          <div class="art-card-meta"><span>25 abr 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/guerreros-aguila-jaguar/">
+        <div class="art-card-placeholder">⚔️</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🦅 Prehispánico</div>
+          <div class="art-card-title">Guerreros Águila y Jaguar: la élite militar que se forjó en Malinalco</div>
+          <div class="art-card-excerpt">No cualquiera entraba. El ritual de iniciación, la transformación espiritual y por qué este cerro era sagrado.</div>
+          <div class="art-card-meta"><span>2 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/subida-cerro-idolos/">
+        <div class="art-card-placeholder">🥾</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🦅 Guía</div>
+          <div class="art-card-title">Guía para subir al Cerro de los Ídolos sin morir en el intento</div>
+          <div class="art-card-excerpt">400 escalones, qué llevar, a qué hora ir, cuánto cuesta y el secreto de los domingos. Todo lo que necesitas.</div>
+          <div class="art-card-meta"><span>3 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════ FIESTAS PATRONALES ════════════ -->
+  <section class="cat-section visible" data-cat="fiest">
+    <div class="cat-section-head">
+      <span class="cat-section-icon">🎆</span>
+      <div>
+        <div class="cat-section-title">Fiestas Patronales</div>
+        <div class="cat-section-desc">Las celebraciones que hacen vibrar al pueblo entero</div>
+      </div>
+      <span class="cat-count">3 artículos</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="art-card" href="/blog/fiesta-divino-salvador/">
+        <div class="art-card-placeholder">🎇</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🎆 Fiestas</div>
+          <div class="art-card-title">6 de agosto: cuando Malinalco explota en color, pólvora y danza</div>
+          <div class="art-card-excerpt">La fiesta del Divino Salvador reúne a los 8 barrios. Chinelos, cabalgatas, castillos y una energía que no olvidarás.</div>
+          <div class="art-card-meta"><span>4 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/judea-malinalco-semana-santa/">
+        <div class="art-card-placeholder">✝️</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🎆 Tradición</div>
+          <div class="art-card-title">La Judea de Malinalco: 200 años representando la Pasión con fuego real</div>
+          <div class="art-card-excerpt">Ejércitos romanos, crucifixión y resurrección. La tradición de Semana Santa más impresionante del Estado de México.</div>
+          <div class="art-card-meta"><span>5 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/dia-de-muertos-malinalco/">
+        <div class="art-card-placeholder">💀</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🎆 Día de Muertos</div>
+          <div class="art-card-title">Día de Muertos en Malinalco: cuando el copal invade las calles</div>
+          <div class="art-card-excerpt">Ofrendas en cada hogar, calaverita por las calles, concursos y una semana entera de celebración.</div>
+          <div class="art-card-meta"><span>6 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════ GASTRONOMÍA ════════════ -->
+  <section class="cat-section visible" data-cat="gastro">
+    <div class="cat-section-head">
+      <span class="cat-section-icon">🍽️</span>
+      <div>
+        <div class="cat-section-title">Gastronomía</div>
+        <div class="cat-section-desc">Los sabores que hacen que siempre quieras regresar</div>
+      </div>
+      <span class="cat-count">3 artículos</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="art-card" href="/blog/restaurantes-malinalco/">
+        <div class="art-card-placeholder">👨‍🍳</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🍽️ Gastronomía</div>
+          <div class="art-card-title">10 restaurantes en Malinalco que un local te recomendaría (y 3 que no)</div>
+          <div class="art-card-excerpt">Después de 8 años hospedando familias, esta es la lista honesta. Sin filtros, sin patrocinios, solo sabor real.</div>
+          <div class="art-card-meta"><span>7 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/trucha-mezcal-malinalco/">
+        <div class="art-card-placeholder">🐟</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🍽️ Experiencia</div>
+          <div class="art-card-title">Pesca tu trucha, tómate un mezcal: las experiencias que solo existen aquí</div>
+          <div class="art-card-excerpt">Criadero de truchas + Mezcal La Cascada. Dos experiencias que nadie espera y todos recuerdan para siempre.</div>
+          <div class="art-card-meta"><span>8 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/desayunos-malinalco/">
+        <div class="art-card-placeholder">☕</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🍽️ Café</div>
+          <div class="art-card-title">Dónde desayunar en Malinalco: la guía del primer café perfecto</div>
+          <div class="art-card-excerpt">Casa Valentina, Casa Colibrí y opciones escondidas. Porque el desayuno define tu día en el pueblo mágico.</div>
+          <div class="art-card-meta"><span>9 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════ TU FINDE EN MALI ════════════ -->
+  <section class="cat-section visible" data-cat="finde">
+    <div class="cat-section-head">
+      <span class="cat-section-icon">🗓️</span>
+      <div>
+        <div class="cat-section-title">Tu Finde en Mali</div>
+        <div class="cat-section-desc">Itinerarios armados para que solo disfrutes</div>
+      </div>
+      <span class="cat-count">3 artículos</span>
+    </div>
+    <div class="cards-grid">
+
+      <a class="art-card" href="/blog/48-horas-malinalco/">
+        <div class="art-card-placeholder">⏱️</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🗓️ 2 días</div>
+          <div class="art-card-title">48 horas en Malinalco: el itinerario que no desperdicia ni un minuto</div>
+          <div class="art-card-excerpt">Viernes de camino, sábado de exploración total, domingo de relax antes de volver. Hora por hora.</div>
+          <div class="art-card-meta"><span>10 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/3-dias-malinalco-chalma/">
+        <div class="art-card-placeholder">🗺️</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🗓️ 3 días</div>
+          <div class="art-card-title">3 días en Malinalco: arqueología, mezcal y un día en Chalma</div>
+          <div class="art-card-excerpt">El plan para quienes quieren vivirlo sin prisas. Incluye excursión al Santuario del Señor de Chalma.</div>
+          <div class="art-card-meta"><span>11 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+      <a class="art-card" href="/blog/ruta-5-dias-pueblos-magicos/">
+        <div class="art-card-placeholder">🚗</div>
+        <div class="art-card-body">
+          <div class="art-card-cat">🗓️ 5 días · Ruta</div>
+          <div class="art-card-title">Ruta de 5 días: Malinalco → Chalma → Ixtapan → Tonatico → Tenancingo</div>
+          <div class="art-card-excerpt">La ruta sur del Estado de México que nadie arma pero todos deberían hacer. Con mapa, costos y hospedaje.</div>
+          <div class="art-card-meta"><span>12 may 2025</span><span class="art-card-read">Leer →</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ════════════ PRÓXIMOS EVENTOS ════════════ -->
+  <section class="cat-section visible" data-cat="eventos">
+    <div class="cat-section-head">
+      <span class="cat-section-icon">📣</span>
+      <div>
+        <div class="cat-section-title">Próximos Eventos</div>
+        <div class="cat-section-desc">Lo que viene en Malinalco — reserva con anticipación</div>
+      </div>
+    </div>
+    <div class="events-list">
+
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">5–6</div><div class="event-month">Ago</div></div>
+        <div class="event-info">
+          <h3>Fiesta del Divino Salvador — Fiesta Patronal 🎆</h3>
+          <p>La celebración más grande del año. Cabalgata, danzas prehispánicas, Chinelos, castillo de fuegos artificiales y procesión de los 8 barrios.</p>
+          <span class="event-badge eb-hot">🔥 Reserva con anticipación</span>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">16</div><div class="event-month">Sep</div></div>
+        <div class="event-info">
+          <h3>Noche del Grito — Independencia de México 🇲🇽</h3>
+          <p>El Grito desde el kiosco del centro, fuegos artificiales y representación histórica en las Seis Calles.</p>
+          <span class="event-badge eb-hot">🔥 Siempre se llena</span>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">1–2</div><div class="event-month">Nov</div></div>
+        <div class="event-info">
+          <h3>Festival de Día de Muertos 💀</h3>
+          <p>Una semana de ofrendas, calaveras literarias, desfiles y copal en cada rincón. Malinalco se transforma por completo.</p>
+          <span class="event-badge eb-hot">🔥 Evento imperdible</span>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date"><div class="event-day">16–24</div><div class="event-month">Dic</div></div>
+        <div class="event-info">
+          <h3>Posadas Navideñas en las Capillas 🎄</h3>
+          <p>9 noches de posadas recorriendo los barrios. Villancicos, piñatas y ponche en cada capilla del pueblo.</p>
+          <span class="event-badge eb-free">✅ Abierto a todos</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /page-content -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Grupo Cantera & Calma</div>
+  <p>Malinalco, Estado de México · Pueblo Mágico</p>
+  <ul class="footer-links">
+    <li><a href="https://www.canteraycalma.com/#departamentos">Departamentos</a></li>
+    <li><a href="https://www.canteraycalma.com/#malinalco">Malinalco</a></li>
+    <li><a href="https://www.canteraycalma.com/#comer">Gastronomía</a></li>
+    <li><a href="https://www.canteraycalma.com/#visitar">Qué visitar</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="https://www.canteraycalma.com/#contacto">Reserve ya!</a></li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener">📸</a>
+    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener">👍</a>
+    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener">💬</a>
+  </div>
+  <p style="margin-top:1rem;font-size:0.75rem;opacity:0.5">© 2025 Grupo Cantera & Calma · Todos los derechos reservados · canteraycalma.com</p>
+</footer>
+
+<!-- WA WIDGET -->
+<div class="wa-widget" id="waWidget">
+  <div class="wa-menu">
+    <div class="wa-menu-title">¿Qué propiedad te interesa?</div>
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20el%20blog%20y%20me%20interesa%20el%20*Departamento%20Cantera*%20%F0%9F%8F%A0" class="wa-option" target="_blank" rel="noopener">
+      <div class="wa-option-icon" style="background:#f5efe6">🏠</div>
+      <div class="wa-option-text"><span class="wa-option-name">Depto. Cantera</span><span class="wa-option-detail">Hasta 4 personas · ★ 4.97</span></div>
+    </a>
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20el%20blog%20y%20me%20interesa%20el%20*Departamento%20Calma*%20%F0%9F%8C%99" class="wa-option" target="_blank" rel="noopener">
+      <div class="wa-option-icon" style="background:#f0f9f6">🌙</div>
+      <div class="wa-option-text"><span class="wa-option-name">Depto. Calma</span><span class="wa-option-detail">Hasta 4 personas · ★ 4.9</span></div>
+    </a>
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20el%20blog%20y%20me%20interesa%20la%20*Casa%20Marne%2013*%20%F0%9F%8F%A1" class="wa-option" target="_blank" rel="noopener">
+      <div class="wa-option-icon" style="background:#f5efe6">🏡</div>
+      <div class="wa-option-text"><span class="wa-option-name">Casa Marne 13</span><span class="wa-option-detail">2 habitaciones · ★ 4.91</span></div>
+    </a>
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20el%20blog%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20%E2%9C%A8" class="wa-option" target="_blank" rel="noopener">
+      <div class="wa-option-icon" style="background:#f0f9f6">✨</div>
+      <div class="wa-option-text"><span class="wa-option-name">Hab. Magia</span><span class="wa-option-detail">Hasta 2 personas · ★ 4.9</span></div>
+    </a>
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20el%20blog%20y%20quisiera%20saber%20m%C3%A1s." class="wa-option" target="_blank" rel="noopener">
+      <div class="wa-option-icon" style="background:#e8f5e9">💬</div>
+      <div class="wa-option-text"><span class="wa-option-name">No sé cuál elegir</span><span class="wa-option-detail">Cuéntanos y te ayudamos</span></div>
+    </a>
+  </div>
+  <button class="wa-fab" id="waFab" aria-label="Reservar">💬 ¡Reserva directo!</button>
+</div>
+
+<script>
+  // Nav mobile
+  const toggle=document.getElementById('navToggle');
+  const mobile=document.getElementById('navMobile');
+  const overlay=document.getElementById('navOverlay');
+  toggle.addEventListener('click',()=>{
+    toggle.classList.toggle('open');
+    mobile.classList.toggle('open');
+    overlay.classList.toggle('open');
+  });
+  overlay.addEventListener('click',()=>{
+    toggle.classList.remove('open');
+    mobile.classList.remove('open');
+    overlay.classList.remove('open');
+  });
+
+  // Category filter
+  document.querySelectorAll('.cat-pill').forEach(pill=>{
+    pill.addEventListener('click',()=>{
+      document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
+      pill.classList.add('active');
+      const cat=pill.dataset.cat;
+      document.querySelectorAll('.cat-section').forEach(sec=>{
+        if(cat==='all'||sec.dataset.cat===cat){
+          sec.classList.add('visible');
+        } else {
+          sec.classList.remove('visible');
+        }
+      });
+      if(cat!=='all'){
+        const target=document.querySelector(`.cat-section[data-cat="${cat}"]`);
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
+
+  // WA widget
+  const waWidget=document.getElementById('waWidget');
+  const waFab=document.getElementById('waFab');
+  waFab.addEventListener('click',()=>{ waWidget.classList.toggle('open'); });
+  document.addEventListener('click',(e)=>{
+    if(!waWidget.contains(e.target)) waWidget.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
