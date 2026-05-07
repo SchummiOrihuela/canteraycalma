@@ -2,12 +2,131 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- ========== PÁGINA PRINCIPAL ========== -->
   <url>
     <loc>https://www.canteraycalma.com/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://www.canteraycalma.com/"/>
+  </url>
+
+  <!-- ========== BLOG INDEX ========== -->
+  <url>
+    <loc>https://www.canteraycalma.com/blog/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ========== ARTÍCULOS: HISTORIA ========== -->
+  <url>
+    <loc>https://www.canteraycalma.com/blog/convento-agustino-malinalco/</loc>
+    <lastmod>2025-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/malinalco-pueblo-magico-historia/</loc>
+    <lastmod>2025-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/barrios-de-malinalco/</loc>
+    <lastmod>2025-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ========== ARTÍCULOS: CUENTOS Y LEYENDAS ========== -->
+  <url>
+    <loc>https://www.canteraycalma.com/blog/malinalxochitl-leyenda/</loc>
+    <lastmod>2025-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/guardianes-del-cerro/</loc>
+    <lastmod>2025-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/suenos-en-malinalco/</loc>
+    <lastmod>2025-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ========== ARTÍCULOS: MALI PREHISPÁNICO ========== -->
+  <url>
+    <loc>https://www.canteraycalma.com/blog/casa-de-las-aguilas/</loc>
+    <lastmod>2025-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/guerreros-aguila-jaguar/</loc>
+    <lastmod>2025-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/subida-cerro-idolos/</loc>
+    <lastmod>2025-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ========== ARTÍCULOS: FIESTAS PATRONALES ========== -->
+  <url>
+    <loc>https://www.canteraycalma.com/blog/fiesta-divino-salvador/</loc>
+    <lastmod>2025-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/judea-malinalco-semana-santa/</loc>
+    <lastmod>2025-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/dia-de-muertos-malinalco/</loc>
+    <lastmod>2025-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ========== ARTÍCULOS: GASTRONOMÍA ========== -->
+  <url>
+    <loc>https://www.canteraycalma.com/blog/10-restaurantes-malinalco/</loc>
+    <lastmod>2025-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/pesca-trucha-mezcal-malinalco/</loc>
+    <lastmod>2025-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.canteraycalma.com/blog/donde-desayunar-malinalco/</loc>
+    <lastmod>2025-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
