@@ -848,6 +848,54 @@
         }
         .wa-fab-label { display: none; }
       }
+
+      /* ===================== BLOG PREVIEW ===================== */
+      .blog-preview { background: var(--fondo); padding: 5rem 0; }
+      .blog-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem; margin-top: 2.5rem;
+      }
+      .blog-card {
+        background: white; border-radius: 16px; overflow: hidden;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+        text-decoration: none; color: inherit; display: block;
+        transition: transform 0.25s, box-shadow 0.25s;
+      }
+      .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+      .blog-card-img {
+        width: 100%; height: 180px; object-fit: cover; display: block;
+        background: var(--arena);
+      }
+      .blog-card-placeholder {
+        width: 100%; height: 180px; background: var(--arena);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 3rem;
+      }
+      .blog-card-body { padding: 1.1rem 1.2rem 1.3rem; }
+      .blog-card-cat {
+        font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 1.5px; color: var(--calma); margin-bottom: 0.4rem;
+      }
+      .blog-card-title {
+        font-family: 'Playfair Display', serif; font-size: 1.05rem;
+        color: var(--noche); line-height: 1.3; margin-bottom: 0.5rem;
+      }
+      .blog-card-excerpt {
+        font-size: 0.82rem; color: var(--gris); line-height: 1.55; margin-bottom: 0.8rem;
+      }
+      .blog-card-read { font-size: 0.8rem; color: var(--cantera); font-weight: 600; }
+      .blog-cta-wrap { text-align: center; margin-top: 2.5rem; }
+      .blog-cta-btn {
+        display: inline-block; padding: 0.75rem 2rem;
+        background: var(--cantera); color: white; border-radius: 30px;
+        text-decoration: none; font-weight: 600; font-size: 0.9rem;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .blog-cta-btn:hover { background: var(--calma); transform: translateY(-2px); }
+      @media (max-width: 768px) {
+        .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
+        .blog-card-img, .blog-card-placeholder { height: 200px; }
+      }
     </style>
 </head>
 <body>
@@ -863,6 +911,7 @@
     <li><a href="#visitar">Qué visitar</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#contacto">Reserve ya!</a></li>
+    <li><a href="/blog/">Blog</a></li>
   </ul>
   <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank" rel="noopener">📅 Reservar</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menú">
@@ -1505,6 +1554,53 @@
   </div>
 </section>
 
+<!-- ===================== BLOG ===================== -->
+<section class="blog-preview" id="blog">
+  <div class="container">
+    <div class="section-tag">Conoce Malinalco</div>
+    <h2 class="section-title">Historias y guías del Pueblo Mágico</h2>
+    <p class="section-sub">Escritas por quien lleva 8 años recibiendo viajeros de todo el mundo.</p>
+
+    <div class="blog-grid">
+
+      <a class="blog-card" href="/blog/malinalco-pueblo-magico-historia/">
+        <img class="blog-card-img" src="/blog/malinalco-pueblo-magico-historia/calles-malinalco-pueblo-magico.jpg" alt="Malinalco Pueblo Mágico historia" loading="lazy">
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🏛️ Historia</div>
+          <div class="blog-card-title">¿Por qué Malinalco es Pueblo Mágico? La historia que nadie te cuenta</div>
+          <div class="blog-card-excerpt">En 2010 recibió el nombramiento. Pero su magia empezó 500 años antes.</div>
+          <div class="blog-card-read">Leer artículo →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/casa-de-las-aguilas/">
+        <div class="blog-card-placeholder">🦅</div>
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🦅 Mali Prehispánico</div>
+          <div class="blog-card-title">La Casa de las Águilas: el único templo azteca tallado en la montaña</div>
+          <div class="blog-card-excerpt">El único templo monolítico de América. Una serpiente te da la bienvenida con su lengua como alfombra.</div>
+          <div class="blog-card-read">Leer artículo →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/10-restaurantes-malinalco/">
+        <img class="blog-card-img" src="/blog/10-restaurantes-malinalco/restaurantes-malinalco-donde-comer.jpg" alt="Restaurantes Malinalco donde comer" loading="lazy">
+        <div class="blog-card-body">
+          <div class="blog-card-cat">🍽️ Gastronomía</div>
+          <div class="blog-card-title">10 restaurantes en Malinalco que un local te recomendaría</div>
+          <div class="blog-card-excerpt">Desde comida de autor hasta trucha fresca. La guía gastronómica que ningún turista tiene.</div>
+          <div class="blog-card-read">Leer artículo →</div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="blog-cta-wrap">
+      <a href="/blog/" class="blog-cta-btn">📖 Ver todos los artículos del blog</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CONTACTO ===================== -->
 <section id="contacto">
   <div class="container">
@@ -1575,6 +1671,7 @@
     <li><a href="#comer">Gastronomía</a></li>
     <li><a href="#visitar">Qué visitar</a></li>
     <li><a href="#contacto">Reserve ya!</a></li>
+    <li><a href="/blog/">Blog</a></li>
   </ul>
   <div class="social-icons">
     <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
