@@ -367,24 +367,56 @@
         --noche: #1C1C1C;
         --blanco: #FFFFFF;
         --gris: #6B7280;
+        /* Tokens semánticos — light */
+        --bg:           #FFFFFF;
+        --surface:      #FFFFFF;
+        --surface2:     #F8F7F5;
+        --surface3:     #faf9f6;
+        --border:       #e5e0d8;
+        --text:         #1C1C1C;
+        --text-soft:    #6B7280;
+        --nav-bg:       rgba(255,255,255,0.95);
+        --mobile-bg:    #ffffff;
+        --card-shadow:  0 2px 14px rgba(0,0,0,0.07);
+        --card-hover:   0 10px 30px rgba(0,0,0,0.12);
+        --input-bg:     #ffffff;
+        --input-border: #ddd;
+        --form-bg:      #F5EFE6;
+      }
+      html.dark {
+        --bg:           #141210;
+        --surface:      #1E1B18;
+        --surface2:     #252017;
+        --surface3:     #1A1714;
+        --border:       #332E28;
+        --text:         #EDE8E0;
+        --text-soft:    #9A9080;
+        --nav-bg:       rgba(20,18,16,0.97);
+        --mobile-bg:    #1E1B18;
+        --card-shadow:  0 2px 14px rgba(0,0,0,0.4);
+        --card-hover:   0 10px 30px rgba(0,0,0,0.55);
+        --input-bg:     #252017;
+        --input-border: #3D3630;
+        --form-bg:      #1E1B18;
       }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html { scroll-behavior: smooth; }
-      body { font-family: 'Inter', sans-serif; color: var(--noche); background: var(--blanco); }
+      body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); transition: background 0.3s, color 0.3s; }
 
       /* ===================== NAV ===================== */
       nav {
         position: fixed; top: 0; width: 100%; z-index: 1000;
-        background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+        background: var(--nav-bg); backdrop-filter: blur(10px);
         display: flex; justify-content: space-between; align-items: center;
         padding: 1rem 2rem; box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+        transition: background 0.3s;
       }
       .nav-logo {
         font-family: 'Playfair Display', serif; font-size: 1.4rem;
         color: var(--cantera); font-weight: 700; text-decoration: none;
       }
       .nav-links { display: flex; gap: 2rem; list-style: none; }
-      .nav-links a { text-decoration: none; color: var(--noche); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+      .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
       .nav-links a:hover { color: var(--cantera); }
       .nav-cta {
         background: var(--cantera); color: white; padding: 0.5rem 1.2rem;
@@ -398,7 +430,7 @@
       }
       .nav-toggle-line {
         position: absolute; left: 0; right: 0; height: 2px;
-        background: var(--noche); border-radius: 999px;
+        background: var(--text); border-radius: 999px;
         transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease, bottom 0.2s ease;
       }
       .nav-toggle-line:nth-child(1) { top: 4px; }
@@ -479,29 +511,29 @@
         font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem;
       }
       .section-sub {
-        color: var(--gris); font-size: 1.05rem; line-height: 1.7; max-width: 620px;
+        color: var(--text-soft); font-size: 1.05rem; line-height: 1.7; max-width: 620px;
       }
 
       /* ===================== DEPARTAMENTOS ===================== */
-      #departamentos { background: var(--arena); }
+      #departamentos { background: var(--surface2); }
       .deptos-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem; margin-top: 3rem;
       }
       .depto-card {
-        background: white; border-radius: 16px; overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        transition: transform 0.3s, box-shadow 0.3s;
+        background: var(--surface); border-radius: 16px; overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
       }
       .depto-card:hover {
-        transform: translateY(-6px); box-shadow: 0 12px 35px rgba(0,0,0,0.14);
+        transform: translateY(-6px); box-shadow: var(--card-hover);
       }
       .depto-img {
         width: 100%; height: 250px; object-fit: cover; display: block; background: #f2f2f2;
       }
       .depto-body { padding: 1.5rem; }
       .depto-badge {
-        background: var(--arena); color: var(--cantera); font-size: 0.75rem;
+        background: var(--surface2); color: var(--cantera); font-size: 0.75rem;
         font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 20px;
         text-transform: uppercase; display: inline-block;
       }
@@ -509,13 +541,13 @@
         font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 0.6rem 0 0.4rem;
       }
       .depto-desc {
-        color: var(--gris); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;
+        color: var(--text-soft); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;
       }
       .depto-features {
         display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
       }
       .feature-tag {
-        background: #f0f9f6; color: var(--calma); font-size: 0.78rem;
+        background: var(--surface2); color: var(--calma); font-size: 0.78rem;
         padding: 0.2rem 0.6rem; border-radius: 10px; font-weight: 500;
       }
       .rating-row {
@@ -523,18 +555,18 @@
         margin-bottom: 0.8rem; flex-wrap: wrap;
       }
       .rating-num { color: #FF385C; font-weight: 700; font-size: 0.9rem; }
-      .rating-info { color: #6B7280; font-size: 0.8rem; }
+      .rating-info { color: var(--text-soft); font-size: 0.8rem; }
 
       /* MEJORA 2: Precios por propiedad */
-      .depto-price { margin-bottom: 1rem; padding: 0.6rem 0; border-top: 1px solid #eee; }
+      .depto-price { margin-bottom: 1rem; padding: 0.6rem 0; border-top: 1px solid var(--border); }
       .price-from {
-        font-size: 0.75rem; color: var(--gris); text-transform: uppercase; letter-spacing: 0.5px;
+        font-size: 0.75rem; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.5px;
       }
       .price-amount {
         font-family: 'Playfair Display', serif; font-size: 1.6rem;
         font-weight: 700; color: var(--cantera); margin: 0 0.3rem;
       }
-      .price-unit { font-size: 0.8rem; color: var(--gris); }
+      .price-unit { font-size: 0.8rem; color: var(--text-soft); }
 
       /* MEJORA 6: Badge de reserva directa */
       .direct-badge {
@@ -567,23 +599,23 @@
         display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
       }
       .mcard {
-        background: var(--arena); border-radius: 12px; padding: 1.2rem;
-        text-align: center; transition: transform 0.2s;
+        background: var(--surface2); border-radius: 12px; padding: 1.2rem;
+        text-align: center; transition: transform 0.2s, background 0.3s;
       }
       .mcard:hover { transform: translateY(-3px); }
       .mcard-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-      .mcard-title { font-weight: 600; font-size: 0.9rem; color: var(--noche); }
-      .mcard-desc { font-size: 0.78rem; color: var(--gris); margin-top: 0.2rem; }
+      .mcard-title { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+      .mcard-desc { font-size: 0.78rem; color: var(--text-soft); margin-top: 0.2rem; }
 
       /* ===================== COMER ===================== */
-      #comer { background: var(--arena); }
+      #comer { background: var(--surface2); }
       .comer-intro { margin-bottom: 3rem; }
       .comer-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
       }
       .rest-card {
-        background: white; border-radius: 14px; padding: 1.5rem;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s;
+        background: var(--surface); border-radius: 14px; padding: 1.5rem;
+        box-shadow: var(--card-shadow); transition: transform 0.2s, background 0.3s;
         border-left: 4px solid var(--calma);
       }
       .rest-card:hover { transform: translateY(-3px); }
@@ -597,27 +629,27 @@
         text-transform: uppercase; letter-spacing: 0.5px;
       }
       .rest-desc {
-        color: var(--gris); font-size: 0.88rem; line-height: 1.55; margin-bottom: 1rem;
+        color: var(--text-soft); font-size: 0.88rem; line-height: 1.55; margin-bottom: 1rem;
       }
       .rest-link {
         color: var(--cantera); font-size: 0.82rem; font-weight: 600; text-decoration: none;
       }
       .rest-link:hover { text-decoration: underline; }
 
-      /* ===================== MEJORA 3: QUÉ VISITAR ===================== */
-      #visitar { background: var(--blanco); }
+      /* ===================== QUÉ VISITAR ===================== */
+      #visitar { background: var(--bg); }
       .visitar-grid {
         display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
         margin-top: 3rem;
       }
       .visitar-card {
-        background: white; border-radius: 14px; padding: 1.5rem;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s;
+        background: var(--surface); border-radius: 14px; padding: 1.5rem;
+        box-shadow: var(--card-shadow); transition: transform 0.2s, background 0.3s;
         border-left: 4px solid var(--cantera);
       }
       .visitar-card:hover { transform: translateY(-3px); }
       .visitar-tip {
-        display: inline-block; background: #fff8f0; color: var(--cantera);
+        display: inline-block; background: var(--surface2); color: var(--cantera);
         font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.6rem;
         border-radius: 10px; margin-top: 0.6rem;
       }
@@ -684,24 +716,24 @@
       .contacto-info h3 {
         font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1rem;
       }
-      .contacto-info p { color: var(--gris); line-height: 1.7; margin-bottom: 1.5rem; }
+      .contacto-info p { color: var(--text-soft); line-height: 1.7; margin-bottom: 1.5rem; }
       .contacto-links { display: flex; flex-direction: column; gap: 0.8rem; }
       .clink {
-        display: flex; align-items: center; gap: 0.8rem; color: var(--noche);
+        display: flex; align-items: center; gap: 0.8rem; color: var(--text);
         text-decoration: none; font-size: 0.9rem; font-weight: 500;
-        padding: 0.8rem; background: var(--arena); border-radius: 10px; transition: background 0.2s;
+        padding: 0.8rem; background: var(--surface2); border-radius: 10px; transition: background 0.2s;
       }
-      .clink:hover { background: #ede5d8; }
+      .clink:hover { background: var(--border); }
       .clink-icon { font-size: 1.2rem; }
-      .contacto-form { background: var(--arena); border-radius: 16px; padding: 2rem; }
+      .contacto-form { background: var(--form-bg); border-radius: 16px; padding: 2rem; transition: background 0.3s; }
       .contacto-form h3 {
         font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1.5rem;
       }
       .form-group { margin-bottom: 1rem; }
       .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; }
       .form-group input, .form-group textarea, .form-group select {
-        width: 100%; padding: 0.8rem 1rem; border: 1.5px solid #ddd; border-radius: 10px;
-        font-family: 'Inter', sans-serif; font-size: 0.9rem; background: white; transition: border 0.2s;
+        width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--input-border); border-radius: 10px;
+        font-family: 'Inter', sans-serif; font-size: 0.9rem; background: var(--input-bg); color: var(--text); transition: border 0.2s, background 0.3s;
       }
       .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
         outline: none; border-color: var(--calma);
@@ -715,13 +747,13 @@
       .btn-form:hover { background: var(--calma); }
 
       /* ===================== FAQ ===================== */
-      .faq-seo { padding: 3rem 2rem; background: #faf9f6; }
+      .faq-seo { padding: 3rem 2rem; background: var(--surface3); transition: background 0.3s; }
       .faq-seo .container { max-width: 800px; }
       .faq-seo h2 {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 2rem; color: var(--noche);
+        font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 2rem; color: var(--text);
       }
-      .faq-item { border-bottom: 1px solid #e5e0d8; padding: 1.2rem 0; }
+      .faq-item { border-bottom: 1px solid var(--border); padding: 1.2rem 0; }
       .faq-item:last-child { border-bottom: none; }
       .faq-question {
         font-weight: 600; font-size: 1rem; color: var(--cantera); cursor: pointer;
@@ -732,7 +764,7 @@
       }
       .faq-item.open .faq-question::after { transform: rotate(45deg); }
       .faq-answer {
-        display: none; color: var(--gris); font-size: 0.95rem;
+        display: none; color: var(--text-soft); font-size: 0.95rem;
         line-height: 1.7; padding-top: 0.8rem;
       }
       .faq-item.open .faq-answer { display: block; }
@@ -833,8 +865,9 @@
         .nav-links.open {
           display: flex; flex-direction: column; position: fixed;
           top: 0; right: 0; width: 280px; height: 100vh;
-          background: white; padding: 5rem 2rem 2rem; gap: 1.5rem;
+          background: var(--mobile-bg); padding: 5rem 2rem 2rem; gap: 1.5rem;
           box-shadow: -4px 0 20px rgba(0,0,0,0.1); z-index: 950;
+          transition: background 0.3s;
         }
         .nav-overlay.open { opacity: 1; pointer-events: auto; }
         .stats { grid-template-columns: repeat(2, 1fr); }
@@ -850,24 +883,24 @@
       }
 
       /* ===================== BLOG PREVIEW ===================== */
-      .blog-preview { background: var(--fondo); padding: 5rem 0; }
+      .blog-preview { background: var(--surface2); padding: 5rem 0; transition: background 0.3s; }
       .blog-grid {
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem; margin-top: 2.5rem;
       }
       .blog-card {
-        background: white; border-radius: 16px; overflow: hidden;
-        box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+        background: var(--surface); border-radius: 16px; overflow: hidden;
+        box-shadow: var(--card-shadow);
         text-decoration: none; color: inherit; display: block;
-        transition: transform 0.25s, box-shadow 0.25s;
+        transition: transform 0.25s, box-shadow 0.25s, background 0.3s;
       }
-      .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+      .blog-card:hover { transform: translateY(-5px); box-shadow: var(--card-hover); }
       .blog-card-img {
         width: 100%; height: 180px; object-fit: cover; display: block;
-        background: var(--arena);
+        background: var(--surface2);
       }
       .blog-card-placeholder {
-        width: 100%; height: 180px; background: var(--arena);
+        width: 100%; height: 180px; background: var(--surface2);
         display: flex; align-items: center; justify-content: center;
         font-size: 3rem;
       }
@@ -878,10 +911,10 @@
       }
       .blog-card-title {
         font-family: 'Playfair Display', serif; font-size: 1.05rem;
-        color: var(--noche); line-height: 1.3; margin-bottom: 0.5rem;
+        color: var(--text); line-height: 1.3; margin-bottom: 0.5rem;
       }
       .blog-card-excerpt {
-        font-size: 0.82rem; color: var(--gris); line-height: 1.55; margin-bottom: 0.8rem;
+        font-size: 0.82rem; color: var(--text-soft); line-height: 1.55; margin-bottom: 0.8rem;
       }
       .blog-card-read { font-size: 0.8rem; color: var(--cantera); font-weight: 600; }
       .blog-cta-wrap { text-align: center; margin-top: 2.5rem; }
@@ -896,6 +929,20 @@
         .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
         .blog-card-img, .blog-card-placeholder { height: 200px; }
       }
+
+      /* ===================== THEME TOGGLE ===================== */
+      .theme-toggle {
+        position: fixed; bottom: 5.5rem; left: 1.2rem; z-index: 1100;
+        width: 38px; height: 38px; border-radius: 50%;
+        background: var(--surface); border: 1.5px solid var(--border);
+        cursor: pointer; display: flex; align-items: center; justify-content: center;
+        transition: all 0.25s; box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+      }
+      .theme-toggle:hover { transform: scale(1.1); box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+      .theme-toggle .icon-sun  { display: none; }
+      .theme-toggle .icon-moon { display: block; }
+      html.dark .theme-toggle .icon-sun  { display: block; }
+      html.dark .theme-toggle .icon-moon { display: none; }
     </style>
 </head>
 <body>
@@ -921,6 +968,12 @@
   </button>
 </nav>
 <div class="nav-overlay" id="navOverlay"></div>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+  <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B5E3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9933A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="inicio">
@@ -1729,6 +1782,15 @@
 
 <!-- ===================== JAVASCRIPT ===================== -->
 <script>
+  // ── Theme toggle ──
+  const html = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  if(localStorage.getItem('cc-theme') === 'dark') html.classList.add('dark');
+  themeToggle.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    localStorage.setItem('cc-theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+
   // Nav toggle mobile
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
