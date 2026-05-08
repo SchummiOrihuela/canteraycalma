@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <title>Blog | Cantera & Calma · Malinalco, Pueblo Mágico</title>
@@ -139,9 +140,17 @@
     /* ══ HERO DEL BLOG ══ */
     .blog-hero {
       margin-top:calc(36px + 56px);
-      background:linear-gradient(135deg,var(--cantera) 0%,#6B4226 100%);
+      position:relative;
+      background-image: url('/images/malinalco/ZonaArqueologica.jpg');
+      background-size:cover; background-position:center 40%;
       color:white; text-align:center; padding:3rem 2rem 2.5rem;
     }
+    .blog-hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(135deg, rgba(93,55,27,0.75) 0%, rgba(30,18,8,0.85) 100%);
+    }
+    .blog-hero > * { position:relative; z-index:1; }
     .blog-hero-logo { display:none; }
     .blog-hero-tag {
       font-size:0.72rem; font-weight:600; text-transform:uppercase;
@@ -284,9 +293,9 @@
     }
     .footer-links a { color:rgba(255,255,255,0.65); text-decoration:none; transition:color 0.2s; }
     .footer-links a:hover { color:white; }
-    .social-icons { display:flex; gap:0.9rem; justify-content:center; margin:0.9rem 0; font-size:1.3rem; }
-    .social-icons a { text-decoration:none; transition:transform 0.2s; }
-    .social-icons a:hover { transform:scale(1.15); }
+    .social-icons { display:flex; gap:0.9rem; justify-content:center; margin:0.9rem 0; }
+    .social-icons a { text-decoration:none; transition:transform 0.2s, background 0.2s; width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; color:white; font-size:1.25rem; }
+    .social-icons a:hover { transform:scale(1.15); } .social-icons a[aria-label="Instagram"]:hover { background:#e1306c; } .social-icons a[aria-label="Facebook"]:hover { background:#1877f2; } .social-icons a[aria-label="WhatsApp"]:hover { background:#25d366; }
 
     /* ══ WA WIDGET ══ */
     .wa-widget { position:fixed; bottom:1.5rem; right:1.5rem; z-index:1000; font-family:'Inter',sans-serif; }
@@ -722,9 +731,15 @@
     <li><a href="https://www.canteraycalma.com/#contacto">Reserve ya!</a></li>
   </ul>
   <div class="social-icons">
-    <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener">📸</a>
-    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener">👍</a>
-    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener">💬</a>
+    <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
   </div>
   <p style="margin-top:1rem;font-size:0.75rem;opacity:0.5">© 2025 Grupo Cantera & Calma · Todos los derechos reservados · canteraycalma.com</p>
 </footer>

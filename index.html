@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- MEJORA 8: Meta title más específico para SEO -->
     <title>Hospedaje en Malinalco | Casas y Departamentos · Cantera & Calma · Pueblo Mágico</title>
     <!-- MEJORA 8: Meta description mejorado -->
@@ -792,12 +793,15 @@
         display: flex; justify-content: center; gap: 1rem; margin: 1rem 0;
       }
       .social-icons a {
-        width: 38px; height: 38px; border-radius: 50%;
+        width: 42px; height: 42px; border-radius: 50%;
         background: rgba(255,255,255,0.1); display: flex; align-items: center;
         justify-content: center; color: white; text-decoration: none;
-        font-size: 1rem; transition: background 0.2s;
+        font-size: 1.25rem; transition: background 0.2s, color 0.2s;
       }
-      .social-icons a:hover { background: var(--cantera); }
+      .social-icons a:hover { background: var(--cantera); color: white; }
+      .social-icons a[aria-label="Instagram"]:hover { background: #e1306c; }
+      .social-icons a[aria-label="Facebook"]:hover  { background: #1877f2; }
+      .social-icons a[aria-label="WhatsApp"]:hover  { background: #25d366; }
 
       /* ===================== WHATSAPP WIDGET ===================== */
       .wa-widget {
@@ -1666,13 +1670,13 @@
         <p>Podemos ayudarte a elegir la opción ideal, coordinar tu llegada y darte todos los tips locales que necesitas para vivir Malinalco al máximo.</p>
         <div class="contacto-links">
           <a href="https://wa.me/5215562513258" class="clink" target="_blank" rel="noopener">
-            <span class="clink-icon">💬</span> WhatsApp directo
+            <span class="clink-icon"><i class="fa-brands fa-whatsapp"></i></span> WhatsApp directo
           </a>
           <a href="https://www.instagram.com/canteramalinalco" class="clink" target="_blank" rel="noopener">
-            <span class="clink-icon">📸</span> Instagram: @canteramalinalco
+            <span class="clink-icon"><i class="fa-brands fa-instagram"></i></span> Instagram: @canteramalinalco
           </a>
           <a href="https://www.facebook.com/CanteraMalinalco" class="clink" target="_blank" rel="noopener">
-            <span class="clink-icon">👍</span> Facebook: Cantera Malinalco
+            <span class="clink-icon"><i class="fa-brands fa-facebook"></i></span> Facebook: Cantera Malinalco
           </a>
           <a href="https://www.airbnb.mx/rooms/29388264" class="clink" target="_blank" rel="noopener">
             <span class="clink-icon">🏠</span> Ver en Airbnb
@@ -1727,9 +1731,15 @@
     <li><a href="/blog/">Blog</a></li>
   </ul>
   <div class="social-icons">
-    <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
-    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
-    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+    <a href="https://www.instagram.com/canteramalinalco" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
   </div>
   <p style="margin-top: 1rem; font-size: 0.78rem; opacity: 0.5;">© 2026 Grupo Cantera & Calma · Todos los derechos reservados · canteraycalma.com</p>
 </footer>
