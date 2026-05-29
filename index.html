@@ -892,6 +892,89 @@
         display: grid; grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem; margin-top: 2.5rem;
       }
+      /* ===================== ARTICLE MODAL ===================== */
+      .article-modal-overlay {
+        display: none; position: fixed; inset: 0; z-index: 9000;
+        background: rgba(0,0,0,0.55); backdrop-filter: blur(6px);
+        align-items: flex-start; justify-content: center;
+        padding: 2rem 1rem; overflow-y: auto;
+      }
+      .article-modal-overlay.active { display: flex; }
+      .article-modal-box {
+        background: var(--bg); border-radius: 20px;
+        max-width: 760px; width: 100%;
+        box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+        position: relative; margin: auto;
+        animation: modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1);
+      }
+      @keyframes modalIn {
+        from { opacity: 0; transform: translateY(30px) scale(0.97); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      .article-modal-hero {
+        background: linear-gradient(160deg, #8B5E3C 0%, #4A7C6F 100%);
+        border-radius: 20px 20px 0 0; padding: 2.5rem 2rem 2rem;
+        position: relative;
+      }
+      .article-modal-tag {
+        display: inline-block; background: rgba(255,255,255,0.18);
+        color: rgba(255,255,255,0.92); font-size: 0.72rem; letter-spacing: 2px;
+        text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.3); margin-bottom: 0.9rem;
+      }
+      .article-modal-title {
+        font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2.1rem);
+        color: white; line-height: 1.2; margin-bottom: 0.7rem;
+      }
+      .article-modal-intro { color: rgba(255,255,255,0.82); font-size: 0.95rem; line-height: 1.6; }
+      .article-modal-close {
+        position: absolute; top: 1rem; right: 1rem;
+        background: rgba(255,255,255,0.2); border: none; color: white;
+        width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem;
+        cursor: pointer; display: flex; align-items: center; justify-content: center;
+        transition: background 0.2s;
+      }
+      .article-modal-close:hover { background: rgba(255,255,255,0.35); }
+      .article-modal-body { padding: 2rem; }
+      .article-modal-body h3 {
+        font-family: 'Playfair Display', serif; font-size: 1.15rem;
+        color: var(--cantera); margin: 1.6rem 0 0.5rem;
+      }
+      .article-modal-body h3:first-child { margin-top: 0; }
+      .article-modal-body p { font-size: 0.92rem; color: var(--text-soft); line-height: 1.75; margin-bottom: 0.6rem; }
+      .article-modal-body ul { padding-left: 1.2rem; margin-bottom: 0.8rem; }
+      .article-modal-body ul li { font-size: 0.9rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 0.25rem; }
+      .article-modal-tip {
+        background: var(--surface2); border-left: 3px solid var(--cantera);
+        border-radius: 0 10px 10px 0; padding: 0.9rem 1.1rem;
+        margin: 1rem 0; font-size: 0.88rem; color: var(--text); line-height: 1.6;
+      }
+      .article-modal-cta {
+        background: linear-gradient(135deg, #8B5E3C, #4A7C6F);
+        border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 2rem;
+      }
+      .article-modal-cta p { color: rgba(255,255,255,0.85) !important; font-size: 0.88rem !important; margin-bottom: 0.8rem; }
+      .article-modal-cta a {
+        display: inline-block; background: white; color: #8B5E3C;
+        padding: 0.7rem 1.8rem; border-radius: 25px; font-weight: 700;
+        text-decoration: none; font-size: 0.9rem; transition: transform 0.15s;
+      }
+      .article-modal-cta a:hover { transform: scale(1.04); }
+      .article-modal-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 0.8rem 0;
+      }
+      .article-modal-card {
+        background: var(--surface2); border-radius: 10px; padding: 0.9rem 1rem;
+        border: 0.5px solid var(--border);
+      }
+      .article-modal-card strong { display: block; font-size: 0.83rem; color: var(--cantera); margin-bottom: 0.2rem; }
+      .article-modal-card span { font-size: 0.82rem; color: var(--text-soft); }
+      @media (max-width: 500px) {
+        .article-modal-grid { grid-template-columns: 1fr; }
+        .article-modal-body { padding: 1.2rem; }
+        .article-modal-hero { padding: 1.8rem 1.2rem 1.4rem; }
+      }
+
       .blog-card {
         background: var(--surface); border-radius: 16px; overflow: hidden;
         box-shadow: var(--card-shadow);
@@ -983,10 +1066,11 @@
 <section class="hero" id="inicio">
   <div class="hero-content">
     <div class="hero-badge">⭐ SUPERANFITRIÓN · ⏳ 8 AÑOS · 🏠 TRANQUILIDAD Y CONFORT</div>
-    <h1>Malinalco te espera. Nosotros te recibimos.</h1>
+    <h1>Hospedaje en Malinalco — Departamentos y casas en el Pueblo Mágico</h1>
     <div class="hero-copy">
-      4 propiedades únicas en el corazón del Pueblo Mágico.<br>
-      A sólo 70 km de la Ciudad de México.
+      Malinalco te espera. Nosotros te recibimos.<br>
+      4 propiedades únicas · A solo 70 km de la Ciudad de México.<br>
+      Ideal para escapadas en familia, fines de semana románticos y descanso total.
     </div>
     <div class="hero-btns">
       <a href="#departamentos" class="btn-primary">Ver Departamentos</a>
@@ -1015,11 +1099,48 @@
   </div>
 </div>
 
+<!-- ===================== AUDIENCIAS SEO ===================== -->
+<section id="para-quien" style="padding: 56px 20px; background: var(--surface2);">
+  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+    <div class="section-tag">El escape perfecto</div>
+    <h2 class="section-title" style="margin-bottom: 0.5rem;">¿Por qué venir a Malinalco?</h2>
+    <p class="section-sub" style="max-width: 640px; margin: 0 auto 2.5rem;">A solo 70 km de la CDMX, Malinalco es el Pueblo Mágico más cercano a la capital. Un fin de semana aquí resetea la semana entera.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; text-align: left;">
+
+      <!-- Familias -->
+      <div style="background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem;">
+        <div style="font-size: 2rem; margin-bottom: 0.75rem;">👨‍👩‍👧‍👦</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cantera); margin-bottom: 0.5rem;">Malinalco con familia</h3>
+        <p style="font-size: 0.88rem; color: var(--text-soft); line-height: 1.6;">Zona arqueológica, museo de bichos vivos, criadero de truchas y albercas. Malinalco tiene el ritmo perfecto para que los niños se desconecten de las pantallas.</p>
+        <button onclick="openArticleModal('modal-familias')" style="display: inline-block; margin-top: 1rem; font-size: 0.82rem; color: var(--cantera); font-weight: 600; text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit;">Leer la guía familiar →</button>
+      </div>
+
+      <!-- Escapada romántica -->
+      <div style="background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem;">
+        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🌹</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cantera); margin-bottom: 0.5rem;">Escapada romántica a Malinalco</h3>
+        <p style="font-size: 0.88rem; color: var(--text-soft); line-height: 1.6;">Cenas de autor, mezcal artesanal, spa en el Centro Holístico Ollinyotl y despertares con clima de 26°C. El destino que los dos merecen.</p>
+        <button onclick="openArticleModal('modal-romantico')" style="display: inline-block; margin-top: 1rem; font-size: 0.82rem; color: var(--cantera); font-weight: 600; text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit;">Ver ideas para la escapada →</button>
+      </div>
+
+      <!-- Fin de semana desde CDMX -->
+      <div style="background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem;">
+        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🚗</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cantera); margin-bottom: 0.5rem;">Fin de semana cerca de la CDMX</h3>
+        <p style="font-size: 0.88rem; color: var(--text-soft); line-height: 1.6;">70 km desde Santa Fe, ~80 km desde Perisur. Sin autopista de cuota en la ruta principal. Viernes en la noche llegas; domingo en la mañana ya extrañas el pueblo.</p>
+        <button onclick="openArticleModal('modal-cdmx')" style="display: inline-block; margin-top: 1rem; font-size: 0.82rem; color: var(--cantera); font-weight: 600; text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; font-family: inherit;">Ver el itinerario express →</button>
+      </div>
+
+    </div>
+    <div style="margin-top: 2rem;">
+      <a href="#departamentos" class="btn-primary">Ver disponibilidad y precios</a>
+    </div>
+  </div>
+</section>
+
 
 <!-- ============================================================
      SECCIÓN: PRECIO DIRECTO VS AIRBNB — Cantera & Calma
-     Instrucciones: Pegar este bloque JUSTO ANTES de la sección
-     id="departamentos" en tu index.html
      ============================================================ -->
 
 <section id="reserva-directa" style="padding: 60px 20px; background: var(--bg-secondary, #f9f6f2); font-family: inherit;">
@@ -1172,8 +1293,8 @@
 <section id="departamentos">
   <div class="container">
     <div class="section-tag">Dónde quedarte</div>
-    <h2 class="section-title">Nuestras opciones</h2>
-    <p class="section-sub">Cuatro espacios únicos, cada uno pensado para que disfrutes Malinalco con calma, comodidad y tranquilidad.</p>
+    <h2 class="section-title">Departamentos y casas en renta en Malinalco</h2>
+    <p class="section-sub">Cuatro espacios únicos en el corazón del Pueblo Mágico — ideales para familias, parejas y grupos que buscan una escapada de fin de semana cerca de la CDMX. Reserva directo y ahorra vs. Airbnb.</p>
 
     <div class="deptos-grid">
 
@@ -1867,6 +1988,243 @@
     );
 
     window.open(`https://wa.me/5215562513258?text=${texto}`, '_blank');
+  });
+</script>
+
+<!-- ===================== ARTICLE MODALS ===================== -->
+
+<!-- MODAL 1: Malinalco con familia -->
+<div class="article-modal-overlay" id="modal-familias" role="dialog" aria-modal="true" aria-labelledby="modal-familias-title">
+  <div class="article-modal-box">
+    <div class="article-modal-hero">
+      <button class="article-modal-close" onclick="closeArticleModal('modal-familias')" aria-label="Cerrar">✕</button>
+      <div class="article-modal-tag">👨‍👩‍👧‍👦 Viaje en Familia</div>
+      <h2 class="article-modal-title" id="modal-familias-title">Malinalco con familia: la guía que ningún turista tiene</h2>
+      <p class="article-modal-intro">Zona arqueológica, museo de bichos vivos, truchas y albercas. Todo a 70 km de CDMX, con clima de 26°C todo el año.</p>
+    </div>
+    <div class="article-modal-body">
+
+      <h3>¿Por qué Malinalco es perfecto para familias?</h3>
+      <p>A diferencia de otros destinos del Estado de México, Malinalco combina naturaleza, cultura y gastronomía en un radio de apenas 5 km. Los niños no necesitan pantallas cuando hay una zona arqueológica real, un museo lleno de serpientes y un río donde pescar truchas.</p>
+
+      <h3>🦎 Museo Vivo Los Bichos</h3>
+      <p>El favorito de los niños sin discusión. Tortugas, serpientes, iguanas, arañas y artrópodos en exhibición interactiva. Abre desde las 10am y queda a solo 2.4 km de nuestras propiedades.</p>
+      <div class="article-modal-tip">💡 <strong>Tip local:</strong> Llega antes de las 11am para evitar grupos escolares entre semana. Los fines de semana es un must hacerlo de primera actividad.</div>
+
+      <h3>🏛️ Zona Arqueológica</h3>
+      <p>El único templo monolítico de América tallado directo en la montaña. Para los mayores de 8 años es una experiencia que no olvidarán. Los domingos la entrada es GRATIS para ciudadanos mexicanos. El recorrido dura entre 45 min y 1.5 horas según el ritmo del grupo.</p>
+      <ul>
+        <li>Horario: 10:00 am – 5:00 pm (martes a domingo)</li>
+        <li>Precio normal: ~$85 MXN por persona (adultos)</li>
+        <li>Domingos: entrada libre para nacionales</li>
+        <li>Llevar agua y calzado cómodo — hay escaleras</li>
+      </ul>
+
+      <h3>🎣 Criadero de Truchas</h3>
+      <p>Pesca tu trucha, págala por kilo y que te la preparen en el mismo lugar. Una de las experiencias más disfrutadas por familias con niños entre 5 y 12 años. También hay albercas disponibles para el calor de la tarde.</p>
+      <div class="article-modal-tip">💡 <strong>Tip local:</strong> Ve después del mediodía cuando el sol calienta más. Las albercas son la recompensa perfecta después de la zona arqueológica.</div>
+
+      <h3>🍽️ Dónde comer con niños</h3>
+      <div class="article-modal-grid">
+        <div class="article-modal-card">
+          <strong>Pancho Villa</strong>
+          <span>Cortes y mariscos. Porciones generosas, precio justo. Ideal para todos los gustos.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>El Pochote</strong>
+          <span>Hamburguesas y pizzas artesanales. La opción perfecta para niños selectivos.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Terraza Xolo</strong>
+          <span>Tacos al pastor y vista al pueblo. Ambiente relajado y precios accesibles.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Casa Colibrí</strong>
+          <span>Desayunos con vista extraordinaria. El primer desayuno del fin de semana merece ser memorable.</span>
+        </div>
+      </div>
+
+      <h3>📅 Itinerario sugerido (2 días)</h3>
+      <p><strong>Viernes por la noche:</strong> Llegada, cenar en Pancho Villa o El Pochote, paseo por el jardín principal.</p>
+      <p><strong>Sábado:</strong> Desayuno en Casa Colibrí → Zona Arqueológica (mañana temprano) → Comida en el mercado → Museo Vivo Los Bichos → Tarde en el criadero de truchas y albercas.</p>
+      <p><strong>Domingo:</strong> Desayuno tranquilo → Mercado Artesanal (souvenirs para los niños) → Regreso a casa con el Pueblo Mágico grabado en la memoria.</p>
+
+      <div class="article-modal-cta">
+        <p>¿Ya tienes las fechas? Reserva directo y ahorra hasta 15% vs Airbnb.</p>
+        <a href="https://wa.me/5215562513258?text=¡Hola!%20Vi%20la%20guía%20familiar%20en%20su%20página%20y%20me%20interesa%20reservar%20para%20familia." target="_blank">📲 Consultar disponibilidad por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2: Escapada romántica -->
+<div class="article-modal-overlay" id="modal-romantico" role="dialog" aria-modal="true" aria-labelledby="modal-romantico-title">
+  <div class="article-modal-box">
+    <div class="article-modal-hero">
+      <button class="article-modal-close" onclick="closeArticleModal('modal-romantico')" aria-label="Cerrar">✕</button>
+      <div class="article-modal-tag">🌹 Escapada Romántica</div>
+      <h2 class="article-modal-title" id="modal-romantico-title">Escapada romántica a Malinalco: el destino que los dos merecen</h2>
+      <p class="article-modal-intro">Cenas de autor, mezcal artesanal, spa y despertares con clima perfecto. A 70 km de la CDMX.</p>
+    </div>
+    <div class="article-modal-body">
+
+      <h3>¿Por qué Malinalco para una escapada en pareja?</h3>
+      <p>Malinalco tiene algo que los resorts de playa no pueden ofrecer: autenticidad. Calles empedradas, cantera rosa, un mercado de artesanos que trabajan en vivo, y restaurantes donde el chef es el mismo que cultiva sus ingredientes. Es un destino para parejas que prefieren experiencias a folletos turísticos.</p>
+
+      <h3>🌿 Centro Holístico Ollinyotl</h3>
+      <p>El spa más especial del Pueblo Mágico. Masajes terapéuticos, temazcal, invernadero y yoga rodeado de naturaleza. Una sesión de temazcal en pareja es una experiencia que pocas ciudades del país pueden ofrecer.</p>
+      <div class="article-modal-tip">💡 <strong>Tip local:</strong> Reserva el temazcal con anticipación, especialmente en puentes y temporada alta. Es el servicio más solicitado. Ir al atardecer hace la experiencia más memorable.</div>
+
+      <h3>🍷 La noche perfecta en Malinalco</h3>
+      <p>La secuencia ganadora para una noche romántica: aperitivo en <strong>Casa Valentina</strong> (coctelería artesanal y baguettes gourmet), cena de autor en <strong>Maíz Criollo</strong> (menú degustación en 3 tiempos, ~$300 por persona), y copa de mezcal artesanal en <strong>Mezcal La Cascada</strong> para cerrar la noche conociendo el proceso de destilación.</p>
+
+      <h3>🦅 La mañana que no olvidarán</h3>
+      <p>Despertar con el canto de los pájaros, desayuno en <strong>Casa Colibrí</strong> con vista al valle, y una visita privada a la Zona Arqueológica antes de que lleguen los grupos. El templo de las Águilas tallado en la montaña es más impresionante cuando lo tienes casi para ustedes solos.</p>
+      <div class="article-modal-tip">💡 <strong>Tip local:</strong> Si van a la Zona Arqueológica en pareja, lleguen a las 10am cuando abre. Los primeros 30 minutos son mágicos — tendrán el templo prácticamente solos.</div>
+
+      <h3>🛍️ Detalles que hacen la diferencia</h3>
+      <div class="article-modal-grid">
+        <div class="article-modal-card">
+          <strong>Mercado Artesanal</strong>
+          <span>Joyería en plata y obsidiana, textiles de telar. El souvenir perfecto que no encontrarás en ningún otro lado.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Mezcal La Cascada</strong>
+          <span>Destilado artesanal con recorrido incluido. Llévense una botella firmada por el productor.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Los Placeres</strong>
+          <span>Cocina gourmet fusión con ingredientes locales. Excelente para la comida del sábado.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Casa Diablitos</strong>
+          <span>Mixología creativa y botanas. El after perfecto antes de regresar a la propiedad.</span>
+        </div>
+      </div>
+
+      <h3>📅 Itinerario romántico (viernes-domingo)</h3>
+      <p><strong>Viernes noche:</strong> Llegada → aperitivo en Casa Valentina → cena en Maíz Criollo → mezcal en La Cascada.</p>
+      <p><strong>Sábado:</strong> Desayuno en Casa Colibrí → Zona Arqueológica temprano → spa o temazcal en Ollinyotl → comida en Los Placeres → tarde libre en el jardín → noche en Casa Diablitos.</p>
+      <p><strong>Domingo:</strong> Mercado Artesanal → desayuno tardío en Casa Valentina → regreso relajado sin prisas.</p>
+
+      <div class="article-modal-cta">
+        <p>Sorprende a tu pareja. Reserva directo y recibe atención personalizada desde el primer mensaje.</p>
+        <a href="https://wa.me/5215562513258?text=¡Hola!%20Busco%20disponibilidad%20para%20una%20escapada%20romántica%20en%20Malinalco." target="_blank">📲 Planear mi escapada romántica</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3: Fin de semana desde CDMX -->
+<div class="article-modal-overlay" id="modal-cdmx" role="dialog" aria-modal="true" aria-labelledby="modal-cdmx-title">
+  <div class="article-modal-box">
+    <div class="article-modal-hero">
+      <button class="article-modal-close" onclick="closeArticleModal('modal-cdmx')" aria-label="Cerrar">✕</button>
+      <div class="article-modal-tag">🚗 Desde la CDMX</div>
+      <h2 class="article-modal-title" id="modal-cdmx-title">Fin de semana en Malinalco desde CDMX: el itinerario express</h2>
+      <p class="article-modal-intro">70 km. Sin autopista de cuota. Viernes llegas, domingo extrañas el pueblo. Esta es la guía de quien ya lo hizo 8 años seguidos.</p>
+    </div>
+    <div class="article-modal-body">
+
+      <h3>La ruta desde la CDMX</h3>
+      <p>Malinalco está a solo 70 km de Santa Fe y ~80 km desde Perisur. La ruta principal no requiere autopista de cuota y pasa por paisajes increíbles del Estado de México. En condiciones normales, el recorrido es de aproximadamente 1.5 horas.</p>
+
+      <div class="article-modal-grid">
+        <div class="article-modal-card">
+          <strong>Desde Santa Fe / Interlomas</strong>
+          <span>~70 km · 1h 20min aprox. Ruta por Lerma – Tenango – Malinalco.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Desde Perisur / Coyoacán</strong>
+          <span>~82 km · 1h 35min aprox. Misma ruta saliendo por el Periférico Sur.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Desde Polanco / Lomas</strong>
+          <span>~85 km · 1h 40min aprox. Ruta por el Periferico o Viaducto hasta Lerma.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Desde Toluca / Metepec</strong>
+          <span>~52 km · 55 min aprox. La ruta más corta de todas.</span>
+        </div>
+      </div>
+
+      <div class="article-modal-tip">💡 <strong>Tip clave:</strong> Si sales de CDMX un viernes, hazlo después de las 8:00 pm para evitar el tráfico de Periférico y autopista México-Toluca. Llegarás a Malinalco con el pueblo iluminado y los restaurantes aún abiertos.</div>
+
+      <h3>🗓️ El itinerario express (48 horas)</h3>
+      <p><strong>Viernes 8pm – llegada:</strong> Check-in en la propiedad, cenar en El Pochote o Casa Diablitos (abren hasta tarde), paseo nocturno por el jardín central.</p>
+      <p><strong>Sábado – el día completo:</strong></p>
+      <ul>
+        <li>8:30 am – Desayuno en Casa Colibrí o Casa Valentina</li>
+        <li>10:00 am – Zona Arqueológica (llegar cuando abre, antes de los grupos)</li>
+        <li>12:30 pm – Mercado Artesanal o Tienda Comercial</li>
+        <li>2:00 pm – Comida en Maíz Criollo o Los Placeres</li>
+        <li>4:30 pm – Criadero de Truchas y albercas, o Spa Ollinyotl</li>
+        <li>7:00 pm – Mezcal en La Cascada con recorrido de producción</li>
+        <li>9:00 pm – Cena en Caudillos (el consentido del barrio)</li>
+      </ul>
+      <p><strong>Domingo – el regreso sin prisa:</strong></p>
+      <ul>
+        <li>9:00 am – Desayuno tardío en Casa Valentina</li>
+        <li>10:30 am – Última vuelta al mercado artesanal</li>
+        <li>11:00 am – Check-out (flexibilidad bajo solicitud)</li>
+        <li>Regreso a CDMX por la misma ruta, domingos con tráfico ligero</li>
+      </ul>
+
+      <h3>💰 ¿Cuánto cuesta un fin de semana en Malinalco?</h3>
+      <div class="article-modal-grid">
+        <div class="article-modal-card">
+          <strong>Hospedaje (2 noches)</strong>
+          <span>Desde $1,800 – $3,200 MXN por noche según propiedad y temporada.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Comidas (2 personas)</strong>
+          <span>~$800 – $1,200 MXN/día incluyendo desayuno, comida y cena.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Actividades</strong>
+          <span>Zona Arqueológica $170, Truchas ~$200-400, Spa desde $350 por persona.</span>
+        </div>
+        <div class="article-modal-card">
+          <strong>Total estimado (pareja)</strong>
+          <span>$6,000 – $9,000 MXN por fin de semana todo incluido. Menos que un hotel en CDMX.</span>
+        </div>
+      </div>
+
+      <div class="article-modal-tip">💡 <strong>Reserva directo y ahorra:</strong> Al reservar con nosotros directamente (sin pasar por Airbnb) el precio es hasta 15% menor. Contáctanos por WhatsApp y te confirmamos disponibilidad en minutos.</div>
+
+      <div class="article-modal-cta">
+        <p>¿Listo para el siguiente fin de semana? Disponibilidad limitada en temporada alta.</p>
+        <a href="https://wa.me/5215562513258?text=¡Hola!%20Vi%20el%20itinerario%20express%20en%20su%20página%20y%20quiero%20saber%20disponibilidad." target="_blank">📲 Verificar disponibilidad ahora</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openArticleModal(id) {
+    const overlay = document.getElementById(id);
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // scroll modal to top each time
+    overlay.scrollTop = 0;
+  }
+  function closeArticleModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  // Close on overlay click (outside the box)
+  document.querySelectorAll('.article-modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeArticleModal(overlay.id);
+    });
+  });
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.article-modal-overlay.active').forEach(o => {
+        closeArticleModal(o.id);
+      });
+    }
   });
 </script>
 
