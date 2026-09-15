@@ -724,7 +724,7 @@
 
       /* ===================== SUPERHOST / NOSOTROS ===================== */
       .superhost {
-        background: linear-gradient(135deg, var(--cantera) 0%, #6B4226 100%);
+        background: linear-gradient(150deg, #6E4A2E 0%, #2E4E44 100%);
         color: white; text-align: center;
       }
       .superhost .section-title { color: white; }
@@ -979,7 +979,7 @@
         to   { opacity: 1; transform: translateY(0) scale(1); }
       }
       .article-modal-hero {
-        background: linear-gradient(160deg, #8B5E3C 0%, #4A7C6F 100%);
+        background: linear-gradient(150deg, #6E4A2E 0%, #2E4E44 100%);
         border-radius: 20px 20px 0 0; padding: 2.5rem 2rem 2rem;
         position: relative;
       }
@@ -1017,7 +1017,7 @@
         margin: 1rem 0; font-size: 0.88rem; color: var(--text); line-height: 1.6;
       }
       .article-modal-cta {
-        background: linear-gradient(135deg, #8B5E3C, #4A7C6F);
+        background: linear-gradient(150deg, #6E4A2E 0%, #2E4E44 100%);
         border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 2rem;
       }
       .article-modal-cta p { color: rgba(255,255,255,0.85) !important; font-size: 0.88rem !important; margin-bottom: 0.8rem; }
@@ -2354,6 +2354,14 @@
   .wa-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
   .price-note { color: var(--text-soft); }
   .wa-option-icon { background: var(--surface2) !important; }
+  .direct-badge {
+    background: color-mix(in srgb, var(--forest) 14%, transparent) !important;
+    color: var(--forest) !important;
+    border: 1px solid color-mix(in srgb, var(--forest) 30%, transparent);
+  }
+  @supports not (color: color-mix(in srgb, red, blue)) {
+    .direct-badge { background: rgba(59,99,87,0.14) !important; border-color: rgba(59,99,87,0.30); }
+  }
 
   /* ---- Barra de progreso de scroll (elegante) ---- */
   #scroll-progress {
