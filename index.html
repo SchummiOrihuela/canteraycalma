@@ -410,43 +410,62 @@
 
     <style>
       :root {
-        --cantera: #8B5E3C;
-        --calma: #4A7C6F;
-        --arena: #F5EFE6;
-        --noche: #1C1C1C;
-        --blanco: #FFFFFF;
-        --gris: #6B7280;
-        /* Tokens semánticos — light */
-        --bg:           #FFFFFF;
+        /* ===== Paleta unificada: cremas + verde forest + cantera ===== */
+        --forest:       #3B6357;   /* verde forest — color firma */
+        --forest-deep:  #2E4E44;
+        --forest-soft:  #6E9A8D;
+        --cantera:      #8B5E3C;   /* café cantera — CTA cálido */
+        --cantera-soft: #A67C52;
+        --calma:        #3B6357;   /* alias legacy → forest */
+        --arena:        #F4EEE3;   /* crema */
+        --noche:        #23201B;
+        --blanco:       #FFFFFF;
+        --gris:         #6E6152;
+        /* Acentos semánticos (mismo hue en ambos temas) */
+        --accent:       var(--forest);
+        --accent-soft:  #6E9A8D;
+        --gold:         #B98B4E;   /* dorado sobrio para ahorros/precio */
+        /* Tokens semánticos — light (cremita) */
+        --bg:           #FBF8F1;
         --surface:      #FFFFFF;
-        --surface2:     #F8F7F5;
-        --surface3:     #faf9f6;
-        --border:       #e5e0d8;
-        --text:         #1C1C1C;
-        --text-soft:    #6B7280;
-        --nav-bg:       rgba(255,255,255,0.95);
-        --mobile-bg:    #ffffff;
-        --card-shadow:  0 2px 14px rgba(0,0,0,0.07);
-        --card-hover:   0 10px 30px rgba(0,0,0,0.12);
+        --surface2:     #F4EEE3;
+        --surface3:     #EFE7D8;
+        --border:       #E4DAC8;
+        --text:         #23201B;
+        --text-soft:    #6E6152;
+        --nav-bg:       rgba(251,248,241,0.90);
+        --mobile-bg:    #FBF8F1;
+        --card-shadow:  0 4px 20px rgba(59,99,87,0.08);
+        --card-hover:   0 16px 40px rgba(59,99,87,0.16);
         --input-bg:     #ffffff;
-        --input-border: #ddd;
-        --form-bg:      #F5EFE6;
+        --input-border: #E4DAC8;
+        --form-bg:      #F4EEE3;
       }
       html.dark {
-        --bg:           #141210;
-        --surface:      #1E1B18;
-        --surface2:     #252017;
-        --surface3:     #1A1714;
-        --border:       #332E28;
-        --text:         #EDE8E0;
-        --text-soft:    #9A9080;
-        --nav-bg:       rgba(20,18,16,0.97);
-        --mobile-bg:    #1E1B18;
-        --card-shadow:  0 2px 14px rgba(0,0,0,0.4);
-        --card-hover:   0 10px 30px rgba(0,0,0,0.55);
-        --input-bg:     #252017;
-        --input-border: #3D3630;
-        --form-bg:      #1E1B18;
+        /* Dark: forest-charcoal con la misma identidad crema+verde */
+        --forest:       #7FB3A2;   /* verde más claro para contraste */
+        --forest-deep:  #A7CFC2;
+        --forest-soft:  #5C8578;
+        --cantera:      #C08A5A;   /* café más luminoso en dark */
+        --cantera-soft: #A67C52;
+        --calma:        #7FB3A2;
+        --accent:       #7FB3A2;
+        --accent-soft:  #5C8578;
+        --gold:         #D6AC6E;
+        --bg:           #141E1A;
+        --surface:      #1B2A25;
+        --surface2:     #21332C;
+        --surface3:     #182420;
+        --border:       #2E4139;
+        --text:         #ECE6D8;
+        --text-soft:    #A6B3AC;
+        --nav-bg:       rgba(20,30,26,0.92);
+        --mobile-bg:    #1B2A25;
+        --card-shadow:  0 4px 20px rgba(0,0,0,0.45);
+        --card-hover:   0 16px 40px rgba(0,0,0,0.6);
+        --input-bg:     #21332C;
+        --input-border: #2E4139;
+        --form-bg:      #1B2A25;
       }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html { scroll-behavior: smooth; }
@@ -1191,19 +1210,19 @@
      SECCIÓN: PRECIO DIRECTO VS AIRBNB — Cantera & Calma
      ============================================================ -->
 
-<section id="reserva-directa" style="padding: 60px 20px; background: var(--bg-secondary, #f9f6f2); font-family: inherit;">
+<section id="reserva-directa" class="price-sec" style="padding: 60px 20px; font-family: inherit;">
   <div style="max-width: 1100px; margin: 0 auto;">
 
     <!-- Encabezado -->
-    <p style="text-align:center; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#c1834a; margin-bottom:8px;">Precio directo vs Airbnb</p>
-    <h2 style="text-align:center; font-size:clamp(22px,4vw,34px); font-weight:700; color:#1a0f00; margin-bottom:8px; font-family:'Georgia',serif;">¿Por qué reservar directo con nosotros?</h2>
-    <p style="text-align:center; font-size:15px; color:#5a3a20; margin-bottom:32px;">Lo que ves es lo que pagas. Sin tarifas ocultas, sin sorpresas al final.</p>
+    <p class="price-eyebrow" style="text-align:center; font-size:11px; letter-spacing:3px; text-transform:uppercase; margin-bottom:8px;">Precio directo vs Airbnb</p>
+    <h2 class="price-title" style="text-align:center; font-size:clamp(22px,4vw,34px); font-weight:700; margin-bottom:8px;">¿Por qué reservar directo con nosotros?</h2>
+    <p class="price-sub" style="text-align:center; font-size:15px; margin-bottom:32px;">Lo que ves es lo que pagas. Sin tarifas ocultas, sin sorpresas al final.</p>
 
     <!-- Banner de advertencia -->
-    <div style="background:#fff8f0; border:1px solid #f0c080; border-radius:12px; padding:16px 20px; display:flex; gap:14px; align-items:flex-start; margin-bottom:28px; max-width:860px; margin-left:auto; margin-right:auto;">
+    <div class="price-warn" style="border-radius:12px; padding:16px 20px; display:flex; gap:14px; align-items:flex-start; margin-bottom:28px; max-width:860px; margin-left:auto; margin-right:auto;">
       <div style="font-size:22px; flex-shrink:0; margin-top:2px;">⚠️</div>
-      <p style="font-size:13px; color:#5a3a20; line-height:1.6; margin:0;">
-        <strong style="color:#1a0f00;">Airbnb cobra tarifas extra que no siempre ves al inicio:</strong>
+      <p style="font-size:13px; line-height:1.6; margin:0;">
+        <strong>Airbnb cobra tarifas extra que no siempre ves al inicio:</strong>
         tarifa de servicio (~15%), tarifa de limpieza e impuestos. El precio que ves en su plataforma <em>no es el precio final</em>.
         Reservando directo con Emmanuel pagas el precio cerrado, sin cargos adicionales.
       </p>
@@ -1211,125 +1230,79 @@
 
     <!-- Chips de beneficios -->
     <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:32px;">
-      <span style="font-size:12px; padding:5px 14px; border-radius:999px; background:#e8f5ee; color:#1a6640; border:1px solid #a8d8bc;">✓ Sin tarifa de servicio</span>
-      <span style="font-size:12px; padding:5px 14px; border-radius:999px; background:#e8f5ee; color:#1a6640; border:1px solid #a8d8bc;">✓ Sin tarifa de limpieza oculta</span>
-      <span style="font-size:12px; padding:5px 14px; border-radius:999px; background:#e8f5ee; color:#1a6640; border:1px solid #a8d8bc;">✓ Confirmación inmediata por WhatsApp</span>
-      <span style="font-size:12px; padding:5px 14px; border-radius:999px; background:#e8f5ee; color:#1a6640; border:1px solid #a8d8bc;">✓ Trato directo con Emmanuel</span>
-      <span style="font-size:12px; padding:5px 14px; border-radius:999px; background:#e8f5ee; color:#1a6640; border:1px solid #a8d8bc;">✓ SuperAnfitrión 8 años consecutivos</span>
+      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;">✓ Sin tarifa de servicio</span>
+      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;">✓ Sin tarifa de limpieza oculta</span>
+      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;">✓ Confirmación inmediata por WhatsApp</span>
+      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;">✓ Trato directo con Emmanuel</span>
+      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;">✓ SuperAnfitrión 8 años consecutivos</span>
     </div>
 
     <!-- Grid de propiedades -->
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-bottom:16px;">
 
       <!-- Departamento Cantera -->
-      <div style="background:#fff; border:1px solid #e8d8c8; border-radius:14px; overflow:hidden;">
-        <div style="background:#2d1507; padding:14px 18px;">
-          <p style="font-size:11px; color:#9a7060; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Departamento completo · 4 personas</p>
-          <p style="font-size:17px; font-weight:700; color:#f5ede0; margin:0; font-family:'Georgia',serif;">Departamento Cantera</p>
+      <div class="price-card">
+        <div class="price-card-head">
+          <p class="kicker" style="font-size:11px; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Departamento completo · 4 personas</p>
+          <p class="name" style="font-size:17px; font-weight:700; margin:0;">Departamento Cantera</p>
         </div>
         <div style="padding:16px 18px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#f5f0ea; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
-            <span style="font-size:12px; color:#7a5a3a;">Total en Airbnb</span>
-            <span style="font-size:14px; color:#9a7a6a; text-decoration:line-through;">$1,690 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#e8f5ee; border:1px solid #a8d8bc; border-radius:8px; padding:10px 12px; margin-bottom:8px; position:relative;">
-            <span style="font-size:12px; color:#1a6640; font-weight:600;">⭐ Precio directo</span>
-            <span style="font-size:20px; font-weight:700; color:#1a6640;">$1,400 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#fff3cd; border-radius:8px; padding:9px 12px; margin-bottom:14px;">
-            <span style="font-size:12px; color:#856404; font-weight:600;">🎉 Tu ahorro por noche</span>
-            <span style="font-size:16px; font-weight:700; color:#856404;">$290 MXN</span>
-          </div>
-          <a href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20del%20Departamento%20Cantera%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F"
-             style="display:block; width:100%; padding:11px; background:#25d366; border-radius:9px; color:#fff; font-size:13px; font-weight:700; text-align:center; text-decoration:none; box-sizing:border-box;">
-            💬 Reservar directo — $1,400/noche
-          </a>
-          <p style="font-size:11px; color:#9a7a5a; text-align:center; margin:6px 0 0;">★ 4.97 · +157 reseñas · Favorito entre huéspedes</p>
+          <div class="price-row"><span class="lbl">Total en Airbnb</span><span class="old">$1,690 MXN</span></div>
+          <div class="price-row price-row-direct"><span class="lbl">⭐ Precio directo</span><span class="val">$1,400 MXN</span></div>
+          <div class="price-row price-row-save"><span class="lbl">🎉 Tu ahorro por noche</span><span class="val">$290 MXN</span></div>
+          <a class="wa-btn" href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20del%20Departamento%20Cantera%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F">💬 Reservar directo — $1,400/noche</a>
+          <p class="price-note" style="font-size:11px; text-align:center; margin:6px 0 0;">★ 4.97 · +157 reseñas · Favorito entre huéspedes</p>
         </div>
       </div>
 
       <!-- Departamento Calma -->
-      <div style="background:#fff; border:1px solid #e8d8c8; border-radius:14px; overflow:hidden;">
-        <div style="background:#2d1507; padding:14px 18px;">
-          <p style="font-size:11px; color:#9a7060; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Departamento completo · 4 personas</p>
-          <p style="font-size:17px; font-weight:700; color:#f5ede0; margin:0; font-family:'Georgia',serif;">Departamento Calma</p>
+      <div class="price-card">
+        <div class="price-card-head">
+          <p class="kicker" style="font-size:11px; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Departamento completo · 4 personas</p>
+          <p class="name" style="font-size:17px; font-weight:700; margin:0;">Departamento Calma</p>
         </div>
         <div style="padding:16px 18px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#f5f0ea; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
-            <span style="font-size:12px; color:#7a5a3a;">Total en Airbnb</span>
-            <span style="font-size:14px; color:#9a7a6a; text-decoration:line-through;">$1,648 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#e8f5ee; border:1px solid #a8d8bc; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
-            <span style="font-size:12px; color:#1a6640; font-weight:600;">⭐ Precio directo</span>
-            <span style="font-size:20px; font-weight:700; color:#1a6640;">$1,350 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#fff3cd; border-radius:8px; padding:9px 12px; margin-bottom:14px;">
-            <span style="font-size:12px; color:#856404; font-weight:600;">🎉 Tu ahorro por noche</span>
-            <span style="font-size:16px; font-weight:700; color:#856404;">$298 MXN</span>
-          </div>
-          <a href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20del%20Departamento%20Calma%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F"
-             style="display:block; width:100%; padding:11px; background:#25d366; border-radius:9px; color:#fff; font-size:13px; font-weight:700; text-align:center; text-decoration:none; box-sizing:border-box;">
-            💬 Reservar directo — $1,350/noche
-          </a>
-          <p style="font-size:11px; color:#9a7a5a; text-align:center; margin:6px 0 0;">★ 4.91 · +162 reseñas · Favorito entre huéspedes</p>
+          <div class="price-row"><span class="lbl">Total en Airbnb</span><span class="old">$1,648 MXN</span></div>
+          <div class="price-row price-row-direct"><span class="lbl">⭐ Precio directo</span><span class="val">$1,350 MXN</span></div>
+          <div class="price-row price-row-save"><span class="lbl">🎉 Tu ahorro por noche</span><span class="val">$298 MXN</span></div>
+          <a class="wa-btn" href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20del%20Departamento%20Calma%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F">💬 Reservar directo — $1,350/noche</a>
+          <p class="price-note" style="font-size:11px; text-align:center; margin:6px 0 0;">★ 4.91 · +162 reseñas · Favorito entre huéspedes</p>
         </div>
       </div>
 
       <!-- Habitación Magia -->
-      <div style="background:#fff; border:1px solid #e8d8c8; border-radius:14px; overflow:hidden;">
-        <div style="background:#2d1507; padding:14px 18px;">
-          <p style="font-size:11px; color:#9a7060; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Habitación privada · 2 personas</p>
-          <p style="font-size:17px; font-weight:700; color:#f5ede0; margin:0; font-family:'Georgia',serif;">Habitación Magia</p>
+      <div class="price-card">
+        <div class="price-card-head">
+          <p class="kicker" style="font-size:11px; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Habitación privada · 2 personas</p>
+          <p class="name" style="font-size:17px; font-weight:700; margin:0;">Habitación Magia</p>
         </div>
         <div style="padding:16px 18px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#f5f0ea; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
-            <span style="font-size:12px; color:#7a5a3a;">Total en Airbnb</span>
-            <span style="font-size:14px; color:#9a7a6a; text-decoration:line-through;">$736 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#e8f5ee; border:1px solid #a8d8bc; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
-            <span style="font-size:12px; color:#1a6640; font-weight:600;">⭐ Precio directo</span>
-            <span style="font-size:20px; font-weight:700; color:#1a6640;">$600 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#fff3cd; border-radius:8px; padding:9px 12px; margin-bottom:14px;">
-            <span style="font-size:12px; color:#856404; font-weight:600;">🎉 Tu ahorro por noche</span>
-            <span style="font-size:16px; font-weight:700; color:#856404;">$136 MXN</span>
-          </div>
-          <a href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20de%20la%20Habitaci%C3%B3n%20Magia%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F"
-             style="display:block; width:100%; padding:11px; background:#25d366; border-radius:9px; color:#fff; font-size:13px; font-weight:700; text-align:center; text-decoration:none; box-sizing:border-box;">
-            💬 Reservar directo — $600/noche
-          </a>
-          <p style="font-size:11px; color:#9a7a5a; text-align:center; margin:6px 0 0;">★ 4.9 · +42 reseñas · Favorito entre huéspedes</p>
+          <div class="price-row"><span class="lbl">Total en Airbnb</span><span class="old">$736 MXN</span></div>
+          <div class="price-row price-row-direct"><span class="lbl">⭐ Precio directo</span><span class="val">$600 MXN</span></div>
+          <div class="price-row price-row-save"><span class="lbl">🎉 Tu ahorro por noche</span><span class="val">$136 MXN</span></div>
+          <a class="wa-btn" href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20de%20la%20Habitaci%C3%B3n%20Magia%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F">💬 Reservar directo — $600/noche</a>
+          <p class="price-note" style="font-size:11px; text-align:center; margin:6px 0 0;">★ 4.9 · +42 reseñas · Favorito entre huéspedes</p>
         </div>
       </div>
 
       <!-- Casa Marne 13 -->
-      <div style="background:#fff; border:1px solid #e8d8c8; border-radius:14px; overflow:hidden;">
-        <div style="background:#2d1507; padding:14px 18px;">
-          <p style="font-size:11px; color:#9a7060; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Casa completa · 2 hab · 4 personas</p>
-          <p style="font-size:17px; font-weight:700; color:#f5ede0; margin:0; font-family:'Georgia',serif;">Casa Marne 13</p>
+      <div class="price-card">
+        <div class="price-card-head">
+          <p class="kicker" style="font-size:11px; margin:0 0 4px; text-transform:uppercase; letter-spacing:1px;">Casa completa · 2 hab · 4 personas</p>
+          <p class="name" style="font-size:17px; font-weight:700; margin:0;">Casa Marne 13</p>
         </div>
         <div style="padding:16px 18px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#f5f0ea; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
-            <span style="font-size:12px; color:#7a5a3a;">Total en Airbnb</span>
-            <span style="font-size:14px; color:#9a7a6a; text-decoration:line-through;">$1,470 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#e8f5ee; border:1px solid #a8d8bc; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
-            <span style="font-size:12px; color:#1a6640; font-weight:600;">⭐ Precio directo</span>
-            <span style="font-size:20px; font-weight:700; color:#1a6640;">$1,250 MXN</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#fff3cd; border-radius:8px; padding:9px 12px; margin-bottom:14px;">
-            <span style="font-size:12px; color:#856404; font-weight:600;">🎉 Tu ahorro por noche</span>
-            <span style="font-size:16px; font-weight:700; color:#856404;">$220 MXN</span>
-          </div>
-          <a href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20de%20Casa%20Marne%2013%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F"
-             style="display:block; width:100%; padding:11px; background:#25d366; border-radius:9px; color:#fff; font-size:13px; font-weight:700; text-align:center; text-decoration:none; box-sizing:border-box;">
-            💬 Reservar directo — $1,250/noche
-          </a>
-          <p style="font-size:11px; color:#9a7a5a; text-align:center; margin:6px 0 0;">★ 4.91 · +88 reseñas · Favorito entre huéspedes</p>
+          <div class="price-row"><span class="lbl">Total en Airbnb</span><span class="old">$1,470 MXN</span></div>
+          <div class="price-row price-row-direct"><span class="lbl">⭐ Precio directo</span><span class="val">$1,250 MXN</span></div>
+          <div class="price-row price-row-save"><span class="lbl">🎉 Tu ahorro por noche</span><span class="val">$220 MXN</span></div>
+          <a class="wa-btn" href="https://wa.me/5215562513258?text=Hola%20Emmanuel!%20Vi%20el%20precio%20directo%20de%20Casa%20Marne%2013%20en%20su%20p%C3%A1gina%20web.%20%C2%BFTienen%20disponibilidad%3F">💬 Reservar directo — $1,250/noche</a>
+          <p class="price-note" style="font-size:11px; text-align:center; margin:6px 0 0;">★ 4.91 · +88 reseñas · Favorito entre huéspedes</p>
         </div>
       </div>
 
-    <p style="text-align:center; font-size:12px; color:#9a7a5a;">El precio directo es precio final — NO cargos adicionales.</p>
+    </div>
+
+    <p class="price-note" style="text-align:center; font-size:12px;">El precio directo es precio final — NO cargos adicionales.</p>
 
   </div>
 </section>
@@ -2330,6 +2303,72 @@
   [style*="Georgia"] { font-family: 'Fraunces', 'Playfair Display', Georgia, serif !important; letter-spacing: -0.01em; }
   .hero-badge, .section-tag { letter-spacing: 0.12em; font-weight: 600; }
 
+  /* ---- Sección Precio directo (theme-aware) ---- */
+  .price-sec { background: var(--surface2); transition: background .3s; }
+  .price-eyebrow { color: var(--cantera); }
+  .price-title { color: var(--text); }
+  .price-sub { color: var(--text-soft); }
+  .price-warn {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+  }
+  .price-warn p, .price-warn strong, .price-warn em { color: var(--text-soft); }
+  .price-warn strong { color: var(--text); }
+  .price-chip {
+    background: color-mix(in srgb, var(--forest) 14%, transparent);
+    color: var(--forest); border: 1px solid color-mix(in srgb, var(--forest) 35%, transparent);
+  }
+  .price-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden; box-shadow: var(--card-shadow);
+    transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: var(--card-hover); }
+  .price-card-head { background: var(--forest-deep); padding: 14px 18px; }
+  .price-card-head .kicker { color: color-mix(in srgb, #fff 72%, var(--forest)); }
+  .price-card-head .name { color: #FBF8F1; }
+  .price-row {
+    display:flex; justify-content:space-between; align-items:center;
+    border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+    background: var(--surface2);
+  }
+  .price-row .lbl { color: var(--text-soft); font-size: 12px; }
+  .price-row .old { color: var(--text-soft); text-decoration: line-through; font-size: 14px; }
+  .price-row-direct {
+    background: color-mix(in srgb, var(--forest) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--forest) 30%, transparent);
+  }
+  .price-row-direct .lbl { color: var(--forest); font-weight: 600; }
+  .price-row-direct .val { color: var(--forest); font-size: 20px; font-weight: 700; }
+  .price-row-save {
+    background: color-mix(in srgb, var(--gold) 16%, transparent);
+    margin-bottom: 14px;
+  }
+  .price-row-save .lbl, .price-row-save .val { color: var(--gold); font-weight: 700; }
+  .price-row-save .val { font-size: 16px; }
+  .wa-btn {
+    display:block; width:100%; padding:11px; background:#25D366; border-radius:10px;
+    color:#fff; font-size:13px; font-weight:700; text-align:center; text-decoration:none;
+    box-sizing:border-box; transition: transform .2s, filter .2s;
+  }
+  .wa-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+  .price-note { color: var(--text-soft); }
+  .wa-option-icon { background: var(--surface2) !important; }
+
+  /* ---- Barra de progreso de scroll (elegante) ---- */
+  #scroll-progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0;
+    background: linear-gradient(90deg, var(--forest), var(--cantera));
+    z-index: 10000; transition: width .1s linear; pointer-events: none;
+  }
+  /* Fallback si el navegador no soporta color-mix */
+  @supports not (color: color-mix(in srgb, red, blue)) {
+    .price-chip { background: rgba(59,99,87,0.12); border-color: rgba(59,99,87,0.35); }
+    .price-row-direct { background: rgba(59,99,87,0.12); border-color: rgba(59,99,87,0.30); }
+    .price-row-save { background: rgba(185,139,78,0.16); }
+    .price-card-head .kicker { color: #cfe0d9; }
+  }
+
   /* ---- Lightbox de galería ---- */
   .depto-img, .host-photo { cursor: zoom-in; }
   #lightbox {
@@ -2360,6 +2399,7 @@
   #lightbox .lb-prev { left: 8px; } #lightbox .lb-next { right: 8px; }
 </style>
 
+<div id="scroll-progress"></div>
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de fotos">
   <button class="lb-close" aria-label="Cerrar">&times;</button>
   <button class="lb-nav lb-prev" aria-label="Anterior">&#8249;</button>
@@ -2417,6 +2457,22 @@
         });
       }, { threshold: 0.6 });
       nums.forEach(function (el) { io2.observe(el); });
+    }
+
+    // 3b) Barra de progreso de scroll
+    var bar = document.getElementById('scroll-progress');
+    if (bar) {
+      var ticking = false;
+      function updateBar() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(updateBar); ticking = true; }
+      }, { passive: true });
+      updateBar();
     }
 
     // 4) Stagger sutil en tarjetas del mismo grupo
