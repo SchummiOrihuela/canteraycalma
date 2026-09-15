@@ -1210,27 +1210,15 @@
   <div style="max-width: 1100px; margin: 0 auto;">
 
     <!-- Encabezado -->
-    <p class="price-eyebrow" style="text-align:center; font-size:11px; letter-spacing:3px; text-transform:uppercase; margin-bottom:8px;">Precio directo vs Airbnb</p>
-    <h2 class="price-title" style="text-align:center; font-size:clamp(22px,4vw,34px); font-weight:700; margin-bottom:8px;">¿Por qué reservar directo con nosotros?</h2>
-    <p class="price-sub" style="text-align:center; font-size:15px; margin-bottom:32px;">Lo que ves es lo que pagas. Sin tarifas ocultas, sin sorpresas al final.</p>
+    <p class="price-eyebrow" style="text-align:center; font-size:11px; letter-spacing:3px; text-transform:uppercase; margin-bottom:8px;">Precio directo · Sin comisiones</p>
+    <h2 class="price-title" style="text-align:center; font-size:clamp(24px,4vw,36px); font-weight:700; margin-bottom:8px;">Reserva directo y ahorra</h2>
+    <p class="price-sub" style="text-align:center; font-size:15px; margin-bottom:24px;">Sin la comisión de Airbnb. Lo que ves es lo que pagas.</p>
 
-    <!-- Banner de advertencia -->
-    <div class="price-warn" style="border-radius:12px; padding:16px 20px; display:flex; gap:14px; align-items:flex-start; margin-bottom:28px; max-width:860px; margin-left:auto; margin-right:auto;">
-      <div style="font-size:22px; flex-shrink:0; margin-top:2px;"><i class="fa-solid fa-triangle-exclamation ico"></i></div>
-      <p style="font-size:13px; line-height:1.6; margin:0;">
-        <strong>Airbnb cobra tarifas extra que no siempre ves al inicio:</strong>
-        tarifa de servicio (~15%), tarifa de limpieza e impuestos. El precio que ves en su plataforma <em>no es el precio final</em>.
-        Reservando directo con Emmanuel pagas el precio cerrado, sin cargos adicionales.
-      </p>
-    </div>
-
-    <!-- Chips de beneficios -->
-    <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:32px;">
-      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;"><i class="fa-solid fa-check ico"></i> Sin tarifa de servicio</span>
-      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;"><i class="fa-solid fa-check ico"></i> Sin tarifa de limpieza oculta</span>
-      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;"><i class="fa-solid fa-check ico"></i> Confirmación inmediata por WhatsApp</span>
-      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;"><i class="fa-solid fa-check ico"></i> Trato directo con Emmanuel</span>
-      <span class="price-chip" style="font-size:12px; padding:5px 14px; border-radius:999px;"><i class="fa-solid fa-check ico"></i> SuperAnfitrión 8 años consecutivos</span>
+    <!-- Beneficios compactos -->
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:34px;">
+      <span class="price-chip" style="font-size:13px; padding:7px 16px; border-radius:999px; font-weight:600;"><i class="fa-solid fa-tag ico"></i> Hasta 15% menos</span>
+      <span class="price-chip" style="font-size:13px; padding:7px 16px; border-radius:999px; font-weight:600;"><i class="fa-solid fa-circle-check ico"></i> Precio final, sin sorpresas</span>
+      <span class="price-chip" style="font-size:13px; padding:7px 16px; border-radius:999px; font-weight:600;"><i class="fa-brands fa-whatsapp ico"></i> Confirmación al instante</span>
     </div>
 
     <!-- Grid de propiedades -->
@@ -1928,7 +1916,7 @@
       <div class="wa-option-icon" style="background:#f5efe6;"><i class="fa-solid fa-house-chimney ico"></i></div>
       <div class="wa-option-text">
         <span class="wa-option-name">Casa Marne 13</span>
-        <span class="wa-option-detail">2 habitaciones · ★ 4.91</span>
+        <span class="wa-option-detail">Hasta 4 personas · ★ 4.91</span>
       </div>
     </a>
     <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%E2%9C%A8" class="wa-option" target="_blank" rel="noopener">
@@ -2363,12 +2351,86 @@
 
   /* ---- Barra de progreso de scroll (elegante) ---- */
   #scroll-progress {
-    position: fixed; top: 0; left: 0; height: 4px; width: 0;
-    background: linear-gradient(90deg, var(--forest) 0%, var(--forest-soft) 50%, var(--cantera) 100%);
-    box-shadow: 0 0 10px rgba(59,99,87,0.5);
-    border-radius: 0 3px 3px 0;
-    z-index: 10001; transition: width .12s ease-out; pointer-events: none;
+    position: fixed; top: 0; left: 0; height: 5px; width: 0;
+    background: linear-gradient(90deg, #C79A3C 0%, #D9A94A 45%, #3B6357 100%);
+    box-shadow: 0 1px 12px rgba(199,154,60,0.65);
+    border-radius: 0 4px 4px 0;
+    z-index: 10001; transition: width .1s ease-out; pointer-events: none;
   }
+
+  /* ===================== ELEVACIÓN ELEGANTE (dorado + verdes matizados) ===================== */
+  :root { --gold-line: rgba(185,139,78,0.55); --gold-soft: rgba(185,139,78,0.14); --wa: #2E9E5B; --wa-dark: #24824A; }
+
+  /* Stats: números en dorado sobre el café */
+  .stat-num { color: #E9C583; }
+  .stat-item { border-right-color: rgba(255,255,255,0.14); }
+
+  /* Botones hero: contorno dorado sutil */
+  .btn-primary, .btn-secondary {
+    border: 1px solid rgba(233,197,131,0.35);
+    box-shadow: 0 6px 18px rgba(59,99,87,0.14);
+  }
+  .btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-2px); box-shadow: 0 10px 26px rgba(110,74,46,0.28);
+    border-color: rgba(233,197,131,0.7);
+  }
+
+  /* Verde WhatsApp matizado (menos chillante) */
+  .wa-btn, .depto-link-wa { background: var(--wa) !important; }
+  .wa-btn:hover, .depto-link-wa:hover { background: var(--wa-dark) !important; }
+
+  /* Tarjetas de precios: contorno dorado + zoom elegante */
+  .price-card { border: 1.5px solid var(--gold-line); }
+  .price-card:hover { transform: translateY(-5px) scale(1.015); box-shadow: 0 18px 44px rgba(110,74,46,0.20); }
+
+  /* Tarjetas de departamentos: contorno dorado + zoom */
+  .depto-card { border: 1.5px solid var(--gold-line); }
+  .depto-card:hover { transform: translateY(-6px) scale(1.012); box-shadow: 0 18px 44px rgba(110,74,46,0.20); }
+
+  /* "Reserve y ahorre" (direct-badge): dorado y con zoom */
+  .direct-badge {
+    background: linear-gradient(135deg, #FBF1DC, #F4E4C4) !important;
+    color: #8A6524 !important; border: 1px solid var(--gold-line) !important;
+    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s;
+  }
+  .direct-badge:hover { transform: scale(1.035); box-shadow: 0 8px 22px rgba(185,139,78,0.30); }
+
+  /* Comer / Visitar: zoom elegante + realce dorado al hover */
+  .rest-card, .visitar-card { transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s, border-color .3s; }
+  .rest-card:hover, .visitar-card:hover {
+    transform: translateY(-5px) scale(1.02); box-shadow: 0 18px 40px rgba(59,99,87,0.16);
+  }
+
+  /* Óvalos del menú WhatsApp: crema cálido + hairline dorado, más vivos */
+  .wa-option {
+    background: linear-gradient(180deg, #FFFDF8, #FBF4E6) !important;
+    border: 1px solid var(--gold-line) !important;
+    box-shadow: 0 4px 14px rgba(110,74,46,0.14) !important;
+  }
+  .wa-option:hover { transform: scale(1.04); box-shadow: 0 8px 22px rgba(110,74,46,0.22) !important; border-color: var(--gold) !important; }
+  .wa-option-icon { background: var(--gold-soft) !important; }
+
+  /* FAQ: cada caja café clarito con contorno dorado */
+  .faq-seo { background: var(--surface2); }
+  .faq-item {
+    background: linear-gradient(180deg, #FFFDF9, #FBF5EA);
+    border: 1px solid var(--gold-line) !important;
+    border-radius: 14px; padding: 1.1rem 1.4rem !important; margin-bottom: .85rem;
+    transition: box-shadow .25s, border-color .25s, transform .25s;
+  }
+  .faq-item:hover { box-shadow: 0 8px 24px rgba(185,139,78,0.16); border-color: var(--gold) !important; }
+  .faq-item.open { box-shadow: 0 8px 24px rgba(185,139,78,0.18); }
+  .faq-question::after { color: var(--gold); }
+
+  /* Contacto: compacto y elegante */
+  #contacto { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  #contacto .contacto-grid { gap: 2.5rem; margin-top: 2rem; }
+  #contacto .contacto-form { padding: 1.6rem; border: 1px solid var(--gold-line); }
+  #contacto .contacto-info p { margin-bottom: 1.1rem; }
+  #contacto .clink { border: 1px solid var(--gold-soft); }
+  #contacto .clink:hover { background: var(--surface2); border-color: var(--gold-line); }
+  #contacto .form-group { margin-bottom: .8rem; }
+  #contacto .form-group textarea { min-height: 78px; }
   /* Fallback si el navegador no soporta color-mix */
   @supports not (color: color-mix(in srgb, red, blue)) {
     .price-chip { background: rgba(59,99,87,0.12); border-color: rgba(59,99,87,0.35); }
