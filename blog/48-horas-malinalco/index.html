@@ -36,7 +36,28 @@
   ]}
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYTVTPW566"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RYTVTPW566');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RYTVTPW566');
+<!-- === Tracking de conversiones GA4 (WhatsApp / Airbnb) === -->
+<script>
+(function(){
+  function track(a){
+    var href=(a.getAttribute('href')||'').toLowerCase();
+    var label=(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,80);
+    var loc=(a.closest('section')&&a.closest('section').id)||(a.className||'').toString().slice(0,40)||'sin-seccion';
+    if(href.indexOf('wa.me')>-1||href.indexOf('whatsapp')>-1){
+      gtag('event','click_whatsapp',{link_text:label,button_location:loc,page_path:location.pathname});
+    } else if(href.indexOf('airbnb')>-1){
+      gtag('event','click_airbnb',{link_text:label,button_location:loc,page_path:location.pathname});
+    }
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+    if(a) track(a);
+  },true);
+})();
+</script>
+<!-- === Fin tracking === -->
+</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
