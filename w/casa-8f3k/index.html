@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WiFi · Cantera & Calma</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#3B6357" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --forest:#3B6357; --cantera:#8B5E3C; --arena:#F4EEE3; --gold:#B98B4E;
+      --bg:#FBF8F1; --surface:#FFFFFF; --surface2:#F4EEE3; --border:#E4DAC8;
+      --text:#23201B; --text-soft:#6E6152;
+      --shadow:0 10px 40px rgba(59,99,87,0.14);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --forest:#7FB3A2; --cantera:#C08A5A; --gold:#D6AC6E;
+        --bg:#141E1A; --surface:#1B2A25; --surface2:#21332C; --border:#2E4139;
+        --text:#ECE6D8; --text-soft:#A6B3AC;
+        --shadow:0 10px 40px rgba(0,0,0,0.5);
+      }
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--bg);
+      min-height:100vh;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:560px;margin:0 auto;padding:0 16px 48px}
+
+    /* HERO */
+    .hero{position:relative;height:44vh;min-height:280px;max-height:420px;overflow:hidden;
+      display:flex;align-items:flex-end;
+      background-image:linear-gradient(180deg,rgba(35,32,27,0) 30%,rgba(35,32,27,.72) 100%),url('/images/huespedes/terraza1.webp');
+      background-size:cover;background-position:center}
+    @media (max-width:640px){
+      .hero{height:52vh;
+        background-image:linear-gradient(180deg,rgba(35,32,27,0) 30%,rgba(35,32,27,.72) 100%),url('/images/huespedes/terraza2.webp')}
+    }
+    .hero-inner{width:100%;max-width:560px;margin:0 auto;padding:0 20px 22px;color:#fff}
+    .hero .kicker{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+      opacity:.9;display:flex;align-items:center;gap:.5rem}
+    .hero h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:2rem;line-height:1.1;margin-top:.35rem;
+      text-shadow:0 2px 20px rgba(0,0,0,.35)}
+
+    /* CARD */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:22px;
+      box-shadow:var(--shadow);margin-top:-40px;position:relative;padding:26px 22px;overflow:hidden}
+    .card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--forest),var(--gold),var(--cantera))}
+    .intro{text-align:center;margin-bottom:22px}
+    .intro .badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface2);
+      color:var(--forest);font-weight:600;font-size:.8rem;padding:.4rem .9rem;border-radius:999px;margin-bottom:.9rem}
+    .intro h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;margin-bottom:.3rem}
+    .intro p{color:var(--text-soft);font-size:.95rem}
+
+    /* QR */
+    .qr-box{display:flex;flex-direction:column;align-items:center;gap:12px;
+      background:var(--surface2);border-radius:18px;padding:22px;margin-bottom:22px}
+    #qrcode{background:#fff;padding:14px;border-radius:14px;line-height:0;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    #qrcode img,#qrcode canvas{display:block;border-radius:4px}
+    .qr-hint{font-size:.85rem;color:var(--text-soft);text-align:center;max-width:300px}
+    .qr-hint b{color:var(--text)}
+
+    /* FIELDS */
+    .field{margin-bottom:14px}
+    .field label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--text-soft);margin-bottom:.4rem}
+    .val{display:flex;align-items:center;gap:10px;background:var(--surface2);
+      border:1px solid var(--border);border-radius:14px;padding:12px 14px}
+    .val .txt{flex:1;font-weight:600;font-size:1.05rem;letter-spacing:.02em;word-break:break-all}
+    .val .txt.mono{font-family:'Fraunces',monospace;letter-spacing:.06em}
+    .copy{flex-shrink:0;border:none;cursor:pointer;background:var(--forest);color:#fff;
+      font-weight:600;font-size:.85rem;padding:.6rem .9rem;border-radius:10px;
+      display:inline-flex;align-items:center;gap:.45rem;transition:transform .12s,background .2s}
+    .copy:active{transform:scale(.95)}
+    .copy.ok{background:var(--gold)}
+
+    /* 5G note */
+    .toggle5g{width:100%;text-align:left;background:transparent;border:1px dashed var(--border);
+      color:var(--text-soft);border-radius:12px;padding:12px 14px;cursor:pointer;font-size:.88rem;
+      display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .toggle5g i.fa-chevron-down{transition:transform .2s}
+    .toggle5g[aria-expanded="true"] i.fa-chevron-down{transform:rotate(180deg)}
+    .fivewrap{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .fivewrap.open{max-height:200px}
+    .fivewrap .val{margin-top:10px}
+
+    /* WhatsApp */
+    .wa{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:22px;
+      background:#25D366;color:#fff;text-decoration:none;font-weight:600;font-size:1rem;
+      padding:15px;border-radius:14px;transition:transform .12s,filter .2s}
+    .wa:active{transform:scale(.98)}
+    .wa:hover{filter:brightness(1.05)}
+
+    .foot{text-align:center;margin-top:26px;color:var(--text-soft);font-size:.85rem}
+    .foot a{color:var(--cantera);text-decoration:none;font-weight:600}
+    .foot .brand{font-family:'Fraunces',serif;color:var(--text);font-weight:600}
+
+    /* toast */
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+      background:var(--text);color:var(--bg);padding:.7rem 1.2rem;border-radius:999px;
+      font-size:.9rem;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;z-index:50;
+      box-shadow:0 8px 30px rgba(0,0,0,.25)}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="kicker"><i class="fa-solid fa-mug-hot"></i> Bienvenidos a casa</div>
+      <h1>Conéctate y ponte cómodo</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="intro">
+        <span class="badge"><i class="fa-solid fa-wifi"></i> Red WiFi</span>
+        <h2>Internet de alta velocidad</h2>
+        <p>Escanea el código o copia la contraseña. Así de fácil.</p>
+      </div>
+
+      <div class="qr-box">
+        <div id="qrcode" role="img" aria-label="Código QR para conectarse al WiFi"></div>
+        <p class="qr-hint">📷 Abre la <b>cámara</b> de tu celular y apúntala al código. Toca la notificación para conectarte <b>sin escribir nada</b>.</p>
+      </div>
+
+      <div class="field">
+        <label><i class="fa-solid fa-signal"></i> Nombre de red</label>
+        <div class="val">
+          <span class="txt" id="ssid">Totalplay-B19E</span>
+          <button class="copy" data-copy="Totalplay-B19E"><i class="fa-regular fa-copy"></i> Copiar</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><i class="fa-solid fa-key"></i> Contraseña</label>
+        <div class="val">
+          <span class="txt mono" id="pass">B19E6F57N6m7GzD6</span>
+          <button class="copy" data-copy="B19E6F57N6m7GzD6"><i class="fa-regular fa-copy"></i> Copiar</button>
+        </div>
+      </div>
+
+      <button class="toggle5g" aria-expanded="false" id="toggle5g">
+        <span><i class="fa-solid fa-bolt" style="color:var(--gold)"></i> ¿Quieres más velocidad? Usa la red 5G</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="fivewrap" id="fivewrap">
+        <div class="val">
+          <span class="txt">Totalplay-B19E-5G</span>
+          <button class="copy" data-copy="Totalplay-B19E-5G"><i class="fa-regular fa-copy"></i> Copiar</button>
+        </div>
+        <p class="qr-hint" style="margin-top:10px">Misma contraseña. La 5G es más rápida cerca del módem; la normal llega más lejos.</p>
+      </div>
+
+      <a class="wa" target="_blank" rel="noopener"
+         href="https://wa.me/525562513258?text=Hola%2C%20tengo%20una%20duda%20con%20el%20WiFi%20del%20departamento%20%F0%9F%98%8A">
+        <i class="fa-brands fa-whatsapp" style="font-size:1.3rem"></i> ¿Problemas para conectar? Escríbeme
+      </a>
+    </div>
+
+    <p class="foot">
+      Que disfrutes tu estancia · <span class="brand">Cantera & Calma</span><br>
+      <a href="/">canteraycalma.com</a>
+    </p>
+  </div>
+
+  <div class="toast" id="toast">¡Copiado!</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    // QR WiFi (2.4G, máxima compatibilidad). Formato estándar WIFI:...
+    (function(){
+      var payload = "WIFI:T:WPA;S:Totalplay-B19E;P:B19E6F57N6m7GzD6;;";
+      var size = Math.min(220, Math.max(180, window.innerWidth - 140));
+      try {
+        new QRCode(document.getElementById("qrcode"), {
+          text: payload, width: size, height: size,
+          colorDark: "#23201B", colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } catch(e){
+        document.getElementById("qrcode").innerHTML =
+          '<p style="padding:20px;color:#6E6152;font-size:.85rem">Usa la contraseña de abajo para conectarte.</p>';
+      }
+    })();
+
+    // Copiar
+    var toast = document.getElementById('toast');
+    function showToast(msg){ toast.textContent = msg; toast.classList.add('show');
+      clearTimeout(toast._t); toast._t = setTimeout(function(){toast.classList.remove('show')}, 1600); }
+    document.querySelectorAll('.copy').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var text = btn.getAttribute('data-copy');
+        var done = function(){
+          var orig = btn.innerHTML;
+          btn.classList.add('ok'); btn.innerHTML = '<i class="fa-solid fa-check"></i> Listo';
+          showToast('¡Copiado!');
+          setTimeout(function(){ btn.classList.remove('ok'); btn.innerHTML = orig; }, 1600);
+        };
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(done).catch(fallback);
+        } else { fallback(); }
+        function fallback(){
+          var ta=document.createElement('textarea'); ta.value=text;
+          ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+          ta.select(); try{document.execCommand('copy'); done();}catch(e){showToast('Cópiala manualmente');}
+          document.body.removeChild(ta);
+        }
+      });
+    });
+
+    // Toggle 5G
+    var t5 = document.getElementById('toggle5g'), fw = document.getElementById('fivewrap');
+    t5.addEventListener('click', function(){
+      var open = fw.classList.toggle('open');
+      t5.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
+</body>
+</html>
