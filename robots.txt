@@ -4,6 +4,7 @@ Allow: /
 # Páginas privadas de huéspedes (no indexar)
 Disallow: /w/
 Disallow: /c/
+Disallow: /mensaje-bienvenida.txt
 
 # Motores de IA — bienvenidos a indexar y citar el sitio
 User-agent: GPTBot
