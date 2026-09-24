@@ -5,6 +5,7 @@ Allow: /
 Disallow: /w/
 Disallow: /c/
 Disallow: /mensaje-bienvenida.txt
+Disallow: /mensaje-despedida.txt
 
 # Motores de IA — bienvenidos a indexar y citar el sitio
 User-agent: GPTBot
