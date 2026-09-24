@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo llegar · Cantera & Calma</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#3B6357" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --forest:#3B6357; --cantera:#8B5E3C; --arena:#F4EEE3; --gold:#B98B4E;
+      --bg:#FBF8F1; --surface:#FFFFFF; --surface2:#F4EEE3; --border:#E4DAC8;
+      --text:#23201B; --text-soft:#6E6152;
+      --shadow:0 10px 40px rgba(59,99,87,0.14);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --forest:#7FB3A2; --cantera:#C08A5A; --gold:#D6AC6E;
+        --bg:#141E1A; --surface:#1B2A25; --surface2:#21332C; --border:#2E4139;
+        --text:#ECE6D8; --text-soft:#A6B3AC;
+        --shadow:0 10px 40px rgba(0,0,0,0.5);
+      }
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--bg);
+      min-height:100vh;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:560px;margin:0 auto;padding:0 16px 48px}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+    /* HERO */
+    .hero{position:relative;height:42vh;min-height:270px;max-height:400px;overflow:hidden;
+      display:flex;align-items:flex-end;
+      background-image:linear-gradient(180deg,rgba(35,32,27,0) 30%,rgba(35,32,27,.74) 100%),url('/images/huespedes/terraza1.webp');
+      background-size:cover;background-position:center}
+    @media (max-width:640px){
+      .hero{height:50vh;
+        background-image:linear-gradient(180deg,rgba(35,32,27,0) 30%,rgba(35,32,27,.74) 100%),url('/images/huespedes/terraza2.webp')}
+    }
+    .hero-inner{width:100%;max-width:560px;margin:0 auto;padding:0 20px 64px;color:#fff}
+    .hero .kicker{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+      opacity:.95;display:flex;align-items:center;gap:.5rem;animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) both}
+    .hero h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:2.05rem;line-height:1.12;margin-top:.4rem;
+      text-shadow:0 2px 24px rgba(0,0,0,.45);animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) .08s both}
+
+    /* CARD */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:22px;
+      box-shadow:var(--shadow);margin-top:-36px;position:relative;padding:24px 20px;overflow:hidden;
+      animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) .18s both}
+    .card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--forest),var(--gold),var(--cantera))}
+
+    .sec-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;margin:6px 0 12px;
+      display:flex;align-items:center;gap:.55rem}
+    .sec-title i{color:var(--forest)}
+
+    /* ADDRESS */
+    .addr{background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:16px}
+    .addr .line1{font-weight:700;font-size:1.1rem;font-family:'Fraunces',serif}
+    .addr .line2{color:var(--text-soft);font-size:.92rem;margin-top:2px}
+    .addr .copy{margin-top:12px;width:100%;border:none;cursor:pointer;background:var(--forest);color:#fff;
+      font-weight:600;font-size:.9rem;padding:.7rem;border-radius:11px;
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;transition:transform .12s,background .2s}
+    .addr .copy:active{transform:scale(.98)} .addr .copy.ok{background:var(--gold)}
+
+    /* REFERENCE highlight */
+    .ref{margin-top:14px;background:linear-gradient(180deg,rgba(185,139,78,.12),rgba(185,139,78,.05));
+      border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:12px;padding:14px 16px;
+      display:flex;gap:12px;align-items:flex-start}
+    .ref i{color:var(--gold);font-size:1.3rem;margin-top:2px}
+    .ref .t{font-size:.92rem;line-height:1.5}
+    .ref .t b{font-family:'Fraunces',serif}
+
+    /* NAV BUTTONS */
+    .navbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+    .navbtns a{display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;
+      font-weight:600;font-size:.95rem;padding:14px;border-radius:13px;color:#fff;transition:transform .12s,filter .2s}
+    .navbtns a:active{transform:scale(.97)} .navbtns a:hover{filter:brightness(1.06)}
+    .b-maps{background:#1a73e8} .b-waze{background:#33ccff;color:#0a1f33!important}
+
+    /* MAP */
+    .mapbox{border-radius:16px;overflow:hidden;border:1px solid var(--border);line-height:0;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .mapbox iframe{width:100%;height:230px;border:0;display:block;filter:saturate(1.02)}
+
+    /* STEPS */
+    .steps{margin-top:8px;counter-reset:step}
+    .step{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--border)}
+    .step:last-child{border-bottom:none}
+    .step .num{counter-increment:step;flex-shrink:0;width:34px;height:34px;border-radius:50%;
+      background:var(--forest);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;
+      font-family:'Fraunces',serif;font-size:1.05rem}
+    .step .num::before{content:counter(step)}
+    .step .body h4{font-size:1rem;font-weight:600;margin-bottom:2px}
+    .step .body p{color:var(--text-soft);font-size:.9rem;line-height:1.5}
+    .step .body .hl{color:var(--cantera);font-weight:600}
+
+    .promise{margin-top:14px;text-align:center;background:var(--surface2);border-radius:14px;padding:14px;
+      font-size:.95rem}
+    .promise .big{font-family:'Fraunces',serif;font-weight:600;color:var(--forest);font-size:1.1rem}
+
+    /* WA / CALL */
+    .contact{display:grid;gap:10px;margin-top:16px}
+    .btn{display:flex;align-items:center;justify-content:center;gap:.6rem;text-decoration:none;
+      font-weight:600;font-size:1rem;padding:15px;border-radius:14px;transition:transform .12s,filter .2s;cursor:pointer;border:none}
+    .btn:active{transform:scale(.98)} .btn:hover{filter:brightness(1.05)}
+    .btn-wa{background:#25D366;color:#fff} .btn-call{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+    .btn-wa.out{background:var(--cantera)}
+
+    /* ROUTE TABS */
+    .routes{margin-top:8px}
+    .tabs{display:flex;gap:6px;background:var(--surface2);padding:5px;border-radius:14px;margin-bottom:14px}
+    .tabs button{flex:1;border:none;background:transparent;cursor:pointer;font-family:inherit;font-weight:600;
+      font-size:.9rem;color:var(--text-soft);padding:.6rem .3rem;border-radius:10px;transition:all .2s}
+    .tabs button.active{background:var(--surface);color:var(--forest);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .route{display:none;animation:fadeUp .4s ease both}
+    .route.active{display:block}
+    .route .meta{display:flex;gap:16px;margin-bottom:10px;flex-wrap:wrap}
+    .route .meta span{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;font-size:.9rem}
+    .route .meta i{color:var(--forest)}
+    .route p{color:var(--text-soft);font-size:.92rem;line-height:1.6}
+    .route .via{color:var(--text);font-weight:600}
+
+    .note{font-size:.82rem;color:var(--text-soft);text-align:center;margin-top:12px;line-height:1.5}
+
+    .divider{height:1px;background:var(--border);margin:24px 0}
+
+    .foot{text-align:center;margin-top:26px;color:var(--text-soft);font-size:.85rem}
+    .foot a{color:var(--cantera);text-decoration:none;font-weight:600}
+    .foot .brand{font-family:'Fraunces',serif;color:var(--text);font-weight:600}
+
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+      background:var(--text);color:var(--bg);padding:.7rem 1.2rem;border-radius:999px;
+      font-size:.9rem;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;z-index:50;
+      box-shadow:0 8px 30px rgba(0,0,0,.25)}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="kicker"><i class="fa-solid fa-location-dot"></i> Te estamos esperando</div>
+      <h1>Cómo llegar</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <!-- DIRECCIÓN -->
+      <h3 class="sec-title"><i class="fa-solid fa-house"></i> La dirección</h3>
+      <div class="addr">
+        <div class="line1">Av. del Progreso 24</div>
+        <div class="line2">Barrio de San Juan, Malinalco, Estado de México</div>
+        <button class="copy" data-copy="Av. del Progreso 24, Barrio de San Juan, Malinalco, Estado de México">
+          <i class="fa-regular fa-copy"></i> Copiar dirección
+        </button>
+      </div>
+
+      <div class="ref">
+        <i class="fa-solid fa-eye"></i>
+        <div class="t">Identifícala fácil: <b>casa color rojo ladrillo</b> con <b>4 balcones negros</b>, justo <b>junto a la iglesia del Barrio de San Juan</b>.</div>
+      </div>
+
+      <!-- BOTONES NAV -->
+      <div class="navbtns">
+        <a class="b-maps" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Ucr1DRTBHX28PU6QA">
+          <i class="fa-solid fa-diamond-turn-right"></i> Google Maps
+        </a>
+        <a class="b-waze" target="_blank" rel="noopener" href="https://waze.com/ul?ll=18.9543301,-99.4965212&navigate=yes">
+          <i class="fa-brands fa-waze"></i> Waze
+        </a>
+      </div>
+
+      <div class="mapbox">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Cantera & Calma"
+          src="https://www.google.com/maps?q=18.9543301,-99.4965212&hl=es&z=17&output=embed"></iframe>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- RUTAS -->
+      <h3 class="sec-title"><i class="fa-solid fa-route"></i> Ruta desde tu ciudad</h3>
+      <div class="routes">
+        <div class="tabs" role="tablist">
+          <button class="active" data-route="cdmx">CDMX</button>
+          <button data-route="toluca">Toluca</button>
+          <button data-route="cuerna">Cuernavaca</button>
+        </div>
+
+        <div class="route active" id="cdmx">
+          <div class="meta"><span><i class="fa-regular fa-clock"></i> ~2 h</span><span><i class="fa-solid fa-road"></i> ~115 km</span></div>
+          <p><span class="via">Vía Toluca / La Marquesa.</span> Toma la autopista México–Toluca, libra Toluca y sigue a <b>Tenango del Valle → Joquicingo → Malinalco</b>. El último tramo es carretera de montaña con curvas, maneja con calma.</p>
+        </div>
+        <div class="route" id="toluca">
+          <div class="meta"><span><i class="fa-regular fa-clock"></i> ~1 h 15</span><span><i class="fa-solid fa-road"></i> ~65 km</span></div>
+          <p><span class="via">Vía Tenango del Valle.</span> Desde Toluca dirígete a <b>Tenango del Valle → Joquicingo → Malinalco</b>. Camino sencillo y bien señalizado.</p>
+        </div>
+        <div class="route" id="cuerna">
+          <div class="meta"><span><i class="fa-regular fa-clock"></i> ~1 h 30</span><span><i class="fa-solid fa-road"></i> ~75 km</span></div>
+          <p><span class="via">Vía Coatlán del Río / Chalma.</span> Desde Cuernavaca toma rumbo a <b>Alpuyeca → Coatlán del Río</b> y continúa hacia <b>Malinalco</b>. Tramos de montaña muy bonitos.</p>
+        </div>
+        <p class="note"><i class="fa-solid fa-circle-info"></i> Los tiempos varían con el tráfico. Para la ruta exacta en vivo, usa el botón de <b>Google Maps</b> o <b>Waze</b> de arriba.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- LLEGADA -->
+      <h3 class="sec-title"><i class="fa-solid fa-key"></i> Al llegar</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="num"></div>
+          <div class="body">
+            <h4>Avísanos 20 minutos antes</h4>
+            <p>Mándanos mensaje por <span class="hl">WhatsApp</span>, <span class="hl">llamada</span> o <span class="hl">Airbnb</span> cuando estés por llegar, así te recibimos sin esperas.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div class="body">
+            <h4>Estaciónate tranquilo</h4>
+            <p>Contamos con <span class="hl">estacionamiento privado y seguro</span> para que dejes tu auto sin preocupaciones.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num"></div>
+          <div class="body">
+            <h4>Te entregamos las llaves en persona</h4>
+            <p>Escríbenos <b>"ya estoy afuera"</b> y salimos a darte la bienvenida y entregarte tus llaves personalmente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="promise">
+        En cuanto nos mandes el mensaje o nos llames,<br>
+        <span class="big">en 2 minutos salimos a recibirte</span> 🤗
+      </div>
+
+      <!-- CONTACTO -->
+      <div class="contact">
+        <a class="btn btn-wa out" target="_blank" rel="noopener"
+           href="https://wa.me/525562513258?text=%C2%A1Hola%21%20Voy%20en%20camino%2C%20llego%20en%20unos%2020%20minutos%20%F0%9F%9A%97">
+          <i class="fa-brands fa-whatsapp" style="font-size:1.3rem"></i> Avisar que voy en camino
+        </a>
+        <a class="btn btn-wa" target="_blank" rel="noopener"
+           href="https://wa.me/525562513258?text=Hola%2C%20ya%20estoy%20afuera%20del%20domicilio%20%F0%9F%98%8A">
+          <i class="fa-brands fa-whatsapp" style="font-size:1.3rem"></i> Hola, ya estoy afuera del domicilio
+        </a>
+        <a class="btn btn-call" href="tel:+525562513258">
+          <i class="fa-solid fa-phone"></i> Llamar · 55 6251 3258
+        </a>
+      </div>
+    </div>
+
+    <p class="foot">
+      Bienvenidos a Malinalco · <span class="brand">Cantera & Calma</span><br>
+      <a href="/">canteraycalma.com</a>
+    </p>
+  </div>
+
+  <div class="toast" id="toast">¡Copiado!</div>
+
+  <script>
+    // Copiar dirección
+    var toast=document.getElementById('toast');
+    function showToast(m){toast.textContent=m;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){toast.classList.remove('show')},1600);}
+    document.querySelectorAll('.copy').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var text=btn.getAttribute('data-copy');
+        var done=function(){var o=btn.innerHTML;btn.classList.add('ok');btn.innerHTML='<i class="fa-solid fa-check"></i> ¡Copiada!';showToast('¡Dirección copiada!');setTimeout(function(){btn.classList.remove('ok');btn.innerHTML=o;},1700);};
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(fb);}else{fb();}
+        function fb(){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){showToast('Cópiala manualmente');}document.body.removeChild(ta);}
+      });
+    });
+    // Tabs de ruta
+    var tabs=document.querySelectorAll('.tabs button');
+    tabs.forEach(function(b){
+      b.addEventListener('click',function(){
+        tabs.forEach(function(x){x.classList.remove('active')});
+        document.querySelectorAll('.route').forEach(function(r){r.classList.remove('active')});
+        b.classList.add('active');
+        document.getElementById(b.getAttribute('data-route')).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
