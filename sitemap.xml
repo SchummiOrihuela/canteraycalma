@@ -107,6 +107,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- ========== GUÍA PILAR: HOSPEDAJE ========== -->
+  <url>
+    <loc>https://www.canteraycalma.com/blog/donde-hospedarse-malinalco/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- ========== ARTÍCULOS: GASTRONOMÍA ========== -->
   <url>
     <loc>https://www.canteraycalma.com/blog/10-restaurantes-malinalco/</loc>
