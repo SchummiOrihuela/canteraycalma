@@ -1748,6 +1748,58 @@
   </div>
 </section>
 
+<!-- ===================== TEMPORADA / EVENTOS ===================== -->
+<style>
+  .season-sec { padding: 3.5rem 0; background: var(--surface2, #F3ECE0); }
+  .season-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.4rem; margin-top: 1.8rem; }
+  .season-card { display: flex; gap: 1rem; background: var(--bg); border: 1px solid rgba(185,139,78,0.28); border-radius: 18px; padding: 1.2rem 1.3rem; text-decoration: none; color: var(--text); transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .season-card:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(139,94,60,0.18); border-color: var(--gold); }
+  .season-date { flex: 0 0 auto; width: 70px; text-align: center; background: var(--cantera); color: #fff; border-radius: 12px; padding: 0.6rem 0.3rem; align-self: flex-start; }
+  .season-date .d { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; line-height: 1.1; }
+  .season-date .m { font-size: 0.72rem; text-transform: uppercase; letter-spacing: .04em; opacity: .92; }
+  .season-info h3 { font-family: 'Fraunces', serif; font-size: 1.18rem; margin: 0 0 .35rem; color: var(--text); }
+  .season-info p { color: var(--text-soft); font-size: 0.92rem; line-height: 1.55; margin: 0 0 .6rem; }
+  .season-badge { display: inline-block; background: rgba(185,139,78,0.16); color: var(--cantera); font-size: 0.74rem; font-weight: 700; padding: 0.28rem 0.7rem; border-radius: 999px; }
+  .season-cta-wrap { text-align: center; margin-top: 2rem; }
+  .season-note { color: var(--text-soft); font-size: 0.95rem; margin: 0 0 1rem; }
+  .season-cta-btn { display: inline-flex; align-items: center; gap: .55rem; background: var(--cantera); color: #fff; padding: 0.9rem 1.9rem; border-radius: 999px; font-weight: 700; text-decoration: none; border: 2px solid var(--cantera); transition: background .2s, transform .2s; }
+  .season-cta-btn:hover { background: #76492d; transform: translateY(-2px); }
+</style>
+<section class="season-sec" id="temporada">
+  <div class="container">
+    <div class="section-tag">Vive Malinalco esta temporada</div>
+    <h2 class="section-title">Lo que está pasando ahora en el pueblo</h2>
+    <p class="section-sub">Las mejores fechas se agotan primero. Asegura tu hospedaje antes que nadie.</p>
+
+    <div class="season-grid">
+
+      <a class="season-card" href="/blog/dia-de-muertos-malinalco/">
+        <div class="season-date"><div class="d">28–2</div><div class="m">Oct·Nov</div></div>
+        <div class="season-info">
+          <h3>Día de Muertos en Malinalco <i class="fa-solid fa-skull ico"></i></h3>
+          <p>Ofrendas monumentales, la Tradición de la Cera y el festival cultural gratuito. Las casas abren sus puertas hasta la madrugada.</p>
+          <span class="season-badge"><i class="fa-solid fa-fire ico"></i> Evento imperdible</span>
+        </div>
+      </a>
+
+      <a class="season-card" href="/blog/navidad-posadas-malinalco/">
+        <div class="season-date"><div class="d">16–24</div><div class="m">Dic</div></div>
+        <div class="season-info">
+          <h3>Posadas y Navidad en las capillas <i class="fa-solid fa-tree ico"></i></h3>
+          <p>9 noches recorriendo los barrios iluminados: villancicos, piñatas y ponche en cada capilla del Pueblo Mágico.</p>
+          <span class="season-badge"><i class="fa-solid fa-star ico"></i> Reserva con anticipación</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="season-cta-wrap">
+      <p class="season-note">¿Te quedas a vivirlo? Hospédate a pasos del centro y reserva directo, sin intermediarios.</p>
+      <a href="https://wa.me/5215562513258?text=Hola%2C%20quiero%20reservar%20para%20esta%20temporada%20en%20Malinalco" class="season-cta-btn" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Reservar mi estancia</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== BLOG ===================== -->
 <section class="blog-preview" id="blog">
   <div class="container">
