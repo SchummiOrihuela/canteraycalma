@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Rendimiento: conexión temprana + precarga de la imagen del hero (mejora el LCP y evita el parpadeo) -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preload" as="image" href="./images/malinalco/ZonaArqueologica.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="./images/malinalco/ZonaArqueologica-mobile.webp" type="image/webp" media="(max-width:768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="./images/malinalco/ZonaArqueologica.webp" type="image/webp" media="(min-width:769px)" fetchpriority="high">
     <!-- Font Awesome sin bloquear el render (con respaldo para navegadores sin JS) -->
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
@@ -2224,9 +2225,24 @@
   .hero { position: relative; overflow: hidden; background: none; }
   .hero::before {
     content: ""; position: absolute; inset: 0; z-index: 0;
+    /* Fallback JPG para navegadores sin image-set */
     background: linear-gradient(135deg, rgba(28,28,28,0.45) 0%, rgba(74,124,111,0.30) 100%),
       url('./images/malinalco/ZonaArqueologica.jpg') center/cover no-repeat;
+    /* WebP con fallback JPG (desktop) */
+    background: linear-gradient(135deg, rgba(28,28,28,0.45) 0%, rgba(74,124,111,0.30) 100%),
+      image-set(url('./images/malinalco/ZonaArqueologica.webp') type('image/webp'),
+                url('./images/malinalco/ZonaArqueologica.jpg') type('image/jpeg')) center/cover no-repeat;
     transform: scale(1.04); animation: kenburns 34s ease-in-out infinite alternate;
+  }
+  /* Hero más ligero en móvil (800px) — el grueso del tráfico */
+  @media (max-width:768px) {
+    .hero::before {
+      background-image: linear-gradient(135deg, rgba(28,28,28,0.45) 0%, rgba(74,124,111,0.30) 100%),
+        url('./images/malinalco/ZonaArqueologica-mobile.jpg');
+      background-image: linear-gradient(135deg, rgba(28,28,28,0.45) 0%, rgba(74,124,111,0.30) 100%),
+        image-set(url('./images/malinalco/ZonaArqueologica-mobile.webp') type('image/webp'),
+                  url('./images/malinalco/ZonaArqueologica-mobile.jpg') type('image/jpeg'));
+    }
   }
   .hero-content { position: relative; z-index: 1; }
   @keyframes kenburns {
