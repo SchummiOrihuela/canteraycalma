@@ -7,7 +7,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Rendimiento: conexión temprana + precarga de la imagen del hero (mejora el LCP y evita el parpadeo) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" as="image" href="./images/malinalco/ZonaArqueologica.jpg" fetchpriority="high">
+    <!-- Font Awesome sin bloquear el render (con respaldo para navegadores sin JS) -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
     <!-- MEJORA 8: Meta title más específico para SEO -->
     <title>Renta en Malinalco desde $700/noche · SuperAnfitrión 8 años | Cantera & Calma</title>
     <!-- MEJORA 8: Meta description mejorado -->
@@ -1099,7 +1104,7 @@
     <!-- MEJORA 3: Nuevo enlace Qué visitar -->
     <li><a href="#visitar">Qué visitar</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#contacto">Reserve ya!</a></li>
+    <li><a href="#contacto">Reserva ya!</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
   <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank" rel="noopener" data-ga-label="Nav - Reservar"><i class="fa-solid fa-calendar-day ico"></i> Reservar</a>
@@ -1124,7 +1129,7 @@
     </div>
     <div class="hero-btns">
       <a href="#departamentos" class="btn-primary">Ver Departamentos</a>
-      <a href="#malinalco" class="btn-secondary">Descubra Malinalco</a>
+      <a href="#malinalco" class="btn-secondary">Descubre Malinalco</a>
     </div>
   </div>
 </section>
@@ -1851,7 +1856,7 @@
     <li><a href="#malinalco">Malinalco</a></li>
     <li><a href="#comer">Gastronomía</a></li>
     <li><a href="#visitar">Qué visitar</a></li>
-    <li><a href="#contacto">Reserve ya!</a></li>
+    <li><a href="#contacto">Reserva ya!</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
   <div class="social-icons">
