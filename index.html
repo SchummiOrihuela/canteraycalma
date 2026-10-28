@@ -373,7 +373,7 @@
 (function(){
   function track(a){
     var href=(a.getAttribute('href')||'').toLowerCase();
-    var label=(a.textContent||'').replace(/\s+/g,' ').trim().slice(0,80);
+    var label=(a.getAttribute('data-ga-label')||a.textContent||'').replace(/\s+/g,' ').trim().slice(0,80);
     var loc=(a.closest('section')&&a.closest('section').id)||(a.className||'').toString().slice(0,40)||'sin-seccion';
     if(href.indexOf('wa.me')>-1||href.indexOf('whatsapp')>-1){
       gtag('event','click_whatsapp',{link_text:label,button_location:loc,page_path:location.pathname});
@@ -1102,7 +1102,7 @@
     <li><a href="#contacto">Reserve ya!</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
-  <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank" rel="noopener"><i class="fa-solid fa-calendar-day ico"></i> Reservar</a>
+  <a href="https://wa.me/5215562513258?text=Hola!%20Me%20interesa%20reservar%20en%20Cantera%20y%20Calma" class="nav-cta" target="_blank" rel="noopener" data-ga-label="Nav - Reservar"><i class="fa-solid fa-calendar-day ico"></i> Reservar</a>
   <button class="nav-toggle" id="navToggle" aria-label="Menú">
     <span class="nav-toggle-line"></span>
     <span class="nav-toggle-line"></span>
@@ -1256,7 +1256,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/26814562" class="depto-link" target="_blank" rel="noopener">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A0" class="depto-link-wa" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A0" class="depto-link-wa" target="_blank" rel="noopener" data-ga-label="Tarjeta - Depto Cantera"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1287,7 +1287,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/29388264" class="depto-link" target="_blank" rel="noopener">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8C%99" class="depto-link-wa" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8C%99" class="depto-link-wa" target="_blank" rel="noopener" data-ga-label="Tarjeta - Depto Calma"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1318,7 +1318,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/845572765345078851" class="depto-link" target="_blank" rel="noopener">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A1" class="depto-link-wa" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A1" class="depto-link-wa" target="_blank" rel="noopener" data-ga-label="Tarjeta - Casa Marne 13"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1347,7 +1347,7 @@
           </div>
           <div class="depto-actions">
             <a href="https://www.airbnb.mx/rooms/1218449796709269911" class="depto-link" target="_blank" rel="noopener">Ver en Airbnb →</a>
-            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%E2%9C%A8" class="depto-link-wa" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
+            <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%E2%9C%A8" class="depto-link-wa" target="_blank" rel="noopener" data-ga-label="Tarjeta - Habitacion Magia"><i class="fa-brands fa-whatsapp ico"></i> Reservar directo</a>
           </div>
         </div>
       </div>
@@ -1730,7 +1730,7 @@
 
     <div class="season-cta-wrap">
       <p class="season-note">¿Te quedas a vivirlo? Hospédate a pasos del centro y reserva directo, sin intermediarios.</p>
-      <a href="https://wa.me/5215562513258?text=Hola%2C%20quiero%20reservar%20para%20esta%20temporada%20en%20Malinalco" class="season-cta-btn" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Reservar mi estancia</a>
+      <a href="https://wa.me/5215562513258?text=Hola%2C%20quiero%20reservar%20para%20esta%20temporada%20en%20Malinalco" class="season-cta-btn" target="_blank" rel="noopener" data-ga-label="Temporada - Reservar estancia"><i class="fa-brands fa-whatsapp"></i> Reservar mi estancia</a>
     </div>
   </div>
 </section>
@@ -1793,7 +1793,7 @@
         <h3>Contáctanos directamente</h3>
         <p>Podemos ayudarte a elegir la opción ideal, coordinar tu llegada y darte todos los tips locales que necesitas para vivir Malinalco al máximo.</p>
         <div class="contacto-links">
-          <a href="https://wa.me/5215562513258" class="clink" target="_blank" rel="noopener">
+          <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20canteraycalma.com%20y%20quiero%20consultar%20disponibilidad%20en%20Malinalco." class="clink" target="_blank" rel="noopener" data-ga-label="Contacto - WhatsApp directo">
             <span class="clink-icon"><i class="fa-brands fa-whatsapp"></i></span> WhatsApp directo
           </a>
           <a href="https://www.instagram.com/canteramalinalco" class="clink" target="_blank" rel="noopener">
@@ -1861,7 +1861,7 @@
     <a href="https://www.facebook.com/CanteraMalinalco" target="_blank" rel="noopener" aria-label="Facebook">
       <i class="fa-brands fa-facebook"></i>
     </a>
-    <a href="https://wa.me/5215562513258" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20canteraycalma.com%20y%20quiero%20consultar%20disponibilidad%20en%20Malinalco." target="_blank" rel="noopener" aria-label="WhatsApp" data-ga-label="Footer - WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
@@ -1872,35 +1872,35 @@
 <div class="wa-widget" id="waWidget">
   <div class="wa-menu">
     <div class="wa-menu-title">¿Qué propiedad te interesa?</div>
-    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A0" class="wa-option" target="_blank" rel="noopener">
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Cantera*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A0" class="wa-option" target="_blank" rel="noopener" data-ga-label="Widget - Depto Cantera">
       <div class="wa-option-icon" style="background:#f5efe6;"><i class="fa-solid fa-house ico"></i></div>
       <div class="wa-option-text">
         <span class="wa-option-name">Depto. Cantera</span>
         <span class="wa-option-detail">Hasta 4 personas · ★ 4.96</span>
       </div>
     </a>
-    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8C%99" class="wa-option" target="_blank" rel="noopener">
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20el%20*Departamento%20Calma*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8C%99" class="wa-option" target="_blank" rel="noopener" data-ga-label="Widget - Depto Calma">
       <div class="wa-option-icon" style="background:#f0f9f6;"><i class="fa-solid fa-moon ico"></i></div>
       <div class="wa-option-text">
         <span class="wa-option-name">Depto. Calma</span>
         <span class="wa-option-detail">Hasta 4 personas · ★ 4.91</span>
       </div>
     </a>
-    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A1" class="wa-option" target="_blank" rel="noopener">
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Casa%20Marne%2013*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%F0%9F%8F%A1" class="wa-option" target="_blank" rel="noopener" data-ga-label="Widget - Casa Marne 13">
       <div class="wa-option-icon" style="background:#f5efe6;"><i class="fa-solid fa-house-chimney ico"></i></div>
       <div class="wa-option-text">
         <span class="wa-option-name">Casa Marne 13</span>
         <span class="wa-option-detail">Hasta 4 personas · ★ 4.89</span>
       </div>
     </a>
-    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%E2%9C%A8" class="wa-option" target="_blank" rel="noopener">
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20la%20*Habitaci%C3%B3n%20Magia*%20en%20Malinalco.%20%C2%BFTienen%20disponibilidad%3F%20%E2%9C%A8" class="wa-option" target="_blank" rel="noopener" data-ga-label="Widget - Habitacion Magia">
       <div class="wa-option-icon" style="background:#f0f9f6;"><i class="fa-solid fa-wand-magic-sparkles ico"></i></div>
       <div class="wa-option-text">
         <span class="wa-option-name">Hab. Magia</span>
         <span class="wa-option-detail">Hasta 2 personas · ★ 4.89</span>
       </div>
     </a>
-    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20saber%20qu%C3%A9%20propiedades%20tienen%20disponibles%20en%20Malinalco.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%8C%BF" class="wa-option" target="_blank" rel="noopener">
+    <a href="https://wa.me/5215562513258?text=Hola!%20Vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20saber%20qu%C3%A9%20propiedades%20tienen%20disponibles%20en%20Malinalco.%20%C2%BFPueden%20ayudarme%3F%20%F0%9F%8C%BF" class="wa-option" target="_blank" rel="noopener" data-ga-label="Widget - Ver todas">
       <div class="wa-option-icon" style="background:#e8f5e9;"><i class="fa-brands fa-whatsapp ico"></i></div>
       <div class="wa-option-text">
         <span class="wa-option-name">No sé cuál elegir</span>
@@ -1978,11 +1978,15 @@
 
     let texto = encodeURIComponent(
       `¡Hola! Soy ${nombre}, vi su página web canteraycalma.com\n` +
-      `<i class="fa-solid fa-calendar-day ico"></i> Fechas: ${fechas}\n` +
-      `<i class="fa-solid fa-user-group ico"></i> ${personas}\n` +
-      (contacto ? `<i class="fa-solid fa-mobile-screen-button ico"></i> Mi contacto: ${contacto}\n` : '') +
-      (mensaje ? `<i class="fa-brands fa-whatsapp ico"></i> ${mensaje}` : '')
+      `📅 Fechas: ${fechas}\n` +
+      `👥 ${personas}\n` +
+      (contacto ? `📱 Mi contacto: ${contacto}\n` : '') +
+      (mensaje ? `💬 ${mensaje}` : '')
     );
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'click_whatsapp', { link_text: 'Formulario - Consulta disponibilidad', button_location: 'contacto', page_path: location.pathname });
+    }
 
     window.open(`https://wa.me/5215562513258?text=${texto}`, '_blank');
   });
@@ -2048,7 +2052,7 @@
 
       <div class="article-modal-cta">
         <p>¿Ya tienes las fechas? Reserva directo y ahorra hasta 15% vs Airbnb.</p>
-        <a href="https://wa.me/5215562513258?text=¡Hola!%20Vi%20la%20guía%20familiar%20en%20su%20página%20y%20me%20interesa%20reservar%20para%20familia." target="_blank"><i class="fa-solid fa-mobile-screen-button ico"></i> Consultar disponibilidad por WhatsApp</a>
+        <a href="https://wa.me/5215562513258?text=¡Hola!%20Vi%20la%20guía%20familiar%20en%20su%20página%20y%20me%20interesa%20reservar%20para%20familia." target="_blank" rel="noopener" data-ga-label="Modal Familias - WhatsApp"><i class="fa-solid fa-mobile-screen-button ico"></i> Consultar disponibilidad por WhatsApp</a>
       </div>
     </div>
   </div>
@@ -2106,7 +2110,7 @@
 
       <div class="article-modal-cta">
         <p>Sorprende a tu pareja. Reserva directo y recibe atención personalizada desde el primer mensaje.</p>
-        <a href="https://wa.me/5215562513258?text=¡Hola!%20Busco%20disponibilidad%20para%20una%20escapada%20romántica%20en%20Malinalco." target="_blank"><i class="fa-solid fa-mobile-screen-button ico"></i> Planear mi escapada romántica</a>
+        <a href="https://wa.me/5215562513258?text=¡Hola!%20Busco%20disponibilidad%20para%20una%20escapada%20romántica%20en%20Malinalco." target="_blank" rel="noopener" data-ga-label="Modal Romantico - WhatsApp"><i class="fa-solid fa-mobile-screen-button ico"></i> Planear mi escapada romántica</a>
       </div>
     </div>
   </div>
@@ -2137,7 +2141,7 @@
         </div>
         <div class="article-modal-card">
           <strong>Desde Polanco / Lomas</strong>
-          <span>~85 km · 1h 40min aprox. Ruta por el Periferico o Viaducto hasta Lerma.</span>
+          <span>~85 km · 1h 40min aprox. Ruta por el Periférico o Viaducto hasta Lerma.</span>
         </div>
         <div class="article-modal-card">
           <strong>Desde Toluca / Metepec</strong>
@@ -2191,7 +2195,7 @@
 
       <div class="article-modal-cta">
         <p>¿Listo para el siguiente fin de semana? Disponibilidad limitada en temporada alta.</p>
-        <a href="https://wa.me/5215562513258?text=¡Hola!%20Vi%20el%20itinerario%20express%20en%20su%20página%20y%20quiero%20saber%20disponibilidad." target="_blank"><i class="fa-solid fa-mobile-screen-button ico"></i> Verificar disponibilidad ahora</a>
+        <a href="https://wa.me/5215562513258?text=¡Hola!%20Vi%20el%20itinerario%20express%20en%20su%20página%20y%20quiero%20saber%20disponibilidad." target="_blank" rel="noopener" data-ga-label="Modal CDMX - WhatsApp"><i class="fa-solid fa-mobile-screen-button ico"></i> Verificar disponibilidad ahora</a>
       </div>
     </div>
   </div>
