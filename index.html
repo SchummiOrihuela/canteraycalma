@@ -2236,11 +2236,42 @@
   .btn-primary, .btn-secondary { transition: transform .25s ease, box-shadow .25s ease, background .3s; }
   .btn-primary:hover, .btn-secondary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.14); }
 
+  /* ---- Latido del botón de WhatsApp: palpita y emite un pulso para llamar la atención ---- */
+  .wa-fab { animation: waBeat 2.8s ease-in-out infinite; }
+  .wa-fab::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    pointer-events: none; box-shadow: 0 0 0 0 rgba(37,211,102,0.55);
+    animation: waPulseRing 2.8s ease-out infinite;
+  }
+  /* Mientras el menú está abierto, se calma para no distraer */
+  .wa-widget.open .wa-fab { animation: none; }
+  .wa-widget.open .wa-fab::before { animation: none; }
+  @keyframes waBeat {
+    0%, 55%, 100% { transform: scale(1); }
+    12% { transform: scale(1.14); }
+    24% { transform: scale(1); }
+    36% { transform: scale(1.09); }
+    48% { transform: scale(1); }
+  }
+  @keyframes waPulseRing {
+    0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+    70%  { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  /* ---- Las tarjetas de propiedad "laten" suavemente al pasar el mouse ---- */
+  .depto-card:hover { animation: cardBeat 1.6s ease-in-out infinite; }
+  @keyframes cardBeat {
+    0%, 100% { transform: translateY(-6px) scale(1.012); }
+    50%      { transform: translateY(-8px) scale(1.022); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .hero::before { animation: none; transform: scale(1.05); }
     .reveal { opacity: 1; transform: none; transition: none; }
     .depto-img, .blog-card-img, .host-photo { transition: none; }
+    .wa-fab, .wa-fab::before, .depto-card:hover { animation: none; }
   }
 
   /* ---- Tipografía moderna y elegante (nada viejo) ---- */
