@@ -10,8 +10,14 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Fuentes e iconos cargados SIN bloquear el render: la página pinta al instante
+       aunque el huésped tenga mala señal o los CDN tarden/fallen (fallback a fuentes del sistema). -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </noscript>
   <style>
     :root{
       --forest:#3B6357; --cantera:#8B5E3C; --arena:#F4EEE3; --gold:#B98B4E;
@@ -176,7 +182,8 @@
 
   <div class="toast" id="toast">¡Copiado!</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+          onerror="var q=document.getElementById('qrcode');if(q){q.style.cssText='padding:20px;color:#6E6152;font-size:.85rem;text-align:center';q.textContent='Usa la contraseña de abajo para conectarte.';}"></script>
   <script>
     // QR WiFi (2.4G, máxima compatibilidad). Formato estándar WIFI:...
     (function(){
