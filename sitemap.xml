@@ -127,6 +127,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://www.canteraycalma.com/blog/trail-nocturno-malinalco/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- ========== GUÍA PILAR: HOSPEDAJE ========== -->
   <url>
     <loc>https://www.canteraycalma.com/blog/donde-hospedarse-malinalco/</loc>
